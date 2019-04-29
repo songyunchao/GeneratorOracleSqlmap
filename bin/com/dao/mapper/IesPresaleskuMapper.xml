@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.mapper.IesPresaleskuMapper" >
+  <resultMap id="BaseResultMap" type="com.domain.model.IesPresalesku" >
+    <id column="PreSKUID" property="preskuid" jdbcType="VARCHAR" />
+    <result column="StockCode" property="stockcode" jdbcType="VARCHAR" />
+    <result column="StockName" property="stockname" jdbcType="VARCHAR" />
+    <result column="CompanyCode" property="companycode" jdbcType="VARCHAR" />
+    <result column="ShopID" property="shopid" jdbcType="VARCHAR" />
+    <result column="SKUName" property="skuname" jdbcType="VARCHAR" />
+    <result column="GoodsCode" property="goodscode" jdbcType="VARCHAR" />
+    <result column="SKU" property="sku" jdbcType="VARCHAR" />
+    <result column="IsEnabled" property="isenabled" jdbcType="SMALLINT" />
+    <result column="PreSaleType" property="presaletype" jdbcType="SMALLINT" />
+    <result column="AddCName" property="addcname" jdbcType="VARCHAR" />
+    <result column="AddDateTime" property="adddatetime" jdbcType="TIMESTAMP" />
+    <result column="ModifyCName" property="modifycname" jdbcType="VARCHAR" />
+    <result column="ModifyDateTime" property="modifydatetime" jdbcType="TIMESTAMP" />
+    <result column="ShopName" property="shopname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PreSKUID, StockCode, StockName, CompanyCode, ShopID, SKUName, GoodsCode, SKU, IsEnabled, 
+    PreSaleType, AddCName, AddDateTime, ModifyCName, ModifyDateTime, ShopName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IES_PreSaleSKU
+    where PreSKUID = #{preskuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IES_PreSaleSKU
+    where PreSKUID = #{preskuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.domain.model.IesPresalesku" >
+    insert into IES_PreSaleSKU (PreSKUID, StockCode, StockName, 
+      CompanyCode, ShopID, SKUName, 
+      GoodsCode, SKU, IsEnabled, 
+      PreSaleType, AddCName, AddDateTime, 
+      ModifyCName, ModifyDateTime, ShopName
+      )
+    values (#{preskuid,jdbcType=VARCHAR}, #{stockcode,jdbcType=VARCHAR}, #{stockname,jdbcType=VARCHAR}, 
+      #{companycode,jdbcType=VARCHAR}, #{shopid,jdbcType=VARCHAR}, #{skuname,jdbcType=VARCHAR}, 
+      #{goodscode,jdbcType=VARCHAR}, #{sku,jdbcType=VARCHAR}, #{isenabled,jdbcType=SMALLINT}, 
+      #{presaletype,jdbcType=SMALLINT}, #{addcname,jdbcType=VARCHAR}, #{adddatetime,jdbcType=TIMESTAMP}, 
+      #{modifycname,jdbcType=VARCHAR}, #{modifydatetime,jdbcType=TIMESTAMP}, #{shopname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.model.IesPresalesku" >
+    insert into IES_PreSaleSKU
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="preskuid != null" >
+        PreSKUID,
+      </if>
+      <if test="stockcode != null" >
+        StockCode,
+      </if>
+      <if test="stockname != null" >
+        StockName,
+      </if>
+      <if test="companycode != null" >
+        CompanyCode,
+      </if>
+      <if test="shopid != null" >
+        ShopID,
+      </if>
+      <if test="skuname != null" >
+        SKUName,
+      </if>
+      <if test="goodscode != null" >
+        GoodsCode,
+      </if>
+      <if test="sku != null" >
+        SKU,
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled,
+      </if>
+      <if test="presaletype != null" >
+        PreSaleType,
+      </if>
+      <if test="addcname != null" >
+        AddCName,
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime,
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName,
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime,
+      </if>
+      <if test="shopname != null" >
+        ShopName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="preskuid != null" >
+        #{preskuid,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="companycode != null" >
+        #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="skuname != null" >
+        #{skuname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscode != null" >
+        #{goodscode,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null" >
+        #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="presaletype != null" >
+        #{presaletype,jdbcType=SMALLINT},
+      </if>
+      <if test="addcname != null" >
+        #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopname != null" >
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.model.IesPresalesku" >
+    update IES_PreSaleSKU
+    <set >
+      <if test="stockcode != null" >
+        StockCode = #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        StockName = #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="companycode != null" >
+        CompanyCode = #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="shopid != null" >
+        ShopID = #{shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="skuname != null" >
+        SKUName = #{skuname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscode != null" >
+        GoodsCode = #{goodscode,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null" >
+        SKU = #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="presaletype != null" >
+        PreSaleType = #{presaletype,jdbcType=SMALLINT},
+      </if>
+      <if test="addcname != null" >
+        AddCName = #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopname != null" >
+        ShopName = #{shopname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PreSKUID = #{preskuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.model.IesPresalesku" >
+    update IES_PreSaleSKU
+    set StockCode = #{stockcode,jdbcType=VARCHAR},
+      StockName = #{stockname,jdbcType=VARCHAR},
+      CompanyCode = #{companycode,jdbcType=VARCHAR},
+      ShopID = #{shopid,jdbcType=VARCHAR},
+      SKUName = #{skuname,jdbcType=VARCHAR},
+      GoodsCode = #{goodscode,jdbcType=VARCHAR},
+      SKU = #{sku,jdbcType=VARCHAR},
+      IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      PreSaleType = #{presaletype,jdbcType=SMALLINT},
+      AddCName = #{addcname,jdbcType=VARCHAR},
+      AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP},
+      ShopName = #{shopname,jdbcType=VARCHAR}
+    where PreSKUID = #{preskuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.mapper.IesSkushopsMapper" >
+  <resultMap id="BaseResultMap" type="com.domain.model.IesSkushops" >
+    <id column="SKUShopID" property="skushopid" jdbcType="VARCHAR" />
+    <result column="CompanyCode" property="companycode" jdbcType="VARCHAR" />
+    <result column="StockCode" property="stockcode" jdbcType="VARCHAR" />
+    <result column="StockName" property="stockname" jdbcType="VARCHAR" />
+    <result column="ProductShopID" property="productshopid" jdbcType="VARCHAR" />
+    <result column="NumID" property="numid" jdbcType="VARCHAR" />
+    <result column="SKUID" property="skuid" jdbcType="VARCHAR" />
+    <result column="SKU" property="sku" jdbcType="VARCHAR" />
+    <result column="MaterialCode" property="materialcode" jdbcType="VARCHAR" />
+    <result column="MaterialShortName" property="materialshortname" jdbcType="VARCHAR" />
+    <result column="DisplayName" property="displayname" jdbcType="VARCHAR" />
+    <result column="IsSyncShop" property="issyncshop" jdbcType="SMALLINT" />
+    <result column="ShopQty" property="shopqty" jdbcType="INTEGER" />
+    <result column="ShopID" property="shopid" jdbcType="VARCHAR" />
+    <result column="ShopName" property="shopname" jdbcType="VARCHAR" />
+    <result column="PreSaleQTY" property="presaleqty" jdbcType="INTEGER" />
+    <result column="ShopPrecent" property="shopprecent" jdbcType="INTEGER" />
+    <result column="OriginalShopPrecent" property="originalshopprecent" jdbcType="INTEGER" />
+    <result column="BrandID" property="brandid" jdbcType="VARCHAR" />
+    <result column="ExtSkuID" property="extskuid" jdbcType="VARCHAR" />
+    <result column="BarCode" property="barcode" jdbcType="VARCHAR" />
+    <result column="MarketPrice" property="marketprice" jdbcType="DECIMAL" />
+    <result column="BuyPrice" property="buyprice" jdbcType="DECIMAL" />
+    <result column="MinSalePrice" property="minsaleprice" jdbcType="DECIMAL" />
+    <result column="SellPrice" property="sellprice" jdbcType="DECIMAL" />
+    <result column="PromotionPrice" property="promotionprice" jdbcType="DECIMAL" />
+    <result column="ColorCode" property="colorcode" jdbcType="VARCHAR" />
+    <result column="ColorName" property="colorname" jdbcType="VARCHAR" />
+    <result column="SizeCode" property="sizecode" jdbcType="VARCHAR" />
+    <result column="SizeName" property="sizename" jdbcType="VARCHAR" />
+    <result column="Goodsproperty" property="goodsproperty" jdbcType="VARCHAR" />
+    <result column="Properties" property="properties" jdbcType="VARCHAR" />
+    <result column="PropertyName" property="propertyname" jdbcType="VARCHAR" />
+    <result column="SkuImageUrl" property="skuimageurl" jdbcType="VARCHAR" />
+    <result column="IsEnabled" property="isenabled" jdbcType="SMALLINT" />
+    <result column="KeyWord" property="keyword" jdbcType="VARCHAR" />
+    <result column="StatisticID" property="statisticid" jdbcType="VARCHAR" />
+    <result column="StylePropertyID" property="stylepropertyid" jdbcType="VARCHAR" />
+    <result column="MarketDate" property="marketdate" jdbcType="TIMESTAMP" />
+    <result column="PubFlag" property="pubflag" jdbcType="SMALLINT" />
+    <result column="PubDate" property="pubdate" jdbcType="TIMESTAMP" />
+    <result column="PubCName" property="pubcname" jdbcType="VARCHAR" />
+    <result column="IsUploadSuccess" property="isuploadsuccess" jdbcType="SMALLINT" />
+    <result column="AddCName" property="addcname" jdbcType="VARCHAR" />
+    <result column="AddDateTime" property="adddatetime" jdbcType="TIMESTAMP" />
+    <result column="ModifyCName" property="modifycname" jdbcType="VARCHAR" />
+    <result column="ModifyDateTime" property="modifydatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SKUShopID, CompanyCode, StockCode, StockName, ProductShopID, NumID, SKUID, SKU, MaterialCode, 
+    MaterialShortName, DisplayName, IsSyncShop, ShopQty, ShopID, ShopName, PreSaleQTY, 
+    ShopPrecent, OriginalShopPrecent, BrandID, ExtSkuID, BarCode, MarketPrice, BuyPrice, 
+    MinSalePrice, SellPrice, PromotionPrice, ColorCode, ColorName, SizeCode, SizeName, 
+    Goodsproperty, Properties, PropertyName, SkuImageUrl, IsEnabled, KeyWord, StatisticID, 
+    StylePropertyID, MarketDate, PubFlag, PubDate, PubCName, IsUploadSuccess, AddCName, 
+    AddDateTime, ModifyCName, ModifyDateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IES_SKUShops
+    where SKUShopID = #{skushopid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IES_SKUShops
+    where SKUShopID = #{skushopid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.domain.model.IesSkushops" >
+    insert into IES_SKUShops (SKUShopID, CompanyCode, StockCode, 
+      StockName, ProductShopID, NumID, 
+      SKUID, SKU, MaterialCode, 
+      MaterialShortName, DisplayName, IsSyncShop, 
+      ShopQty, ShopID, ShopName, 
+      PreSaleQTY, ShopPrecent, OriginalShopPrecent, 
+      BrandID, ExtSkuID, BarCode, 
+      MarketPrice, BuyPrice, MinSalePrice, 
+      SellPrice, PromotionPrice, ColorCode, 
+      ColorName, SizeCode, SizeName, 
+      Goodsproperty, Properties, PropertyName, 
+      SkuImageUrl, IsEnabled, KeyWord, 
+      StatisticID, StylePropertyID, MarketDate, 
+      PubFlag, PubDate, PubCName, 
+      IsUploadSuccess, AddCName, AddDateTime, 
+      ModifyCName, ModifyDateTime)
+    values (#{skushopid,jdbcType=VARCHAR}, #{companycode,jdbcType=VARCHAR}, #{stockcode,jdbcType=VARCHAR}, 
+      #{stockname,jdbcType=VARCHAR}, #{productshopid,jdbcType=VARCHAR}, #{numid,jdbcType=VARCHAR}, 
+      #{skuid,jdbcType=VARCHAR}, #{sku,jdbcType=VARCHAR}, #{materialcode,jdbcType=VARCHAR}, 
+      #{materialshortname,jdbcType=VARCHAR}, #{displayname,jdbcType=VARCHAR}, #{issyncshop,jdbcType=SMALLINT}, 
+      #{shopqty,jdbcType=INTEGER}, #{shopid,jdbcType=VARCHAR}, #{shopname,jdbcType=VARCHAR}, 
+      #{presaleqty,jdbcType=INTEGER}, #{shopprecent,jdbcType=INTEGER}, #{originalshopprecent,jdbcType=INTEGER}, 
+      #{brandid,jdbcType=VARCHAR}, #{extskuid,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, 
+      #{marketprice,jdbcType=DECIMAL}, #{buyprice,jdbcType=DECIMAL}, #{minsaleprice,jdbcType=DECIMAL}, 
+      #{sellprice,jdbcType=DECIMAL}, #{promotionprice,jdbcType=DECIMAL}, #{colorcode,jdbcType=VARCHAR}, 
+      #{colorname,jdbcType=VARCHAR}, #{sizecode,jdbcType=VARCHAR}, #{sizename,jdbcType=VARCHAR}, 
+      #{goodsproperty,jdbcType=VARCHAR}, #{properties,jdbcType=VARCHAR}, #{propertyname,jdbcType=VARCHAR}, 
+      #{skuimageurl,jdbcType=VARCHAR}, #{isenabled,jdbcType=SMALLINT}, #{keyword,jdbcType=VARCHAR}, 
+      #{statisticid,jdbcType=VARCHAR}, #{stylepropertyid,jdbcType=VARCHAR}, #{marketdate,jdbcType=TIMESTAMP}, 
+      #{pubflag,jdbcType=SMALLINT}, #{pubdate,jdbcType=TIMESTAMP}, #{pubcname,jdbcType=VARCHAR}, 
+      #{isuploadsuccess,jdbcType=SMALLINT}, #{addcname,jdbcType=VARCHAR}, #{adddatetime,jdbcType=TIMESTAMP}, 
+      #{modifycname,jdbcType=VARCHAR}, #{modifydatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.model.IesSkushops" >
+    insert into IES_SKUShops
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skushopid != null" >
+        SKUShopID,
+      </if>
+      <if test="companycode != null" >
+        CompanyCode,
+      </if>
+      <if test="stockcode != null" >
+        StockCode,
+      </if>
+      <if test="stockname != null" >
+        StockName,
+      </if>
+      <if test="productshopid != null" >
+        ProductShopID,
+      </if>
+      <if test="numid != null" >
+        NumID,
+      </if>
+      <if test="skuid != null" >
+        SKUID,
+      </if>
+      <if test="sku != null" >
+        SKU,
+      </if>
+      <if test="materialcode != null" >
+        MaterialCode,
+      </if>
+      <if test="materialshortname != null" >
+        MaterialShortName,
+      </if>
+      <if test="displayname != null" >
+        DisplayName,
+      </if>
+      <if test="issyncshop != null" >
+        IsSyncShop,
+      </if>
+      <if test="shopqty != null" >
+        ShopQty,
+      </if>
+      <if test="shopid != null" >
+        ShopID,
+      </if>
+      <if test="shopname != null" >
+        ShopName,
+      </if>
+      <if test="presaleqty != null" >
+        PreSaleQTY,
+      </if>
+      <if test="shopprecent != null" >
+        ShopPrecent,
+      </if>
+      <if test="originalshopprecent != null" >
+        OriginalShopPrecent,
+      </if>
+      <if test="brandid != null" >
+        BrandID,
+      </if>
+      <if test="extskuid != null" >
+        ExtSkuID,
+      </if>
+      <if test="barcode != null" >
+        BarCode,
+      </if>
+      <if test="marketprice != null" >
+        MarketPrice,
+      </if>
+      <if test="buyprice != null" >
+        BuyPrice,
+      </if>
+      <if test="minsaleprice != null" >
+        MinSalePrice,
+      </if>
+      <if test="sellprice != null" >
+        SellPrice,
+      </if>
+      <if test="promotionprice != null" >
+        PromotionPrice,
+      </if>
+      <if test="colorcode != null" >
+        ColorCode,
+      </if>
+      <if test="colorname != null" >
+        ColorName,
+      </if>
+      <if test="sizecode != null" >
+        SizeCode,
+      </if>
+      <if test="sizename != null" >
+        SizeName,
+      </if>
+      <if test="goodsproperty != null" >
+        Goodsproperty,
+      </if>
+      <if test="properties != null" >
+        Properties,
+      </if>
+      <if test="propertyname != null" >
+        PropertyName,
+      </if>
+      <if test="skuimageurl != null" >
+        SkuImageUrl,
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled,
+      </if>
+      <if test="keyword != null" >
+        KeyWord,
+      </if>
+      <if test="statisticid != null" >
+        StatisticID,
+      </if>
+      <if test="stylepropertyid != null" >
+        StylePropertyID,
+      </if>
+      <if test="marketdate != null" >
+        MarketDate,
+      </if>
+      <if test="pubflag != null" >
+        PubFlag,
+      </if>
+      <if test="pubdate != null" >
+        PubDate,
+      </if>
+      <if test="pubcname != null" >
+        PubCName,
+      </if>
+      <if test="isuploadsuccess != null" >
+        IsUploadSuccess,
+      </if>
+      <if test="addcname != null" >
+        AddCName,
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime,
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName,
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skushopid != null" >
+        #{skushopid,jdbcType=VARCHAR},
+      </if>
+      <if test="companycode != null" >
+        #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="productshopid != null" >
+        #{productshopid,jdbcType=VARCHAR},
+      </if>
+      <if test="numid != null" >
+        #{numid,jdbcType=VARCHAR},
+      </if>
+      <if test="skuid != null" >
+        #{skuid,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null" >
+        #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="materialcode != null" >
+        #{materialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialshortname != null" >
+        #{materialshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="displayname != null" >
+        #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="issyncshop != null" >
+        #{issyncshop,jdbcType=SMALLINT},
+      </if>
+      <if test="shopqty != null" >
+        #{shopqty,jdbcType=INTEGER},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopname != null" >
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="presaleqty != null" >
+        #{presaleqty,jdbcType=INTEGER},
+      </if>
+      <if test="shopprecent != null" >
+        #{shopprecent,jdbcType=INTEGER},
+      </if>
+      <if test="originalshopprecent != null" >
+        #{originalshopprecent,jdbcType=INTEGER},
+      </if>
+      <if test="brandid != null" >
+        #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="extskuid != null" >
+        #{extskuid,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="marketprice != null" >
+        #{marketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="buyprice != null" >
+        #{buyprice,jdbcType=DECIMAL},
+      </if>
+      <if test="minsaleprice != null" >
+        #{minsaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="sellprice != null" >
+        #{sellprice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionprice != null" >
+        #{promotionprice,jdbcType=DECIMAL},
+      </if>
+      <if test="colorcode != null" >
+        #{colorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="colorname != null" >
+        #{colorname,jdbcType=VARCHAR},
+      </if>
+      <if test="sizecode != null" >
+        #{sizecode,jdbcType=VARCHAR},
+      </if>
+      <if test="sizename != null" >
+        #{sizename,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsproperty != null" >
+        #{goodsproperty,jdbcType=VARCHAR},
+      </if>
+      <if test="properties != null" >
+        #{properties,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyname != null" >
+        #{propertyname,jdbcType=VARCHAR},
+      </if>
+      <if test="skuimageurl != null" >
+        #{skuimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="statisticid != null" >
+        #{statisticid,jdbcType=VARCHAR},
+      </if>
+      <if test="stylepropertyid != null" >
+        #{stylepropertyid,jdbcType=VARCHAR},
+      </if>
+      <if test="marketdate != null" >
+        #{marketdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubflag != null" >
+        #{pubflag,jdbcType=SMALLINT},
+      </if>
+      <if test="pubdate != null" >
+        #{pubdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubcname != null" >
+        #{pubcname,jdbcType=VARCHAR},
+      </if>
+      <if test="isuploadsuccess != null" >
+        #{isuploadsuccess,jdbcType=SMALLINT},
+      </if>
+      <if test="addcname != null" >
+        #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.model.IesSkushops" >
+    update IES_SKUShops
+    <set >
+      <if test="companycode != null" >
+        CompanyCode = #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        StockCode = #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        StockName = #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="productshopid != null" >
+        ProductShopID = #{productshopid,jdbcType=VARCHAR},
+      </if>
+      <if test="numid != null" >
+        NumID = #{numid,jdbcType=VARCHAR},
+      </if>
+      <if test="skuid != null" >
+        SKUID = #{skuid,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null" >
+        SKU = #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="materialcode != null" >
+        MaterialCode = #{materialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialshortname != null" >
+        MaterialShortName = #{materialshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="displayname != null" >
+        DisplayName = #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="issyncshop != null" >
+        IsSyncShop = #{issyncshop,jdbcType=SMALLINT},
+      </if>
+      <if test="shopqty != null" >
+        ShopQty = #{shopqty,jdbcType=INTEGER},
+      </if>
+      <if test="shopid != null" >
+        ShopID = #{shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopname != null" >
+        ShopName = #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="presaleqty != null" >
+        PreSaleQTY = #{presaleqty,jdbcType=INTEGER},
+      </if>
+      <if test="shopprecent != null" >
+        ShopPrecent = #{shopprecent,jdbcType=INTEGER},
+      </if>
+      <if test="originalshopprecent != null" >
+        OriginalShopPrecent = #{originalshopprecent,jdbcType=INTEGER},
+      </if>
+      <if test="brandid != null" >
+        BrandID = #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="extskuid != null" >
+        ExtSkuID = #{extskuid,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        BarCode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="marketprice != null" >
+        MarketPrice = #{marketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="buyprice != null" >
+        BuyPrice = #{buyprice,jdbcType=DECIMAL},
+      </if>
+      <if test="minsaleprice != null" >
+        MinSalePrice = #{minsaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="sellprice != null" >
+        SellPrice = #{sellprice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionprice != null" >
+        PromotionPrice = #{promotionprice,jdbcType=DECIMAL},
+      </if>
+      <if test="colorcode != null" >
+        ColorCode = #{colorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="colorname != null" >
+        ColorName = #{colorname,jdbcType=VARCHAR},
+      </if>
+      <if test="sizecode != null" >
+        SizeCode = #{sizecode,jdbcType=VARCHAR},
+      </if>
+      <if test="sizename != null" >
+        SizeName = #{sizename,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsproperty != null" >
+        Goodsproperty = #{goodsproperty,jdbcType=VARCHAR},
+      </if>
+      <if test="properties != null" >
+        Properties = #{properties,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyname != null" >
+        PropertyName = #{propertyname,jdbcType=VARCHAR},
+      </if>
+      <if test="skuimageurl != null" >
+        SkuImageUrl = #{skuimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="keyword != null" >
+        KeyWord = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="statisticid != null" >
+        StatisticID = #{statisticid,jdbcType=VARCHAR},
+      </if>
+      <if test="stylepropertyid != null" >
+        StylePropertyID = #{stylepropertyid,jdbcType=VARCHAR},
+      </if>
+      <if test="marketdate != null" >
+        MarketDate = #{marketdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubflag != null" >
+        PubFlag = #{pubflag,jdbcType=SMALLINT},
+      </if>
+      <if test="pubdate != null" >
+        PubDate = #{pubdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubcname != null" >
+        PubCName = #{pubcname,jdbcType=VARCHAR},
+      </if>
+      <if test="isuploadsuccess != null" >
+        IsUploadSuccess = #{isuploadsuccess,jdbcType=SMALLINT},
+      </if>
+      <if test="addcname != null" >
+        AddCName = #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SKUShopID = #{skushopid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.model.IesSkushops" >
+    update IES_SKUShops
+    set CompanyCode = #{companycode,jdbcType=VARCHAR},
+      StockCode = #{stockcode,jdbcType=VARCHAR},
+      StockName = #{stockname,jdbcType=VARCHAR},
+      ProductShopID = #{productshopid,jdbcType=VARCHAR},
+      NumID = #{numid,jdbcType=VARCHAR},
+      SKUID = #{skuid,jdbcType=VARCHAR},
+      SKU = #{sku,jdbcType=VARCHAR},
+      MaterialCode = #{materialcode,jdbcType=VARCHAR},
+      MaterialShortName = #{materialshortname,jdbcType=VARCHAR},
+      DisplayName = #{displayname,jdbcType=VARCHAR},
+      IsSyncShop = #{issyncshop,jdbcType=SMALLINT},
+      ShopQty = #{shopqty,jdbcType=INTEGER},
+      ShopID = #{shopid,jdbcType=VARCHAR},
+      ShopName = #{shopname,jdbcType=VARCHAR},
+      PreSaleQTY = #{presaleqty,jdbcType=INTEGER},
+      ShopPrecent = #{shopprecent,jdbcType=INTEGER},
+      OriginalShopPrecent = #{originalshopprecent,jdbcType=INTEGER},
+      BrandID = #{brandid,jdbcType=VARCHAR},
+      ExtSkuID = #{extskuid,jdbcType=VARCHAR},
+      BarCode = #{barcode,jdbcType=VARCHAR},
+      MarketPrice = #{marketprice,jdbcType=DECIMAL},
+      BuyPrice = #{buyprice,jdbcType=DECIMAL},
+      MinSalePrice = #{minsaleprice,jdbcType=DECIMAL},
+      SellPrice = #{sellprice,jdbcType=DECIMAL},
+      PromotionPrice = #{promotionprice,jdbcType=DECIMAL},
+      ColorCode = #{colorcode,jdbcType=VARCHAR},
+      ColorName = #{colorname,jdbcType=VARCHAR},
+      SizeCode = #{sizecode,jdbcType=VARCHAR},
+      SizeName = #{sizename,jdbcType=VARCHAR},
+      Goodsproperty = #{goodsproperty,jdbcType=VARCHAR},
+      Properties = #{properties,jdbcType=VARCHAR},
+      PropertyName = #{propertyname,jdbcType=VARCHAR},
+      SkuImageUrl = #{skuimageurl,jdbcType=VARCHAR},
+      IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      KeyWord = #{keyword,jdbcType=VARCHAR},
+      StatisticID = #{statisticid,jdbcType=VARCHAR},
+      StylePropertyID = #{stylepropertyid,jdbcType=VARCHAR},
+      MarketDate = #{marketdate,jdbcType=TIMESTAMP},
+      PubFlag = #{pubflag,jdbcType=SMALLINT},
+      PubDate = #{pubdate,jdbcType=TIMESTAMP},
+      PubCName = #{pubcname,jdbcType=VARCHAR},
+      IsUploadSuccess = #{isuploadsuccess,jdbcType=SMALLINT},
+      AddCName = #{addcname,jdbcType=VARCHAR},
+      AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP}
+    where SKUShopID = #{skushopid,jdbcType=VARCHAR}
+  </update>
+</mapper>

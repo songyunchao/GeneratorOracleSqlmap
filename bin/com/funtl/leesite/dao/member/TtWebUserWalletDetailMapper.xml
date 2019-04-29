@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.funtl.leesite.dao.member.TtWebUserWalletDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.funtl.leesite.dao.member.TtWebUserWalletDetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="recharge_amount" property="rechargeAmount" jdbcType="DECIMAL" />
+    <result column="donation_amount" property="donationAmount" jdbcType="DECIMAL" />
+    <result column="is_enable" property="isEnable" jdbcType="BIT" />
+    <result column="create_by" property="createBy" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, type, amount, recharge_amount, donation_amount, is_enable, create_by, 
+    create_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.funtl.leesite.dao.member.TtWebUserWalletDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tt_web_user_wallet_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tt_web_user_wallet_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tt_web_user_wallet_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.funtl.leesite.dao.member.TtWebUserWalletDetailExample" >
+    delete from tt_web_user_wallet_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.funtl.leesite.dao.member.TtWebUserWalletDetail" >
+    insert into tt_web_user_wallet_detail (id, user_id, type, 
+      amount, recharge_amount, donation_amount, 
+      is_enable, create_by, create_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{type,jdbcType=BIT}, 
+      #{amount,jdbcType=DECIMAL}, #{rechargeAmount,jdbcType=DECIMAL}, #{donationAmount,jdbcType=DECIMAL}, 
+      #{isEnable,jdbcType=BIT}, #{createBy,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.funtl.leesite.dao.member.TtWebUserWalletDetail" >
+    insert into tt_web_user_wallet_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="rechargeAmount != null" >
+        recharge_amount,
+      </if>
+      <if test="donationAmount != null" >
+        donation_amount,
+      </if>
+      <if test="isEnable != null" >
+        is_enable,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeAmount != null" >
+        #{rechargeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="donationAmount != null" >
+        #{donationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=BIT},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.funtl.leesite.dao.member.TtWebUserWalletDetailExample" resultType="java.lang.Integer" >
+    select count(*) from tt_web_user_wallet_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tt_web_user_wallet_detail
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=BIT},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rechargeAmount != null" >
+        recharge_amount = #{record.rechargeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.donationAmount != null" >
+        donation_amount = #{record.donationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isEnable != null" >
+        is_enable = #{record.isEnable,jdbcType=BIT},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tt_web_user_wallet_detail
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=BIT},
+      amount = #{record.amount,jdbcType=DECIMAL},
+      recharge_amount = #{record.rechargeAmount,jdbcType=DECIMAL},
+      donation_amount = #{record.donationAmount,jdbcType=DECIMAL},
+      is_enable = #{record.isEnable,jdbcType=BIT},
+      create_by = #{record.createBy,jdbcType=INTEGER},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.funtl.leesite.dao.member.TtWebUserWalletDetail" >
+    update tt_web_user_wallet_detail
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeAmount != null" >
+        recharge_amount = #{rechargeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="donationAmount != null" >
+        donation_amount = #{donationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="isEnable != null" >
+        is_enable = #{isEnable,jdbcType=BIT},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.funtl.leesite.dao.member.TtWebUserWalletDetail" >
+    update tt_web_user_wallet_detail
+    set user_id = #{userId,jdbcType=INTEGER},
+      type = #{type,jdbcType=BIT},
+      amount = #{amount,jdbcType=DECIMAL},
+      recharge_amount = #{rechargeAmount,jdbcType=DECIMAL},
+      donation_amount = #{donationAmount,jdbcType=DECIMAL},
+      is_enable = #{isEnable,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

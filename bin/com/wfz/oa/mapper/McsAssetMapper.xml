@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfz.oa.mapper.McsAssetMapper" >
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.McsAsset" >
+    <id column="assetid" property="assetid" jdbcType="VARCHAR" />
+    <result column="placeid" property="placeid" jdbcType="VARCHAR" />
+    <result column="terminalid" property="terminalid" jdbcType="VARCHAR" />
+    <result column="orgid" property="orgid" jdbcType="VARCHAR" />
+    <result column="atype" property="atype" jdbcType="VARCHAR" />
+    <result column="aid" property="aid" jdbcType="VARCHAR" />
+    <result column="subtype" property="subtype" jdbcType="VARCHAR" />
+    <result column="serviceproviderid" property="serviceproviderid" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="layout" property="layout" jdbcType="VARCHAR" />
+    <result column="terminaltype" property="terminaltype" jdbcType="VARCHAR" />
+    <result column="deptid" property="deptid" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="ipaddr" property="ipaddr" jdbcType="VARCHAR" />
+    <result column="hostname" property="hostname" jdbcType="VARCHAR" />
+    <result column="photo" property="photo" jdbcType="VARCHAR" />
+    <result column="assetsn" property="assetsn" jdbcType="VARCHAR" />
+    <result column="qrcode" property="qrcode" jdbcType="VARCHAR" />
+    <result column="rfid" property="rfid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="terminalstatus" property="terminalstatus" jdbcType="VARCHAR" />
+    <result column="isreported" property="isreported" jdbcType="SMALLINT" />
+    <result column="mapposition" property="mapposition" jdbcType="VARCHAR" />
+    <result column="maintainendtime" property="maintainendtime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="isterminalmanage" property="isterminalmanage" jdbcType="INTEGER" />
+    <result column="servicedate" property="servicedate" jdbcType="TIMESTAMP" />
+    <result column="buydate" property="buydate" jdbcType="TIMESTAMP" />
+    <result column="createdname" property="createdname" jdbcType="VARCHAR" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="updatedname" property="updatedname" jdbcType="VARCHAR" />
+    <result column="updatedtime" property="updatedtime" jdbcType="TIMESTAMP" />
+    <result column="IsPush" property="ispush" jdbcType="BIT" />
+    <result column="userDefine1" property="userdefine1" jdbcType="VARCHAR" />
+    <result column="SiteXY" property="sitexy" jdbcType="VARCHAR" />
+    <result column="operationStatus" property="operationstatus" jdbcType="VARCHAR" />
+    <result column="licencedtime" property="licencedtime" jdbcType="TIMESTAMP" />
+    <result column="operationTime" property="operationtime" jdbcType="TIMESTAMP" />
+    <result column="Model" property="model" jdbcType="VARCHAR" />
+    <result column="BrandName" property="brandname" jdbcType="VARCHAR" />
+    <result column="Qty" property="qty" jdbcType="VARCHAR" />
+    <result column="ServiceProvider" property="serviceprovider" jdbcType="VARCHAR" />
+    <result column="subnet" property="subnet" jdbcType="VARCHAR" />
+    <result column="runStatus" property="runstatus" jdbcType="SMALLINT" />
+    <result column="errorStatusTime" property="errorstatustime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wfz.oa.pojo.McsAssetWithBLOBs" extends="BaseResultMap" >
+    <result column="property" property="property" jdbcType="LONGVARCHAR" />
+    <result column="operationJSON" property="operationjson" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    assetid, placeid, terminalid, orgid, atype, aid, subtype, serviceproviderid, position, 
+    layout, terminaltype, deptid, name, pid, mac, ipaddr, hostname, photo, assetsn, qrcode, 
+    rfid, status, terminalstatus, isreported, mapposition, maintainendtime, operator, 
+    isterminalmanage, servicedate, buydate, createdname, createdtime, updatedname, updatedtime, 
+    IsPush, userDefine1, SiteXY, operationStatus, licencedtime, operationTime, Model, 
+    BrandName, Qty, ServiceProvider, subnet, runStatus, errorStatusTime
+  </sql>
+  <sql id="Blob_Column_List" >
+    property, operationJSON
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.wfz.oa.pojo.McsAssetExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mcs_asset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wfz.oa.pojo.McsAssetExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mcs_asset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mcs_asset
+    where assetid = #{assetid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from mcs_asset
+    where assetid = #{assetid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.McsAssetExample" >
+    delete from mcs_asset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.McsAssetWithBLOBs" >
+    insert into mcs_asset (assetid, placeid, terminalid, 
+      orgid, atype, aid, 
+      subtype, serviceproviderid, position, 
+      layout, terminaltype, deptid, 
+      name, pid, mac, ipaddr, 
+      hostname, photo, assetsn, 
+      qrcode, rfid, status, 
+      terminalstatus, isreported, mapposition, 
+      maintainendtime, operator, isterminalmanage, 
+      servicedate, buydate, createdname, 
+      createdtime, updatedname, updatedtime, 
+      IsPush, userDefine1, SiteXY, 
+      operationStatus, licencedtime, operationTime, 
+      Model, BrandName, Qty, 
+      ServiceProvider, subnet, runStatus, 
+      errorStatusTime, property, operationJSON
+      )
+    values (#{assetid,jdbcType=VARCHAR}, #{placeid,jdbcType=VARCHAR}, #{terminalid,jdbcType=VARCHAR}, 
+      #{orgid,jdbcType=VARCHAR}, #{atype,jdbcType=VARCHAR}, #{aid,jdbcType=VARCHAR}, 
+      #{subtype,jdbcType=VARCHAR}, #{serviceproviderid,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{layout,jdbcType=VARCHAR}, #{terminaltype,jdbcType=VARCHAR}, #{deptid,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{mac,jdbcType=VARCHAR}, #{ipaddr,jdbcType=VARCHAR}, 
+      #{hostname,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{assetsn,jdbcType=VARCHAR}, 
+      #{qrcode,jdbcType=VARCHAR}, #{rfid,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{terminalstatus,jdbcType=VARCHAR}, #{isreported,jdbcType=SMALLINT}, #{mapposition,jdbcType=VARCHAR}, 
+      #{maintainendtime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, #{isterminalmanage,jdbcType=INTEGER}, 
+      #{servicedate,jdbcType=TIMESTAMP}, #{buydate,jdbcType=TIMESTAMP}, #{createdname,jdbcType=VARCHAR}, 
+      #{createdtime,jdbcType=TIMESTAMP}, #{updatedname,jdbcType=VARCHAR}, #{updatedtime,jdbcType=TIMESTAMP}, 
+      #{ispush,jdbcType=BIT}, #{userdefine1,jdbcType=VARCHAR}, #{sitexy,jdbcType=VARCHAR}, 
+      #{operationstatus,jdbcType=VARCHAR}, #{licencedtime,jdbcType=TIMESTAMP}, #{operationtime,jdbcType=TIMESTAMP}, 
+      #{model,jdbcType=VARCHAR}, #{brandname,jdbcType=VARCHAR}, #{qty,jdbcType=VARCHAR}, 
+      #{serviceprovider,jdbcType=VARCHAR}, #{subnet,jdbcType=VARCHAR}, #{runstatus,jdbcType=SMALLINT}, 
+      #{errorstatustime,jdbcType=TIMESTAMP}, #{property,jdbcType=LONGVARCHAR}, #{operationjson,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.McsAssetWithBLOBs" >
+    insert into mcs_asset
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="assetid != null" >
+        assetid,
+      </if>
+      <if test="placeid != null" >
+        placeid,
+      </if>
+      <if test="terminalid != null" >
+        terminalid,
+      </if>
+      <if test="orgid != null" >
+        orgid,
+      </if>
+      <if test="atype != null" >
+        atype,
+      </if>
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="subtype != null" >
+        subtype,
+      </if>
+      <if test="serviceproviderid != null" >
+        serviceproviderid,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="layout != null" >
+        layout,
+      </if>
+      <if test="terminaltype != null" >
+        terminaltype,
+      </if>
+      <if test="deptid != null" >
+        deptid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="mac != null" >
+        mac,
+      </if>
+      <if test="ipaddr != null" >
+        ipaddr,
+      </if>
+      <if test="hostname != null" >
+        hostname,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+      <if test="assetsn != null" >
+        assetsn,
+      </if>
+      <if test="qrcode != null" >
+        qrcode,
+      </if>
+      <if test="rfid != null" >
+        rfid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="terminalstatus != null" >
+        terminalstatus,
+      </if>
+      <if test="isreported != null" >
+        isreported,
+      </if>
+      <if test="mapposition != null" >
+        mapposition,
+      </if>
+      <if test="maintainendtime != null" >
+        maintainendtime,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="isterminalmanage != null" >
+        isterminalmanage,
+      </if>
+      <if test="servicedate != null" >
+        servicedate,
+      </if>
+      <if test="buydate != null" >
+        buydate,
+      </if>
+      <if test="createdname != null" >
+        createdname,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="updatedname != null" >
+        updatedname,
+      </if>
+      <if test="updatedtime != null" >
+        updatedtime,
+      </if>
+      <if test="ispush != null" >
+        IsPush,
+      </if>
+      <if test="userdefine1 != null" >
+        userDefine1,
+      </if>
+      <if test="sitexy != null" >
+        SiteXY,
+      </if>
+      <if test="operationstatus != null" >
+        operationStatus,
+      </if>
+      <if test="licencedtime != null" >
+        licencedtime,
+      </if>
+      <if test="operationtime != null" >
+        operationTime,
+      </if>
+      <if test="model != null" >
+        Model,
+      </if>
+      <if test="brandname != null" >
+        BrandName,
+      </if>
+      <if test="qty != null" >
+        Qty,
+      </if>
+      <if test="serviceprovider != null" >
+        ServiceProvider,
+      </if>
+      <if test="subnet != null" >
+        subnet,
+      </if>
+      <if test="runstatus != null" >
+        runStatus,
+      </if>
+      <if test="errorstatustime != null" >
+        errorStatusTime,
+      </if>
+      <if test="property != null" >
+        property,
+      </if>
+      <if test="operationjson != null" >
+        operationJSON,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="assetid != null" >
+        #{assetid,jdbcType=VARCHAR},
+      </if>
+      <if test="placeid != null" >
+        #{placeid,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalid != null" >
+        #{terminalid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="atype != null" >
+        #{atype,jdbcType=VARCHAR},
+      </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=VARCHAR},
+      </if>
+      <if test="subtype != null" >
+        #{subtype,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceproviderid != null" >
+        #{serviceproviderid,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="layout != null" >
+        #{layout,jdbcType=VARCHAR},
+      </if>
+      <if test="terminaltype != null" >
+        #{terminaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="deptid != null" >
+        #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddr != null" >
+        #{ipaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="hostname != null" >
+        #{hostname,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="assetsn != null" >
+        #{assetsn,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null" >
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="rfid != null" >
+        #{rfid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalstatus != null" >
+        #{terminalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isreported != null" >
+        #{isreported,jdbcType=SMALLINT},
+      </if>
+      <if test="mapposition != null" >
+        #{mapposition,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainendtime != null" >
+        #{maintainendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isterminalmanage != null" >
+        #{isterminalmanage,jdbcType=INTEGER},
+      </if>
+      <if test="servicedate != null" >
+        #{servicedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buydate != null" >
+        #{buydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdname != null" >
+        #{createdname,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedname != null" >
+        #{updatedname,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedtime != null" >
+        #{updatedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ispush != null" >
+        #{ispush,jdbcType=BIT},
+      </if>
+      <if test="userdefine1 != null" >
+        #{userdefine1,jdbcType=VARCHAR},
+      </if>
+      <if test="sitexy != null" >
+        #{sitexy,jdbcType=VARCHAR},
+      </if>
+      <if test="operationstatus != null" >
+        #{operationstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="licencedtime != null" >
+        #{licencedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationtime != null" >
+        #{operationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="brandname != null" >
+        #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null" >
+        #{qty,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceprovider != null" >
+        #{serviceprovider,jdbcType=VARCHAR},
+      </if>
+      <if test="subnet != null" >
+        #{subnet,jdbcType=VARCHAR},
+      </if>
+      <if test="runstatus != null" >
+        #{runstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="errorstatustime != null" >
+        #{errorstatustime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="property != null" >
+        #{property,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="operationjson != null" >
+        #{operationjson,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.McsAssetExample" resultType="java.lang.Integer" >
+    select count(*) from mcs_asset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update mcs_asset
+    <set >
+      <if test="record.assetid != null" >
+        assetid = #{record.assetid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.placeid != null" >
+        placeid = #{record.placeid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminalid != null" >
+        terminalid = #{record.terminalid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgid != null" >
+        orgid = #{record.orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.atype != null" >
+        atype = #{record.atype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subtype != null" >
+        subtype = #{record.subtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceproviderid != null" >
+        serviceproviderid = #{record.serviceproviderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.layout != null" >
+        layout = #{record.layout,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminaltype != null" >
+        terminaltype = #{record.terminaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptid != null" >
+        deptid = #{record.deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mac != null" >
+        mac = #{record.mac,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ipaddr != null" >
+        ipaddr = #{record.ipaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostname != null" >
+        hostname = #{record.hostname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photo != null" >
+        photo = #{record.photo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assetsn != null" >
+        assetsn = #{record.assetsn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qrcode != null" >
+        qrcode = #{record.qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rfid != null" >
+        rfid = #{record.rfid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminalstatus != null" >
+        terminalstatus = #{record.terminalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isreported != null" >
+        isreported = #{record.isreported,jdbcType=SMALLINT},
+      </if>
+      <if test="record.mapposition != null" >
+        mapposition = #{record.mapposition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maintainendtime != null" >
+        maintainendtime = #{record.maintainendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operator != null" >
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isterminalmanage != null" >
+        isterminalmanage = #{record.isterminalmanage,jdbcType=INTEGER},
+      </if>
+      <if test="record.servicedate != null" >
+        servicedate = #{record.servicedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.buydate != null" >
+        buydate = #{record.buydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdname != null" >
+        createdname = #{record.createdname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdtime != null" >
+        createdtime = #{record.createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedname != null" >
+        updatedname = #{record.updatedname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedtime != null" >
+        updatedtime = #{record.updatedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ispush != null" >
+        IsPush = #{record.ispush,jdbcType=BIT},
+      </if>
+      <if test="record.userdefine1 != null" >
+        userDefine1 = #{record.userdefine1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sitexy != null" >
+        SiteXY = #{record.sitexy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operationstatus != null" >
+        operationStatus = #{record.operationstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.licencedtime != null" >
+        licencedtime = #{record.licencedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operationtime != null" >
+        operationTime = #{record.operationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.model != null" >
+        Model = #{record.model,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandname != null" >
+        BrandName = #{record.brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qty != null" >
+        Qty = #{record.qty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceprovider != null" >
+        ServiceProvider = #{record.serviceprovider,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subnet != null" >
+        subnet = #{record.subnet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.runstatus != null" >
+        runStatus = #{record.runstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="record.errorstatustime != null" >
+        errorStatusTime = #{record.errorstatustime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.property != null" >
+        property = #{record.property,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.operationjson != null" >
+        operationJSON = #{record.operationjson,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update mcs_asset
+    set assetid = #{record.assetid,jdbcType=VARCHAR},
+      placeid = #{record.placeid,jdbcType=VARCHAR},
+      terminalid = #{record.terminalid,jdbcType=VARCHAR},
+      orgid = #{record.orgid,jdbcType=VARCHAR},
+      atype = #{record.atype,jdbcType=VARCHAR},
+      aid = #{record.aid,jdbcType=VARCHAR},
+      subtype = #{record.subtype,jdbcType=VARCHAR},
+      serviceproviderid = #{record.serviceproviderid,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      layout = #{record.layout,jdbcType=VARCHAR},
+      terminaltype = #{record.terminaltype,jdbcType=VARCHAR},
+      deptid = #{record.deptid,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      mac = #{record.mac,jdbcType=VARCHAR},
+      ipaddr = #{record.ipaddr,jdbcType=VARCHAR},
+      hostname = #{record.hostname,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=VARCHAR},
+      assetsn = #{record.assetsn,jdbcType=VARCHAR},
+      qrcode = #{record.qrcode,jdbcType=VARCHAR},
+      rfid = #{record.rfid,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      terminalstatus = #{record.terminalstatus,jdbcType=VARCHAR},
+      isreported = #{record.isreported,jdbcType=SMALLINT},
+      mapposition = #{record.mapposition,jdbcType=VARCHAR},
+      maintainendtime = #{record.maintainendtime,jdbcType=TIMESTAMP},
+      operator = #{record.operator,jdbcType=VARCHAR},
+      isterminalmanage = #{record.isterminalmanage,jdbcType=INTEGER},
+      servicedate = #{record.servicedate,jdbcType=TIMESTAMP},
+      buydate = #{record.buydate,jdbcType=TIMESTAMP},
+      createdname = #{record.createdname,jdbcType=VARCHAR},
+      createdtime = #{record.createdtime,jdbcType=TIMESTAMP},
+      updatedname = #{record.updatedname,jdbcType=VARCHAR},
+      updatedtime = #{record.updatedtime,jdbcType=TIMESTAMP},
+      IsPush = #{record.ispush,jdbcType=BIT},
+      userDefine1 = #{record.userdefine1,jdbcType=VARCHAR},
+      SiteXY = #{record.sitexy,jdbcType=VARCHAR},
+      operationStatus = #{record.operationstatus,jdbcType=VARCHAR},
+      licencedtime = #{record.licencedtime,jdbcType=TIMESTAMP},
+      operationTime = #{record.operationtime,jdbcType=TIMESTAMP},
+      Model = #{record.model,jdbcType=VARCHAR},
+      BrandName = #{record.brandname,jdbcType=VARCHAR},
+      Qty = #{record.qty,jdbcType=VARCHAR},
+      ServiceProvider = #{record.serviceprovider,jdbcType=VARCHAR},
+      subnet = #{record.subnet,jdbcType=VARCHAR},
+      runStatus = #{record.runstatus,jdbcType=SMALLINT},
+      errorStatusTime = #{record.errorstatustime,jdbcType=TIMESTAMP},
+      property = #{record.property,jdbcType=LONGVARCHAR},
+      operationJSON = #{record.operationjson,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update mcs_asset
+    set assetid = #{record.assetid,jdbcType=VARCHAR},
+      placeid = #{record.placeid,jdbcType=VARCHAR},
+      terminalid = #{record.terminalid,jdbcType=VARCHAR},
+      orgid = #{record.orgid,jdbcType=VARCHAR},
+      atype = #{record.atype,jdbcType=VARCHAR},
+      aid = #{record.aid,jdbcType=VARCHAR},
+      subtype = #{record.subtype,jdbcType=VARCHAR},
+      serviceproviderid = #{record.serviceproviderid,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      layout = #{record.layout,jdbcType=VARCHAR},
+      terminaltype = #{record.terminaltype,jdbcType=VARCHAR},
+      deptid = #{record.deptid,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      mac = #{record.mac,jdbcType=VARCHAR},
+      ipaddr = #{record.ipaddr,jdbcType=VARCHAR},
+      hostname = #{record.hostname,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=VARCHAR},
+      assetsn = #{record.assetsn,jdbcType=VARCHAR},
+      qrcode = #{record.qrcode,jdbcType=VARCHAR},
+      rfid = #{record.rfid,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      terminalstatus = #{record.terminalstatus,jdbcType=VARCHAR},
+      isreported = #{record.isreported,jdbcType=SMALLINT},
+      mapposition = #{record.mapposition,jdbcType=VARCHAR},
+      maintainendtime = #{record.maintainendtime,jdbcType=TIMESTAMP},
+      operator = #{record.operator,jdbcType=VARCHAR},
+      isterminalmanage = #{record.isterminalmanage,jdbcType=INTEGER},
+      servicedate = #{record.servicedate,jdbcType=TIMESTAMP},
+      buydate = #{record.buydate,jdbcType=TIMESTAMP},
+      createdname = #{record.createdname,jdbcType=VARCHAR},
+      createdtime = #{record.createdtime,jdbcType=TIMESTAMP},
+      updatedname = #{record.updatedname,jdbcType=VARCHAR},
+      updatedtime = #{record.updatedtime,jdbcType=TIMESTAMP},
+      IsPush = #{record.ispush,jdbcType=BIT},
+      userDefine1 = #{record.userdefine1,jdbcType=VARCHAR},
+      SiteXY = #{record.sitexy,jdbcType=VARCHAR},
+      operationStatus = #{record.operationstatus,jdbcType=VARCHAR},
+      licencedtime = #{record.licencedtime,jdbcType=TIMESTAMP},
+      operationTime = #{record.operationtime,jdbcType=TIMESTAMP},
+      Model = #{record.model,jdbcType=VARCHAR},
+      BrandName = #{record.brandname,jdbcType=VARCHAR},
+      Qty = #{record.qty,jdbcType=VARCHAR},
+      ServiceProvider = #{record.serviceprovider,jdbcType=VARCHAR},
+      subnet = #{record.subnet,jdbcType=VARCHAR},
+      runStatus = #{record.runstatus,jdbcType=SMALLINT},
+      errorStatusTime = #{record.errorstatustime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.McsAssetWithBLOBs" >
+    update mcs_asset
+    <set >
+      <if test="placeid != null" >
+        placeid = #{placeid,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalid != null" >
+        terminalid = #{terminalid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        orgid = #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="atype != null" >
+        atype = #{atype,jdbcType=VARCHAR},
+      </if>
+      <if test="aid != null" >
+        aid = #{aid,jdbcType=VARCHAR},
+      </if>
+      <if test="subtype != null" >
+        subtype = #{subtype,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceproviderid != null" >
+        serviceproviderid = #{serviceproviderid,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="layout != null" >
+        layout = #{layout,jdbcType=VARCHAR},
+      </if>
+      <if test="terminaltype != null" >
+        terminaltype = #{terminaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="deptid != null" >
+        deptid = #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddr != null" >
+        ipaddr = #{ipaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="hostname != null" >
+        hostname = #{hostname,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="assetsn != null" >
+        assetsn = #{assetsn,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null" >
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="rfid != null" >
+        rfid = #{rfid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalstatus != null" >
+        terminalstatus = #{terminalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isreported != null" >
+        isreported = #{isreported,jdbcType=SMALLINT},
+      </if>
+      <if test="mapposition != null" >
+        mapposition = #{mapposition,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainendtime != null" >
+        maintainendtime = #{maintainendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isterminalmanage != null" >
+        isterminalmanage = #{isterminalmanage,jdbcType=INTEGER},
+      </if>
+      <if test="servicedate != null" >
+        servicedate = #{servicedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buydate != null" >
+        buydate = #{buydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdname != null" >
+        createdname = #{createdname,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedname != null" >
+        updatedname = #{updatedname,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedtime != null" >
+        updatedtime = #{updatedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ispush != null" >
+        IsPush = #{ispush,jdbcType=BIT},
+      </if>
+      <if test="userdefine1 != null" >
+        userDefine1 = #{userdefine1,jdbcType=VARCHAR},
+      </if>
+      <if test="sitexy != null" >
+        SiteXY = #{sitexy,jdbcType=VARCHAR},
+      </if>
+      <if test="operationstatus != null" >
+        operationStatus = #{operationstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="licencedtime != null" >
+        licencedtime = #{licencedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationtime != null" >
+        operationTime = #{operationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="model != null" >
+        Model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="brandname != null" >
+        BrandName = #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null" >
+        Qty = #{qty,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceprovider != null" >
+        ServiceProvider = #{serviceprovider,jdbcType=VARCHAR},
+      </if>
+      <if test="subnet != null" >
+        subnet = #{subnet,jdbcType=VARCHAR},
+      </if>
+      <if test="runstatus != null" >
+        runStatus = #{runstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="errorstatustime != null" >
+        errorStatusTime = #{errorstatustime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="property != null" >
+        property = #{property,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="operationjson != null" >
+        operationJSON = #{operationjson,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where assetid = #{assetid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wfz.oa.pojo.McsAssetWithBLOBs" >
+    update mcs_asset
+    set placeid = #{placeid,jdbcType=VARCHAR},
+      terminalid = #{terminalid,jdbcType=VARCHAR},
+      orgid = #{orgid,jdbcType=VARCHAR},
+      atype = #{atype,jdbcType=VARCHAR},
+      aid = #{aid,jdbcType=VARCHAR},
+      subtype = #{subtype,jdbcType=VARCHAR},
+      serviceproviderid = #{serviceproviderid,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      layout = #{layout,jdbcType=VARCHAR},
+      terminaltype = #{terminaltype,jdbcType=VARCHAR},
+      deptid = #{deptid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      ipaddr = #{ipaddr,jdbcType=VARCHAR},
+      hostname = #{hostname,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      assetsn = #{assetsn,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR},
+      rfid = #{rfid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      terminalstatus = #{terminalstatus,jdbcType=VARCHAR},
+      isreported = #{isreported,jdbcType=SMALLINT},
+      mapposition = #{mapposition,jdbcType=VARCHAR},
+      maintainendtime = #{maintainendtime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      isterminalmanage = #{isterminalmanage,jdbcType=INTEGER},
+      servicedate = #{servicedate,jdbcType=TIMESTAMP},
+      buydate = #{buydate,jdbcType=TIMESTAMP},
+      createdname = #{createdname,jdbcType=VARCHAR},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      updatedname = #{updatedname,jdbcType=VARCHAR},
+      updatedtime = #{updatedtime,jdbcType=TIMESTAMP},
+      IsPush = #{ispush,jdbcType=BIT},
+      userDefine1 = #{userdefine1,jdbcType=VARCHAR},
+      SiteXY = #{sitexy,jdbcType=VARCHAR},
+      operationStatus = #{operationstatus,jdbcType=VARCHAR},
+      licencedtime = #{licencedtime,jdbcType=TIMESTAMP},
+      operationTime = #{operationtime,jdbcType=TIMESTAMP},
+      Model = #{model,jdbcType=VARCHAR},
+      BrandName = #{brandname,jdbcType=VARCHAR},
+      Qty = #{qty,jdbcType=VARCHAR},
+      ServiceProvider = #{serviceprovider,jdbcType=VARCHAR},
+      subnet = #{subnet,jdbcType=VARCHAR},
+      runStatus = #{runstatus,jdbcType=SMALLINT},
+      errorStatusTime = #{errorstatustime,jdbcType=TIMESTAMP},
+      property = #{property,jdbcType=LONGVARCHAR},
+      operationJSON = #{operationjson,jdbcType=LONGVARCHAR}
+    where assetid = #{assetid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.McsAsset" >
+    update mcs_asset
+    set placeid = #{placeid,jdbcType=VARCHAR},
+      terminalid = #{terminalid,jdbcType=VARCHAR},
+      orgid = #{orgid,jdbcType=VARCHAR},
+      atype = #{atype,jdbcType=VARCHAR},
+      aid = #{aid,jdbcType=VARCHAR},
+      subtype = #{subtype,jdbcType=VARCHAR},
+      serviceproviderid = #{serviceproviderid,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      layout = #{layout,jdbcType=VARCHAR},
+      terminaltype = #{terminaltype,jdbcType=VARCHAR},
+      deptid = #{deptid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      ipaddr = #{ipaddr,jdbcType=VARCHAR},
+      hostname = #{hostname,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      assetsn = #{assetsn,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR},
+      rfid = #{rfid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      terminalstatus = #{terminalstatus,jdbcType=VARCHAR},
+      isreported = #{isreported,jdbcType=SMALLINT},
+      mapposition = #{mapposition,jdbcType=VARCHAR},
+      maintainendtime = #{maintainendtime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      isterminalmanage = #{isterminalmanage,jdbcType=INTEGER},
+      servicedate = #{servicedate,jdbcType=TIMESTAMP},
+      buydate = #{buydate,jdbcType=TIMESTAMP},
+      createdname = #{createdname,jdbcType=VARCHAR},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      updatedname = #{updatedname,jdbcType=VARCHAR},
+      updatedtime = #{updatedtime,jdbcType=TIMESTAMP},
+      IsPush = #{ispush,jdbcType=BIT},
+      userDefine1 = #{userdefine1,jdbcType=VARCHAR},
+      SiteXY = #{sitexy,jdbcType=VARCHAR},
+      operationStatus = #{operationstatus,jdbcType=VARCHAR},
+      licencedtime = #{licencedtime,jdbcType=TIMESTAMP},
+      operationTime = #{operationtime,jdbcType=TIMESTAMP},
+      Model = #{model,jdbcType=VARCHAR},
+      BrandName = #{brandname,jdbcType=VARCHAR},
+      Qty = #{qty,jdbcType=VARCHAR},
+      ServiceProvider = #{serviceprovider,jdbcType=VARCHAR},
+      subnet = #{subnet,jdbcType=VARCHAR},
+      runStatus = #{runstatus,jdbcType=SMALLINT},
+      errorStatusTime = #{errorstatustime,jdbcType=TIMESTAMP}
+    where assetid = #{assetid,jdbcType=VARCHAR}
+  </update>
+</mapper>

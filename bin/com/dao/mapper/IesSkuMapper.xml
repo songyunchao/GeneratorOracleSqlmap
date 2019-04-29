@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.mapper.IesSkuMapper" >
+  <resultMap id="BaseResultMap" type="com.domain.model.IesSku" >
+    <id column="SKUID" property="skuid" jdbcType="VARCHAR" />
+    <result column="SourceMaterialCode" property="sourcematerialcode" jdbcType="VARCHAR" />
+    <result column="ProductID" property="productid" jdbcType="VARCHAR" />
+    <result column="CompanyCode" property="companycode" jdbcType="VARCHAR" />
+    <result column="CompanyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="StockCode" property="stockcode" jdbcType="VARCHAR" />
+    <result column="StockName" property="stockname" jdbcType="VARCHAR" />
+    <result column="MaterialCode" property="materialcode" jdbcType="VARCHAR" />
+    <result column="MaterialShortName" property="materialshortname" jdbcType="NVARCHAR" />
+    <result column="SKU" property="sku" jdbcType="VARCHAR" />
+    <result column="TotalQty" property="totalqty" jdbcType="INTEGER" />
+    <result column="WMSQty" property="wmsqty" jdbcType="INTEGER" />
+    <result column="O2OShopQty" property="o2oshopqty" jdbcType="INTEGER" />
+    <result column="HoldQty" property="holdqty" jdbcType="INTEGER" />
+    <result column="LockQty" property="lockqty" jdbcType="INTEGER" />
+    <result column="OccupyQty" property="occupyqty" jdbcType="INTEGER" />
+    <result column="KeeyQty" property="keeyqty" jdbcType="INTEGER" />
+    <result column="TmallQty" property="tmallqty" jdbcType="INTEGER" />
+    <result column="TmallDateTime" property="tmalldatetime" jdbcType="TIMESTAMP" />
+    <result column="JDQty" property="jdqty" jdbcType="INTEGER" />
+    <result column="JDDateTime" property="jddatetime" jdbcType="TIMESTAMP" />
+    <result column="FXQty" property="fxqty" jdbcType="INTEGER" />
+    <result column="FXDateTime" property="fxdatetime" jdbcType="TIMESTAMP" />
+    <result column="OtherQty" property="otherqty" jdbcType="INTEGER" />
+    <result column="OccupyTmallQty" property="occupytmallqty" jdbcType="INTEGER" />
+    <result column="OccupyFXQty" property="occupyfxqty" jdbcType="INTEGER" />
+    <result column="OccupyJDQty" property="occupyjdqty" jdbcType="INTEGER" />
+    <result column="OccupyOtherQty" property="occupyotherqty" jdbcType="INTEGER" />
+    <result column="SecurityQty" property="securityqty" jdbcType="INTEGER" />
+    <result column="SecurityShopID" property="securityshopid" jdbcType="VARCHAR" />
+    <result column="SecurityShopName" property="securityshopname" jdbcType="VARCHAR" />
+    <result column="GoodsBarCode" property="goodsbarcode" jdbcType="VARCHAR" />
+    <result column="ColorGroup" property="colorgroup" jdbcType="VARCHAR" />
+    <result column="ColorCode" property="colorcode" jdbcType="VARCHAR" />
+    <result column="ColorName" property="colorname" jdbcType="VARCHAR" />
+    <result column="SizeGroup" property="sizegroup" jdbcType="VARCHAR" />
+    <result column="SizeCode" property="sizecode" jdbcType="VARCHAR" />
+    <result column="SizeName" property="sizename" jdbcType="VARCHAR" />
+    <result column="IsEnabled" property="isenabled" jdbcType="SMALLINT" />
+    <result column="SkuWeight" property="skuweight" jdbcType="DECIMAL" />
+    <result column="BrandCode" property="brandcode" jdbcType="VARCHAR" />
+    <result column="BrandName" property="brandname" jdbcType="NVARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="SeasonCode" property="seasoncode" jdbcType="VARCHAR" />
+    <result column="Season" property="season" jdbcType="NVARCHAR" />
+    <result column="Decription" property="decription" jdbcType="NVARCHAR" />
+    <result column="SexCode" property="sexcode" jdbcType="VARCHAR" />
+    <result column="SexName" property="sexname" jdbcType="NVARCHAR" />
+    <result column="ReceiveTime" property="receivetime" jdbcType="TIMESTAMP" />
+    <result column="IsSuit" property="issuit" jdbcType="BIT" />
+    <result column="SupplierCode" property="suppliercode" jdbcType="VARCHAR" />
+    <result column="SupplierName" property="suppliername" jdbcType="NVARCHAR" />
+    <result column="VirtualSign" property="virtualsign" jdbcType="SMALLINT" />
+    <result column="IsSyncWMS" property="issyncwms" jdbcType="SMALLINT" />
+    <result column="AddCName" property="addcname" jdbcType="VARCHAR" />
+    <result column="AddDateTime" property="adddatetime" jdbcType="TIMESTAMP" />
+    <result column="ModifyCName" property="modifycname" jdbcType="VARCHAR" />
+    <result column="ModifyDateTime" property="modifydatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SKUID, SourceMaterialCode, ProductID, CompanyCode, CompanyName, StockCode, StockName, 
+    MaterialCode, MaterialShortName, SKU, TotalQty, WMSQty, O2OShopQty, HoldQty, LockQty, 
+    OccupyQty, KeeyQty, TmallQty, TmallDateTime, JDQty, JDDateTime, FXQty, FXDateTime, 
+    OtherQty, OccupyTmallQty, OccupyFXQty, OccupyJDQty, OccupyOtherQty, SecurityQty, 
+    SecurityShopID, SecurityShopName, GoodsBarCode, ColorGroup, ColorCode, ColorName, 
+    SizeGroup, SizeCode, SizeName, IsEnabled, SkuWeight, BrandCode, BrandName, Year, 
+    SeasonCode, Season, Decription, SexCode, SexName, ReceiveTime, IsSuit, SupplierCode, 
+    SupplierName, VirtualSign, IsSyncWMS, AddCName, AddDateTime, ModifyCName, ModifyDateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IES_SKU
+    where SKUID = #{skuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IES_SKU
+    where SKUID = #{skuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.domain.model.IesSku" >
+    insert into IES_SKU (SKUID, SourceMaterialCode, ProductID, 
+      CompanyCode, CompanyName, StockCode, 
+      StockName, MaterialCode, MaterialShortName, 
+      SKU, TotalQty, WMSQty, 
+      O2OShopQty, HoldQty, LockQty, 
+      OccupyQty, KeeyQty, TmallQty, 
+      TmallDateTime, JDQty, JDDateTime, 
+      FXQty, FXDateTime, OtherQty, 
+      OccupyTmallQty, OccupyFXQty, OccupyJDQty, 
+      OccupyOtherQty, SecurityQty, SecurityShopID, 
+      SecurityShopName, GoodsBarCode, ColorGroup, 
+      ColorCode, ColorName, SizeGroup, 
+      SizeCode, SizeName, IsEnabled, 
+      SkuWeight, BrandCode, BrandName, 
+      Year, SeasonCode, Season, 
+      Decription, SexCode, SexName, 
+      ReceiveTime, IsSuit, SupplierCode, 
+      SupplierName, VirtualSign, IsSyncWMS, 
+      AddCName, AddDateTime, ModifyCName, 
+      ModifyDateTime)
+    values (#{skuid,jdbcType=VARCHAR}, #{sourcematerialcode,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, 
+      #{companycode,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, #{stockcode,jdbcType=VARCHAR}, 
+      #{stockname,jdbcType=VARCHAR}, #{materialcode,jdbcType=VARCHAR}, #{materialshortname,jdbcType=NVARCHAR}, 
+      #{sku,jdbcType=VARCHAR}, #{totalqty,jdbcType=INTEGER}, #{wmsqty,jdbcType=INTEGER}, 
+      #{o2oshopqty,jdbcType=INTEGER}, #{holdqty,jdbcType=INTEGER}, #{lockqty,jdbcType=INTEGER}, 
+      #{occupyqty,jdbcType=INTEGER}, #{keeyqty,jdbcType=INTEGER}, #{tmallqty,jdbcType=INTEGER}, 
+      #{tmalldatetime,jdbcType=TIMESTAMP}, #{jdqty,jdbcType=INTEGER}, #{jddatetime,jdbcType=TIMESTAMP}, 
+      #{fxqty,jdbcType=INTEGER}, #{fxdatetime,jdbcType=TIMESTAMP}, #{otherqty,jdbcType=INTEGER}, 
+      #{occupytmallqty,jdbcType=INTEGER}, #{occupyfxqty,jdbcType=INTEGER}, #{occupyjdqty,jdbcType=INTEGER}, 
+      #{occupyotherqty,jdbcType=INTEGER}, #{securityqty,jdbcType=INTEGER}, #{securityshopid,jdbcType=VARCHAR}, 
+      #{securityshopname,jdbcType=VARCHAR}, #{goodsbarcode,jdbcType=VARCHAR}, #{colorgroup,jdbcType=VARCHAR}, 
+      #{colorcode,jdbcType=VARCHAR}, #{colorname,jdbcType=VARCHAR}, #{sizegroup,jdbcType=VARCHAR}, 
+      #{sizecode,jdbcType=VARCHAR}, #{sizename,jdbcType=VARCHAR}, #{isenabled,jdbcType=SMALLINT}, 
+      #{skuweight,jdbcType=DECIMAL}, #{brandcode,jdbcType=VARCHAR}, #{brandname,jdbcType=NVARCHAR}, 
+      #{year,jdbcType=VARCHAR}, #{seasoncode,jdbcType=VARCHAR}, #{season,jdbcType=NVARCHAR}, 
+      #{decription,jdbcType=NVARCHAR}, #{sexcode,jdbcType=VARCHAR}, #{sexname,jdbcType=NVARCHAR}, 
+      #{receivetime,jdbcType=TIMESTAMP}, #{issuit,jdbcType=BIT}, #{suppliercode,jdbcType=VARCHAR}, 
+      #{suppliername,jdbcType=NVARCHAR}, #{virtualsign,jdbcType=SMALLINT}, #{issyncwms,jdbcType=SMALLINT}, 
+      #{addcname,jdbcType=VARCHAR}, #{adddatetime,jdbcType=TIMESTAMP}, #{modifycname,jdbcType=VARCHAR}, 
+      #{modifydatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.model.IesSku" >
+    insert into IES_SKU
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skuid != null" >
+        SKUID,
+      </if>
+      <if test="sourcematerialcode != null" >
+        SourceMaterialCode,
+      </if>
+      <if test="productid != null" >
+        ProductID,
+      </if>
+      <if test="companycode != null" >
+        CompanyCode,
+      </if>
+      <if test="companyname != null" >
+        CompanyName,
+      </if>
+      <if test="stockcode != null" >
+        StockCode,
+      </if>
+      <if test="stockname != null" >
+        StockName,
+      </if>
+      <if test="materialcode != null" >
+        MaterialCode,
+      </if>
+      <if test="materialshortname != null" >
+        MaterialShortName,
+      </if>
+      <if test="sku != null" >
+        SKU,
+      </if>
+      <if test="totalqty != null" >
+        TotalQty,
+      </if>
+      <if test="wmsqty != null" >
+        WMSQty,
+      </if>
+      <if test="o2oshopqty != null" >
+        O2OShopQty,
+      </if>
+      <if test="holdqty != null" >
+        HoldQty,
+      </if>
+      <if test="lockqty != null" >
+        LockQty,
+      </if>
+      <if test="occupyqty != null" >
+        OccupyQty,
+      </if>
+      <if test="keeyqty != null" >
+        KeeyQty,
+      </if>
+      <if test="tmallqty != null" >
+        TmallQty,
+      </if>
+      <if test="tmalldatetime != null" >
+        TmallDateTime,
+      </if>
+      <if test="jdqty != null" >
+        JDQty,
+      </if>
+      <if test="jddatetime != null" >
+        JDDateTime,
+      </if>
+      <if test="fxqty != null" >
+        FXQty,
+      </if>
+      <if test="fxdatetime != null" >
+        FXDateTime,
+      </if>
+      <if test="otherqty != null" >
+        OtherQty,
+      </if>
+      <if test="occupytmallqty != null" >
+        OccupyTmallQty,
+      </if>
+      <if test="occupyfxqty != null" >
+        OccupyFXQty,
+      </if>
+      <if test="occupyjdqty != null" >
+        OccupyJDQty,
+      </if>
+      <if test="occupyotherqty != null" >
+        OccupyOtherQty,
+      </if>
+      <if test="securityqty != null" >
+        SecurityQty,
+      </if>
+      <if test="securityshopid != null" >
+        SecurityShopID,
+      </if>
+      <if test="securityshopname != null" >
+        SecurityShopName,
+      </if>
+      <if test="goodsbarcode != null" >
+        GoodsBarCode,
+      </if>
+      <if test="colorgroup != null" >
+        ColorGroup,
+      </if>
+      <if test="colorcode != null" >
+        ColorCode,
+      </if>
+      <if test="colorname != null" >
+        ColorName,
+      </if>
+      <if test="sizegroup != null" >
+        SizeGroup,
+      </if>
+      <if test="sizecode != null" >
+        SizeCode,
+      </if>
+      <if test="sizename != null" >
+        SizeName,
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled,
+      </if>
+      <if test="skuweight != null" >
+        SkuWeight,
+      </if>
+      <if test="brandcode != null" >
+        BrandCode,
+      </if>
+      <if test="brandname != null" >
+        BrandName,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="seasoncode != null" >
+        SeasonCode,
+      </if>
+      <if test="season != null" >
+        Season,
+      </if>
+      <if test="decription != null" >
+        Decription,
+      </if>
+      <if test="sexcode != null" >
+        SexCode,
+      </if>
+      <if test="sexname != null" >
+        SexName,
+      </if>
+      <if test="receivetime != null" >
+        ReceiveTime,
+      </if>
+      <if test="issuit != null" >
+        IsSuit,
+      </if>
+      <if test="suppliercode != null" >
+        SupplierCode,
+      </if>
+      <if test="suppliername != null" >
+        SupplierName,
+      </if>
+      <if test="virtualsign != null" >
+        VirtualSign,
+      </if>
+      <if test="issyncwms != null" >
+        IsSyncWMS,
+      </if>
+      <if test="addcname != null" >
+        AddCName,
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime,
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName,
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skuid != null" >
+        #{skuid,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcematerialcode != null" >
+        #{sourcematerialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="companycode != null" >
+        #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="materialcode != null" >
+        #{materialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialshortname != null" >
+        #{materialshortname,jdbcType=NVARCHAR},
+      </if>
+      <if test="sku != null" >
+        #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="totalqty != null" >
+        #{totalqty,jdbcType=INTEGER},
+      </if>
+      <if test="wmsqty != null" >
+        #{wmsqty,jdbcType=INTEGER},
+      </if>
+      <if test="o2oshopqty != null" >
+        #{o2oshopqty,jdbcType=INTEGER},
+      </if>
+      <if test="holdqty != null" >
+        #{holdqty,jdbcType=INTEGER},
+      </if>
+      <if test="lockqty != null" >
+        #{lockqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupyqty != null" >
+        #{occupyqty,jdbcType=INTEGER},
+      </if>
+      <if test="keeyqty != null" >
+        #{keeyqty,jdbcType=INTEGER},
+      </if>
+      <if test="tmallqty != null" >
+        #{tmallqty,jdbcType=INTEGER},
+      </if>
+      <if test="tmalldatetime != null" >
+        #{tmalldatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdqty != null" >
+        #{jdqty,jdbcType=INTEGER},
+      </if>
+      <if test="jddatetime != null" >
+        #{jddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fxqty != null" >
+        #{fxqty,jdbcType=INTEGER},
+      </if>
+      <if test="fxdatetime != null" >
+        #{fxdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="otherqty != null" >
+        #{otherqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupytmallqty != null" >
+        #{occupytmallqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupyfxqty != null" >
+        #{occupyfxqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupyjdqty != null" >
+        #{occupyjdqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupyotherqty != null" >
+        #{occupyotherqty,jdbcType=INTEGER},
+      </if>
+      <if test="securityqty != null" >
+        #{securityqty,jdbcType=INTEGER},
+      </if>
+      <if test="securityshopid != null" >
+        #{securityshopid,jdbcType=VARCHAR},
+      </if>
+      <if test="securityshopname != null" >
+        #{securityshopname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsbarcode != null" >
+        #{goodsbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="colorgroup != null" >
+        #{colorgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="colorcode != null" >
+        #{colorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="colorname != null" >
+        #{colorname,jdbcType=VARCHAR},
+      </if>
+      <if test="sizegroup != null" >
+        #{sizegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="sizecode != null" >
+        #{sizecode,jdbcType=VARCHAR},
+      </if>
+      <if test="sizename != null" >
+        #{sizename,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="skuweight != null" >
+        #{skuweight,jdbcType=DECIMAL},
+      </if>
+      <if test="brandcode != null" >
+        #{brandcode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandname != null" >
+        #{brandname,jdbcType=NVARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="seasoncode != null" >
+        #{seasoncode,jdbcType=VARCHAR},
+      </if>
+      <if test="season != null" >
+        #{season,jdbcType=NVARCHAR},
+      </if>
+      <if test="decription != null" >
+        #{decription,jdbcType=NVARCHAR},
+      </if>
+      <if test="sexcode != null" >
+        #{sexcode,jdbcType=VARCHAR},
+      </if>
+      <if test="sexname != null" >
+        #{sexname,jdbcType=NVARCHAR},
+      </if>
+      <if test="receivetime != null" >
+        #{receivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issuit != null" >
+        #{issuit,jdbcType=BIT},
+      </if>
+      <if test="suppliercode != null" >
+        #{suppliercode,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null" >
+        #{suppliername,jdbcType=NVARCHAR},
+      </if>
+      <if test="virtualsign != null" >
+        #{virtualsign,jdbcType=SMALLINT},
+      </if>
+      <if test="issyncwms != null" >
+        #{issyncwms,jdbcType=SMALLINT},
+      </if>
+      <if test="addcname != null" >
+        #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.model.IesSku" >
+    update IES_SKU
+    <set >
+      <if test="sourcematerialcode != null" >
+        SourceMaterialCode = #{sourcematerialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        ProductID = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="companycode != null" >
+        CompanyCode = #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        CompanyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        StockCode = #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        StockName = #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="materialcode != null" >
+        MaterialCode = #{materialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialshortname != null" >
+        MaterialShortName = #{materialshortname,jdbcType=NVARCHAR},
+      </if>
+      <if test="sku != null" >
+        SKU = #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="totalqty != null" >
+        TotalQty = #{totalqty,jdbcType=INTEGER},
+      </if>
+      <if test="wmsqty != null" >
+        WMSQty = #{wmsqty,jdbcType=INTEGER},
+      </if>
+      <if test="o2oshopqty != null" >
+        O2OShopQty = #{o2oshopqty,jdbcType=INTEGER},
+      </if>
+      <if test="holdqty != null" >
+        HoldQty = #{holdqty,jdbcType=INTEGER},
+      </if>
+      <if test="lockqty != null" >
+        LockQty = #{lockqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupyqty != null" >
+        OccupyQty = #{occupyqty,jdbcType=INTEGER},
+      </if>
+      <if test="keeyqty != null" >
+        KeeyQty = #{keeyqty,jdbcType=INTEGER},
+      </if>
+      <if test="tmallqty != null" >
+        TmallQty = #{tmallqty,jdbcType=INTEGER},
+      </if>
+      <if test="tmalldatetime != null" >
+        TmallDateTime = #{tmalldatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdqty != null" >
+        JDQty = #{jdqty,jdbcType=INTEGER},
+      </if>
+      <if test="jddatetime != null" >
+        JDDateTime = #{jddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fxqty != null" >
+        FXQty = #{fxqty,jdbcType=INTEGER},
+      </if>
+      <if test="fxdatetime != null" >
+        FXDateTime = #{fxdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="otherqty != null" >
+        OtherQty = #{otherqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupytmallqty != null" >
+        OccupyTmallQty = #{occupytmallqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupyfxqty != null" >
+        OccupyFXQty = #{occupyfxqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupyjdqty != null" >
+        OccupyJDQty = #{occupyjdqty,jdbcType=INTEGER},
+      </if>
+      <if test="occupyotherqty != null" >
+        OccupyOtherQty = #{occupyotherqty,jdbcType=INTEGER},
+      </if>
+      <if test="securityqty != null" >
+        SecurityQty = #{securityqty,jdbcType=INTEGER},
+      </if>
+      <if test="securityshopid != null" >
+        SecurityShopID = #{securityshopid,jdbcType=VARCHAR},
+      </if>
+      <if test="securityshopname != null" >
+        SecurityShopName = #{securityshopname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsbarcode != null" >
+        GoodsBarCode = #{goodsbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="colorgroup != null" >
+        ColorGroup = #{colorgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="colorcode != null" >
+        ColorCode = #{colorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="colorname != null" >
+        ColorName = #{colorname,jdbcType=VARCHAR},
+      </if>
+      <if test="sizegroup != null" >
+        SizeGroup = #{sizegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="sizecode != null" >
+        SizeCode = #{sizecode,jdbcType=VARCHAR},
+      </if>
+      <if test="sizename != null" >
+        SizeName = #{sizename,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="skuweight != null" >
+        SkuWeight = #{skuweight,jdbcType=DECIMAL},
+      </if>
+      <if test="brandcode != null" >
+        BrandCode = #{brandcode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandname != null" >
+        BrandName = #{brandname,jdbcType=NVARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="seasoncode != null" >
+        SeasonCode = #{seasoncode,jdbcType=VARCHAR},
+      </if>
+      <if test="season != null" >
+        Season = #{season,jdbcType=NVARCHAR},
+      </if>
+      <if test="decription != null" >
+        Decription = #{decription,jdbcType=NVARCHAR},
+      </if>
+      <if test="sexcode != null" >
+        SexCode = #{sexcode,jdbcType=VARCHAR},
+      </if>
+      <if test="sexname != null" >
+        SexName = #{sexname,jdbcType=NVARCHAR},
+      </if>
+      <if test="receivetime != null" >
+        ReceiveTime = #{receivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issuit != null" >
+        IsSuit = #{issuit,jdbcType=BIT},
+      </if>
+      <if test="suppliercode != null" >
+        SupplierCode = #{suppliercode,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null" >
+        SupplierName = #{suppliername,jdbcType=NVARCHAR},
+      </if>
+      <if test="virtualsign != null" >
+        VirtualSign = #{virtualsign,jdbcType=SMALLINT},
+      </if>
+      <if test="issyncwms != null" >
+        IsSyncWMS = #{issyncwms,jdbcType=SMALLINT},
+      </if>
+      <if test="addcname != null" >
+        AddCName = #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SKUID = #{skuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.model.IesSku" >
+    update IES_SKU
+    set SourceMaterialCode = #{sourcematerialcode,jdbcType=VARCHAR},
+      ProductID = #{productid,jdbcType=VARCHAR},
+      CompanyCode = #{companycode,jdbcType=VARCHAR},
+      CompanyName = #{companyname,jdbcType=VARCHAR},
+      StockCode = #{stockcode,jdbcType=VARCHAR},
+      StockName = #{stockname,jdbcType=VARCHAR},
+      MaterialCode = #{materialcode,jdbcType=VARCHAR},
+      MaterialShortName = #{materialshortname,jdbcType=NVARCHAR},
+      SKU = #{sku,jdbcType=VARCHAR},
+      TotalQty = #{totalqty,jdbcType=INTEGER},
+      WMSQty = #{wmsqty,jdbcType=INTEGER},
+      O2OShopQty = #{o2oshopqty,jdbcType=INTEGER},
+      HoldQty = #{holdqty,jdbcType=INTEGER},
+      LockQty = #{lockqty,jdbcType=INTEGER},
+      OccupyQty = #{occupyqty,jdbcType=INTEGER},
+      KeeyQty = #{keeyqty,jdbcType=INTEGER},
+      TmallQty = #{tmallqty,jdbcType=INTEGER},
+      TmallDateTime = #{tmalldatetime,jdbcType=TIMESTAMP},
+      JDQty = #{jdqty,jdbcType=INTEGER},
+      JDDateTime = #{jddatetime,jdbcType=TIMESTAMP},
+      FXQty = #{fxqty,jdbcType=INTEGER},
+      FXDateTime = #{fxdatetime,jdbcType=TIMESTAMP},
+      OtherQty = #{otherqty,jdbcType=INTEGER},
+      OccupyTmallQty = #{occupytmallqty,jdbcType=INTEGER},
+      OccupyFXQty = #{occupyfxqty,jdbcType=INTEGER},
+      OccupyJDQty = #{occupyjdqty,jdbcType=INTEGER},
+      OccupyOtherQty = #{occupyotherqty,jdbcType=INTEGER},
+      SecurityQty = #{securityqty,jdbcType=INTEGER},
+      SecurityShopID = #{securityshopid,jdbcType=VARCHAR},
+      SecurityShopName = #{securityshopname,jdbcType=VARCHAR},
+      GoodsBarCode = #{goodsbarcode,jdbcType=VARCHAR},
+      ColorGroup = #{colorgroup,jdbcType=VARCHAR},
+      ColorCode = #{colorcode,jdbcType=VARCHAR},
+      ColorName = #{colorname,jdbcType=VARCHAR},
+      SizeGroup = #{sizegroup,jdbcType=VARCHAR},
+      SizeCode = #{sizecode,jdbcType=VARCHAR},
+      SizeName = #{sizename,jdbcType=VARCHAR},
+      IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      SkuWeight = #{skuweight,jdbcType=DECIMAL},
+      BrandCode = #{brandcode,jdbcType=VARCHAR},
+      BrandName = #{brandname,jdbcType=NVARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      SeasonCode = #{seasoncode,jdbcType=VARCHAR},
+      Season = #{season,jdbcType=NVARCHAR},
+      Decription = #{decription,jdbcType=NVARCHAR},
+      SexCode = #{sexcode,jdbcType=VARCHAR},
+      SexName = #{sexname,jdbcType=NVARCHAR},
+      ReceiveTime = #{receivetime,jdbcType=TIMESTAMP},
+      IsSuit = #{issuit,jdbcType=BIT},
+      SupplierCode = #{suppliercode,jdbcType=VARCHAR},
+      SupplierName = #{suppliername,jdbcType=NVARCHAR},
+      VirtualSign = #{virtualsign,jdbcType=SMALLINT},
+      IsSyncWMS = #{issyncwms,jdbcType=SMALLINT},
+      AddCName = #{addcname,jdbcType=VARCHAR},
+      AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP}
+    where SKUID = #{skuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

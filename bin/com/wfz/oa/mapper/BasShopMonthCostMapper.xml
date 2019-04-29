@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfz.oa.mapper.BasShopMonthCostMapper" >
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.BasShopMonthCost" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="VARCHAR" />
+    <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+    <result column="ft_workers_number" property="ftWorkersNumber" jdbcType="INTEGER" />
+    <result column="ft_working_hours" property="ftWorkingHours" jdbcType="INTEGER" />
+    <result column="ft_labor_amount" property="ftLaborAmount" jdbcType="DECIMAL" />
+    <result column="pt_workers_number" property="ptWorkersNumber" jdbcType="INTEGER" />
+    <result column="pt_working_hours" property="ptWorkingHours" jdbcType="INTEGER" />
+    <result column="pt_labor_amount" property="ptLaborAmount" jdbcType="DECIMAL" />
+    <result column="th_workers_number" property="thWorkersNumber" jdbcType="INTEGER" />
+    <result column="th_working_hours" property="thWorkingHours" jdbcType="INTEGER" />
+    <result column="th_labor_amount" property="thLaborAmount" jdbcType="DECIMAL" />
+    <result column="month" property="month" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, shop_id, shop_name, ft_workers_number, ft_working_hours, ft_labor_amount, pt_workers_number, 
+    pt_working_hours, pt_labor_amount, th_workers_number, th_working_hours, th_labor_amount, 
+    month, creator, created_time, updator, updated_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wfz.oa.pojo.BasShopMonthCostExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bas_shop_month_cost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bas_shop_month_cost
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bas_shop_month_cost
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.BasShopMonthCostExample" >
+    delete from bas_shop_month_cost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.BasShopMonthCost" >
+    insert into bas_shop_month_cost (id, shop_id, shop_name, 
+      ft_workers_number, ft_working_hours, ft_labor_amount, 
+      pt_workers_number, pt_working_hours, pt_labor_amount, 
+      th_workers_number, th_working_hours, th_labor_amount, 
+      month, creator, created_time, 
+      updator, updated_time)
+    values (#{id,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, 
+      #{ftWorkersNumber,jdbcType=INTEGER}, #{ftWorkingHours,jdbcType=INTEGER}, #{ftLaborAmount,jdbcType=DECIMAL}, 
+      #{ptWorkersNumber,jdbcType=INTEGER}, #{ptWorkingHours,jdbcType=INTEGER}, #{ptLaborAmount,jdbcType=DECIMAL}, 
+      #{thWorkersNumber,jdbcType=INTEGER}, #{thWorkingHours,jdbcType=INTEGER}, #{thLaborAmount,jdbcType=DECIMAL}, 
+      #{month,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updator,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.BasShopMonthCost" >
+    insert into bas_shop_month_cost
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="shopName != null" >
+        shop_name,
+      </if>
+      <if test="ftWorkersNumber != null" >
+        ft_workers_number,
+      </if>
+      <if test="ftWorkingHours != null" >
+        ft_working_hours,
+      </if>
+      <if test="ftLaborAmount != null" >
+        ft_labor_amount,
+      </if>
+      <if test="ptWorkersNumber != null" >
+        pt_workers_number,
+      </if>
+      <if test="ptWorkingHours != null" >
+        pt_working_hours,
+      </if>
+      <if test="ptLaborAmount != null" >
+        pt_labor_amount,
+      </if>
+      <if test="thWorkersNumber != null" >
+        th_workers_number,
+      </if>
+      <if test="thWorkingHours != null" >
+        th_working_hours,
+      </if>
+      <if test="thLaborAmount != null" >
+        th_labor_amount,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="ftWorkersNumber != null" >
+        #{ftWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="ftWorkingHours != null" >
+        #{ftWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="ftLaborAmount != null" >
+        #{ftLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="ptWorkersNumber != null" >
+        #{ptWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="ptWorkingHours != null" >
+        #{ptWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="ptLaborAmount != null" >
+        #{ptLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="thWorkersNumber != null" >
+        #{thWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="thWorkingHours != null" >
+        #{thWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="thLaborAmount != null" >
+        #{thLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.BasShopMonthCostExample" resultType="java.lang.Integer" >
+    select count(*) from bas_shop_month_cost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bas_shop_month_cost
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopName != null" >
+        shop_name = #{record.shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ftWorkersNumber != null" >
+        ft_workers_number = #{record.ftWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.ftWorkingHours != null" >
+        ft_working_hours = #{record.ftWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="record.ftLaborAmount != null" >
+        ft_labor_amount = #{record.ftLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ptWorkersNumber != null" >
+        pt_workers_number = #{record.ptWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.ptWorkingHours != null" >
+        pt_working_hours = #{record.ptWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="record.ptLaborAmount != null" >
+        pt_labor_amount = #{record.ptLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.thWorkersNumber != null" >
+        th_workers_number = #{record.thWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.thWorkingHours != null" >
+        th_working_hours = #{record.thWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="record.thLaborAmount != null" >
+        th_labor_amount = #{record.thLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.month != null" >
+        month = #{record.month,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creator != null" >
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null" >
+        created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updator != null" >
+        updator = #{record.updator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedTime != null" >
+        updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bas_shop_month_cost
+    set id = #{record.id,jdbcType=VARCHAR},
+      shop_id = #{record.shopId,jdbcType=VARCHAR},
+      shop_name = #{record.shopName,jdbcType=VARCHAR},
+      ft_workers_number = #{record.ftWorkersNumber,jdbcType=INTEGER},
+      ft_working_hours = #{record.ftWorkingHours,jdbcType=INTEGER},
+      ft_labor_amount = #{record.ftLaborAmount,jdbcType=DECIMAL},
+      pt_workers_number = #{record.ptWorkersNumber,jdbcType=INTEGER},
+      pt_working_hours = #{record.ptWorkingHours,jdbcType=INTEGER},
+      pt_labor_amount = #{record.ptLaborAmount,jdbcType=DECIMAL},
+      th_workers_number = #{record.thWorkersNumber,jdbcType=INTEGER},
+      th_working_hours = #{record.thWorkingHours,jdbcType=INTEGER},
+      th_labor_amount = #{record.thLaborAmount,jdbcType=DECIMAL},
+      month = #{record.month,jdbcType=TIMESTAMP},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      updator = #{record.updator,jdbcType=VARCHAR},
+      updated_time = #{record.updatedTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.BasShopMonthCost" >
+    update bas_shop_month_cost
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="ftWorkersNumber != null" >
+        ft_workers_number = #{ftWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="ftWorkingHours != null" >
+        ft_working_hours = #{ftWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="ftLaborAmount != null" >
+        ft_labor_amount = #{ftLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="ptWorkersNumber != null" >
+        pt_workers_number = #{ptWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="ptWorkingHours != null" >
+        pt_working_hours = #{ptWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="ptLaborAmount != null" >
+        pt_labor_amount = #{ptLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="thWorkersNumber != null" >
+        th_workers_number = #{thWorkersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="thWorkingHours != null" >
+        th_working_hours = #{thWorkingHours,jdbcType=INTEGER},
+      </if>
+      <if test="thLaborAmount != null" >
+        th_labor_amount = #{thLaborAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="month != null" >
+        month = #{month,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.BasShopMonthCost" >
+    update bas_shop_month_cost
+    set shop_id = #{shopId,jdbcType=VARCHAR},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      ft_workers_number = #{ftWorkersNumber,jdbcType=INTEGER},
+      ft_working_hours = #{ftWorkingHours,jdbcType=INTEGER},
+      ft_labor_amount = #{ftLaborAmount,jdbcType=DECIMAL},
+      pt_workers_number = #{ptWorkersNumber,jdbcType=INTEGER},
+      pt_working_hours = #{ptWorkingHours,jdbcType=INTEGER},
+      pt_labor_amount = #{ptLaborAmount,jdbcType=DECIMAL},
+      th_workers_number = #{thWorkersNumber,jdbcType=INTEGER},
+      th_working_hours = #{thWorkingHours,jdbcType=INTEGER},
+      th_labor_amount = #{thLaborAmount,jdbcType=DECIMAL},
+      month = #{month,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

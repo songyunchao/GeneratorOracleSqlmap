@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.mapper.IesBrandMapper" >
+  <resultMap id="BaseResultMap" type="com.domain.model.IesBrand" >
+    <id column="BrandID" property="brandid" jdbcType="VARCHAR" />
+    <result column="CompanyCode" property="companycode" jdbcType="VARCHAR" />
+    <result column="BrandName" property="brandname" jdbcType="VARCHAR" />
+    <result column="Description" property="description" jdbcType="VARCHAR" />
+    <result column="BrandUrl" property="brandurl" jdbcType="VARCHAR" />
+    <result column="IsEnabled" property="isenabled" jdbcType="SMALLINT" />
+    <result column="Memo" property="memo" jdbcType="VARCHAR" />
+    <result column="CreatedName" property="createdname" jdbcType="VARCHAR" />
+    <result column="UpdatedName" property="updatedname" jdbcType="VARCHAR" />
+    <result column="CreatedTime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="UpdatedTime" property="updatedtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BrandID, CompanyCode, BrandName, Description, BrandUrl, IsEnabled, Memo, CreatedName, 
+    UpdatedName, CreatedTime, UpdatedTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IES_Brand
+    where BrandID = #{brandid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IES_Brand
+    where BrandID = #{brandid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.domain.model.IesBrand" >
+    insert into IES_Brand (BrandID, CompanyCode, BrandName, 
+      Description, BrandUrl, IsEnabled, 
+      Memo, CreatedName, UpdatedName, 
+      CreatedTime, UpdatedTime)
+    values (#{brandid,jdbcType=VARCHAR}, #{companycode,jdbcType=VARCHAR}, #{brandname,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{brandurl,jdbcType=VARCHAR}, #{isenabled,jdbcType=SMALLINT}, 
+      #{memo,jdbcType=VARCHAR}, #{createdname,jdbcType=VARCHAR}, #{updatedname,jdbcType=VARCHAR}, 
+      #{createdtime,jdbcType=TIMESTAMP}, #{updatedtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.model.IesBrand" >
+    insert into IES_Brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brandid != null" >
+        BrandID,
+      </if>
+      <if test="companycode != null" >
+        CompanyCode,
+      </if>
+      <if test="brandname != null" >
+        BrandName,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="brandurl != null" >
+        BrandUrl,
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled,
+      </if>
+      <if test="memo != null" >
+        Memo,
+      </if>
+      <if test="createdname != null" >
+        CreatedName,
+      </if>
+      <if test="updatedname != null" >
+        UpdatedName,
+      </if>
+      <if test="createdtime != null" >
+        CreatedTime,
+      </if>
+      <if test="updatedtime != null" >
+        UpdatedTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brandid != null" >
+        #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="companycode != null" >
+        #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandname != null" >
+        #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="brandurl != null" >
+        #{brandurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdname != null" >
+        #{createdname,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedname != null" >
+        #{updatedname,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedtime != null" >
+        #{updatedtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.model.IesBrand" >
+    update IES_Brand
+    <set >
+      <if test="companycode != null" >
+        CompanyCode = #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandname != null" >
+        BrandName = #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="brandurl != null" >
+        BrandUrl = #{brandurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="memo != null" >
+        Memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdname != null" >
+        CreatedName = #{createdname,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedname != null" >
+        UpdatedName = #{updatedname,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null" >
+        CreatedTime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedtime != null" >
+        UpdatedTime = #{updatedtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where BrandID = #{brandid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.model.IesBrand" >
+    update IES_Brand
+    set CompanyCode = #{companycode,jdbcType=VARCHAR},
+      BrandName = #{brandname,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=VARCHAR},
+      BrandUrl = #{brandurl,jdbcType=VARCHAR},
+      IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      Memo = #{memo,jdbcType=VARCHAR},
+      CreatedName = #{createdname,jdbcType=VARCHAR},
+      UpdatedName = #{updatedname,jdbcType=VARCHAR},
+      CreatedTime = #{createdtime,jdbcType=TIMESTAMP},
+      UpdatedTime = #{updatedtime,jdbcType=TIMESTAMP}
+    where BrandID = #{brandid,jdbcType=VARCHAR}
+  </update>
+</mapper>

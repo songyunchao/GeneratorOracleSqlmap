@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE generatorConfiguration PUBLIC   
+"-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	
+	<context id="context1" targetRuntime="MyBatis3">
+		<commentGenerator type="com.test.MyCommentGenerator">
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			connectionURL="jdbc:sqlserver://101.132.35.231:51433;database=ischoolDB;" userId="sa"
+			password="P@ssw0rd">
+			<property name="useInformationSchema" value="true"></property>
+			<property name="remarks" value="true"></property>
+		</jdbcConnection>
+		
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		<javaModelGenerator targetPackage="com.domain.model"
+			targetProject=".\src" >
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.dao.mapper" 
+			targetProject=".\src" >
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator targetPackage="com.dao.mapper"
+			targetProject=".\src" type="XMLMAPPER" >
+			 <property name="enableSubPackages" value="true"/>
+			 </javaClientGenerator>
+		
+		<table schema="" tableName="isc_repair_work_order"	    
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>		
+		
+		<table schema="" tableName="isc_repair_work_log"	    
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		
+		<table schema="" tableName="isc_work_file" 	    
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		
+		<table schema="" tableName="sys_role_orgs" 	    
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		
+		<table schema="" tableName="isc_site" 	    
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		
+	</context>
+</generatorConfiguration>

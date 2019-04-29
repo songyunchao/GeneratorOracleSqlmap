@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfz.report.dao.mapper.edb.BcOrdersMapper" >
+  <resultMap id="BaseResultMap" type="com.wfz.report.bean.model.edb.BcOrders" >
+    <id column="AC0018" property="ac0018" jdbcType="VARCHAR" />
+    <result column="TC0108" property="tc0108" jdbcType="VARCHAR" />
+    <result column="AC0016_EAS" property="ac0016Eas" jdbcType="VARCHAR" />
+    <result column="AC0016_EDB" property="ac0016Edb" jdbcType="VARCHAR" />
+    <result column="OBJNAME_AC0016" property="objnameAc0016" jdbcType="VARCHAR" />
+    <result column="TD0423" property="td0423" jdbcType="VARCHAR" />
+    <result column="AD0545" property="ad0545" jdbcType="VARCHAR" />
+    <result column="TD0424" property="td0424" jdbcType="VARCHAR" />
+    <result column="TC0358" property="tc0358" jdbcType="VARCHAR" />
+    <result column="AB0009" property="ab0009" jdbcType="DECIMAL" />
+    <result column="AC0573" property="ac0573" jdbcType="VARCHAR" />
+    <result column="AQ2046" property="aq2046" jdbcType="DATE" />
+    <result column="TD0421" property="td0421" jdbcType="VARCHAR" />
+    <result column="AD0006" property="ad0006" jdbcType="VARCHAR" />
+    <result column="OBJNAME_TC0324" property="objnameTc0324" jdbcType="VARCHAR" />
+    <result column="AD0527_EAS" property="ad0527Eas" jdbcType="VARCHAR" />
+    <result column="AD0527_EDB" property="ad0527Edb" jdbcType="VARCHAR" />
+    <result column="OBJNAME_AD0527" property="objnameAd0527" jdbcType="VARCHAR" />
+    <result column="TD0425" property="td0425" jdbcType="VARCHAR" />
+    <result column="OBJNAME_AD0006" property="objnameAd0006" jdbcType="VARCHAR" />
+    <result column="TC0324" property="tc0324" jdbcType="VARCHAR" />
+    <result column="AC0020" property="ac0020" jdbcType="VARCHAR" />
+    <result column="AC0543" property="ac0543" jdbcType="VARCHAR" />
+    <result column="AC0550" property="ac0550" jdbcType="VARCHAR" />
+    <result column="AC0551" property="ac0551" jdbcType="VARCHAR" />
+    <result column="AC0580" property="ac0580" jdbcType="VARCHAR" />
+    <result column="EC0142" property="ec0142" jdbcType="VARCHAR" />
+    <result column="EM0945" property="em0945" jdbcType="DECIMAL" />
+    <result column="EM0974_1" property="em09741" jdbcType="DECIMAL" />
+    <result column="EM0974" property="em0974" jdbcType="DECIMAL" />
+    <result column="TM0021" property="tm0021" jdbcType="DECIMAL" />
+    <result column="EC0141" property="ec0141" jdbcType="VARCHAR" />
+    <result column="EC0514" property="ec0514" jdbcType="VARCHAR" />
+    <result column="EC0521" property="ec0521" jdbcType="VARCHAR" />
+    <result column="EQ0722" property="eq0722" jdbcType="DATE" />
+    <result column="TQ0010" property="tq0010" jdbcType="DATE" />
+    <result column="EQ0914" property="eq0914" jdbcType="DATE" />
+    <result column="AQ0001" property="aq0001" jdbcType="DATE" />
+    <result column="AQ2045" property="aq2045" jdbcType="DATE" />
+    <result column="AQ2047" property="aq2047" jdbcType="DATE" />
+    <result column="TC0114" property="tc0114" jdbcType="VARCHAR" />
+    <result column="TC0359" property="tc0359" jdbcType="VARCHAR" />
+    <result column="AC0572" property="ac0572" jdbcType="VARCHAR" />
+    <result column="AC0575" property="ac0575" jdbcType="VARCHAR" />
+    <result column="TC0370" property="tc0370" jdbcType="VARCHAR" />
+    <result column="AC0578" property="ac0578" jdbcType="VARCHAR" />
+    <result column="AC0576" property="ac0576" jdbcType="VARCHAR" />
+    <result column="AC0003" property="ac0003" jdbcType="VARCHAR" />
+    <result column="AQ0007" property="aq0007" jdbcType="DATE" />
+    <result column="AQ2518" property="aq2518" jdbcType="DATE" />
+    <result column="EC0139_MSN" property="ec0139Msn" jdbcType="VARCHAR" />
+    <result column="EC0139" property="ec0139" jdbcType="VARCHAR" />
+    <result column="OBJNAME_EC0139" property="objnameEc0139" jdbcType="VARCHAR" />
+    <result column="AD0001_SUM" property="ad0001Sum" jdbcType="DECIMAL" />
+    <result column="AM0023" property="am0023" jdbcType="DECIMAL" />
+    <result column="AB0005" property="ab0005" jdbcType="DECIMAL" />
+    <result column="TD3038" property="td3038" jdbcType="VARCHAR" />
+    <result column="TM0034" property="tm0034" jdbcType="DECIMAL" />
+    <result column="TM0068" property="tm0068" jdbcType="DECIMAL" />
+    <result column="EC0516" property="ec0516" jdbcType="VARCHAR" />
+    <result column="EQ0917" property="eq0917" jdbcType="DATE" />
+    <result column="TM0154" property="tm0154" jdbcType="DECIMAL" />
+    <result column="TM0155" property="tm0155" jdbcType="DECIMAL" />
+    <result column="AM0001" property="am0001" jdbcType="DECIMAL" />
+    <result column="TM0192" property="tm0192" jdbcType="DECIMAL" />
+    <result column="TM0145" property="tm0145" jdbcType="DECIMAL" />
+    <result column="TM0033" property="tm0033" jdbcType="DECIMAL" />
+    <result column="AM0080" property="am0080" jdbcType="DECIMAL" />
+    <result column="TM0161" property="tm0161" jdbcType="DECIMAL" />
+    <result column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="ADD_DATE" property="addDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    AC0018, TC0108, AC0016_EAS, AC0016_EDB, OBJNAME_AC0016, TD0423, AD0545, TD0424, TC0358, 
+    AB0009, AC0573, AQ2046, TD0421, AD0006, OBJNAME_TC0324, AD0527_EAS, AD0527_EDB, OBJNAME_AD0527, 
+    TD0425, OBJNAME_AD0006, TC0324, AC0020, AC0543, AC0550, AC0551, AC0580, EC0142, EM0945, 
+    EM0974_1, EM0974, TM0021, EC0141, EC0514, EC0521, EQ0722, TQ0010, EQ0914, AQ0001, 
+    AQ2045, AQ2047, TC0114, TC0359, AC0572, AC0575, TC0370, AC0578, AC0576, AC0003, AQ0007, 
+    AQ2518, EC0139_MSN, EC0139, OBJNAME_EC0139, AD0001_SUM, AM0023, AB0005, TD3038, TM0034, 
+    TM0068, EC0516, EQ0917, TM0154, TM0155, AM0001, TM0192, TM0145, TM0033, AM0080, TM0161, 
+    ID, ADD_DATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wfz.report.bean.model.edb.BcOrdersExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from BC_ORDERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BC_ORDERS
+    where AC0018 = #{ac0018,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BC_ORDERS
+    where AC0018 = #{ac0018,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.report.bean.model.edb.BcOrdersExample" >
+    delete from BC_ORDERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.report.bean.model.edb.BcOrders" >
+    insert into BC_ORDERS (AC0018, TC0108, AC0016_EAS, 
+      AC0016_EDB, OBJNAME_AC0016, TD0423, 
+      AD0545, TD0424, TC0358, 
+      AB0009, AC0573, AQ2046, 
+      TD0421, AD0006, OBJNAME_TC0324, 
+      AD0527_EAS, AD0527_EDB, OBJNAME_AD0527, 
+      TD0425, OBJNAME_AD0006, TC0324, 
+      AC0020, AC0543, AC0550, 
+      AC0551, AC0580, EC0142, 
+      EM0945, EM0974_1, EM0974, 
+      TM0021, EC0141, EC0514, 
+      EC0521, EQ0722, TQ0010, EQ0914, 
+      AQ0001, AQ2045, AQ2047, TC0114, 
+      TC0359, AC0572, AC0575, 
+      TC0370, AC0578, AC0576, 
+      AC0003, AQ0007, AQ2518, EC0139_MSN, 
+      EC0139, OBJNAME_EC0139, AD0001_SUM, 
+      AM0023, AB0005, TD3038, 
+      TM0034, TM0068, EC0516, 
+      EQ0917, TM0154, TM0155, 
+      AM0001, TM0192, TM0145, 
+      TM0033, AM0080, TM0161, 
+      ID, ADD_DATE)
+    values (#{ac0018,jdbcType=VARCHAR}, #{tc0108,jdbcType=VARCHAR}, #{ac0016Eas,jdbcType=VARCHAR}, 
+      #{ac0016Edb,jdbcType=VARCHAR}, #{objnameAc0016,jdbcType=VARCHAR}, #{td0423,jdbcType=VARCHAR}, 
+      #{ad0545,jdbcType=VARCHAR}, #{td0424,jdbcType=VARCHAR}, #{tc0358,jdbcType=VARCHAR}, 
+      #{ab0009,jdbcType=DECIMAL}, #{ac0573,jdbcType=VARCHAR}, #{aq2046,jdbcType=DATE}, 
+      #{td0421,jdbcType=VARCHAR}, #{ad0006,jdbcType=VARCHAR}, #{objnameTc0324,jdbcType=VARCHAR}, 
+      #{ad0527Eas,jdbcType=VARCHAR}, #{ad0527Edb,jdbcType=VARCHAR}, #{objnameAd0527,jdbcType=VARCHAR}, 
+      #{td0425,jdbcType=VARCHAR}, #{objnameAd0006,jdbcType=VARCHAR}, #{tc0324,jdbcType=VARCHAR}, 
+      #{ac0020,jdbcType=VARCHAR}, #{ac0543,jdbcType=VARCHAR}, #{ac0550,jdbcType=VARCHAR}, 
+      #{ac0551,jdbcType=VARCHAR}, #{ac0580,jdbcType=VARCHAR}, #{ec0142,jdbcType=VARCHAR}, 
+      #{em0945,jdbcType=DECIMAL}, #{em09741,jdbcType=DECIMAL}, #{em0974,jdbcType=DECIMAL}, 
+      #{tm0021,jdbcType=DECIMAL}, #{ec0141,jdbcType=VARCHAR}, #{ec0514,jdbcType=VARCHAR}, 
+      #{ec0521,jdbcType=VARCHAR}, #{eq0722,jdbcType=DATE}, #{tq0010,jdbcType=DATE}, #{eq0914,jdbcType=DATE}, 
+      #{aq0001,jdbcType=DATE}, #{aq2045,jdbcType=DATE}, #{aq2047,jdbcType=DATE}, #{tc0114,jdbcType=VARCHAR}, 
+      #{tc0359,jdbcType=VARCHAR}, #{ac0572,jdbcType=VARCHAR}, #{ac0575,jdbcType=VARCHAR}, 
+      #{tc0370,jdbcType=VARCHAR}, #{ac0578,jdbcType=VARCHAR}, #{ac0576,jdbcType=VARCHAR}, 
+      #{ac0003,jdbcType=VARCHAR}, #{aq0007,jdbcType=DATE}, #{aq2518,jdbcType=DATE}, #{ec0139Msn,jdbcType=VARCHAR}, 
+      #{ec0139,jdbcType=VARCHAR}, #{objnameEc0139,jdbcType=VARCHAR}, #{ad0001Sum,jdbcType=DECIMAL}, 
+      #{am0023,jdbcType=DECIMAL}, #{ab0005,jdbcType=DECIMAL}, #{td3038,jdbcType=VARCHAR}, 
+      #{tm0034,jdbcType=DECIMAL}, #{tm0068,jdbcType=DECIMAL}, #{ec0516,jdbcType=VARCHAR}, 
+      #{eq0917,jdbcType=DATE}, #{tm0154,jdbcType=DECIMAL}, #{tm0155,jdbcType=DECIMAL}, 
+      #{am0001,jdbcType=DECIMAL}, #{tm0192,jdbcType=DECIMAL}, #{tm0145,jdbcType=DECIMAL}, 
+      #{tm0033,jdbcType=DECIMAL}, #{am0080,jdbcType=DECIMAL}, #{tm0161,jdbcType=DECIMAL}, 
+      #{id,jdbcType=DECIMAL}, #{addDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.report.bean.model.edb.BcOrders" >
+    insert into BC_ORDERS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ac0018 != null" >
+        AC0018,
+      </if>
+      <if test="tc0108 != null" >
+        TC0108,
+      </if>
+      <if test="ac0016Eas != null" >
+        AC0016_EAS,
+      </if>
+      <if test="ac0016Edb != null" >
+        AC0016_EDB,
+      </if>
+      <if test="objnameAc0016 != null" >
+        OBJNAME_AC0016,
+      </if>
+      <if test="td0423 != null" >
+        TD0423,
+      </if>
+      <if test="ad0545 != null" >
+        AD0545,
+      </if>
+      <if test="td0424 != null" >
+        TD0424,
+      </if>
+      <if test="tc0358 != null" >
+        TC0358,
+      </if>
+      <if test="ab0009 != null" >
+        AB0009,
+      </if>
+      <if test="ac0573 != null" >
+        AC0573,
+      </if>
+      <if test="aq2046 != null" >
+        AQ2046,
+      </if>
+      <if test="td0421 != null" >
+        TD0421,
+      </if>
+      <if test="ad0006 != null" >
+        AD0006,
+      </if>
+      <if test="objnameTc0324 != null" >
+        OBJNAME_TC0324,
+      </if>
+      <if test="ad0527Eas != null" >
+        AD0527_EAS,
+      </if>
+      <if test="ad0527Edb != null" >
+        AD0527_EDB,
+      </if>
+      <if test="objnameAd0527 != null" >
+        OBJNAME_AD0527,
+      </if>
+      <if test="td0425 != null" >
+        TD0425,
+      </if>
+      <if test="objnameAd0006 != null" >
+        OBJNAME_AD0006,
+      </if>
+      <if test="tc0324 != null" >
+        TC0324,
+      </if>
+      <if test="ac0020 != null" >
+        AC0020,
+      </if>
+      <if test="ac0543 != null" >
+        AC0543,
+      </if>
+      <if test="ac0550 != null" >
+        AC0550,
+      </if>
+      <if test="ac0551 != null" >
+        AC0551,
+      </if>
+      <if test="ac0580 != null" >
+        AC0580,
+      </if>
+      <if test="ec0142 != null" >
+        EC0142,
+      </if>
+      <if test="em0945 != null" >
+        EM0945,
+      </if>
+      <if test="em09741 != null" >
+        EM0974_1,
+      </if>
+      <if test="em0974 != null" >
+        EM0974,
+      </if>
+      <if test="tm0021 != null" >
+        TM0021,
+      </if>
+      <if test="ec0141 != null" >
+        EC0141,
+      </if>
+      <if test="ec0514 != null" >
+        EC0514,
+      </if>
+      <if test="ec0521 != null" >
+        EC0521,
+      </if>
+      <if test="eq0722 != null" >
+        EQ0722,
+      </if>
+      <if test="tq0010 != null" >
+        TQ0010,
+      </if>
+      <if test="eq0914 != null" >
+        EQ0914,
+      </if>
+      <if test="aq0001 != null" >
+        AQ0001,
+      </if>
+      <if test="aq2045 != null" >
+        AQ2045,
+      </if>
+      <if test="aq2047 != null" >
+        AQ2047,
+      </if>
+      <if test="tc0114 != null" >
+        TC0114,
+      </if>
+      <if test="tc0359 != null" >
+        TC0359,
+      </if>
+      <if test="ac0572 != null" >
+        AC0572,
+      </if>
+      <if test="ac0575 != null" >
+        AC0575,
+      </if>
+      <if test="tc0370 != null" >
+        TC0370,
+      </if>
+      <if test="ac0578 != null" >
+        AC0578,
+      </if>
+      <if test="ac0576 != null" >
+        AC0576,
+      </if>
+      <if test="ac0003 != null" >
+        AC0003,
+      </if>
+      <if test="aq0007 != null" >
+        AQ0007,
+      </if>
+      <if test="aq2518 != null" >
+        AQ2518,
+      </if>
+      <if test="ec0139Msn != null" >
+        EC0139_MSN,
+      </if>
+      <if test="ec0139 != null" >
+        EC0139,
+      </if>
+      <if test="objnameEc0139 != null" >
+        OBJNAME_EC0139,
+      </if>
+      <if test="ad0001Sum != null" >
+        AD0001_SUM,
+      </if>
+      <if test="am0023 != null" >
+        AM0023,
+      </if>
+      <if test="ab0005 != null" >
+        AB0005,
+      </if>
+      <if test="td3038 != null" >
+        TD3038,
+      </if>
+      <if test="tm0034 != null" >
+        TM0034,
+      </if>
+      <if test="tm0068 != null" >
+        TM0068,
+      </if>
+      <if test="ec0516 != null" >
+        EC0516,
+      </if>
+      <if test="eq0917 != null" >
+        EQ0917,
+      </if>
+      <if test="tm0154 != null" >
+        TM0154,
+      </if>
+      <if test="tm0155 != null" >
+        TM0155,
+      </if>
+      <if test="am0001 != null" >
+        AM0001,
+      </if>
+      <if test="tm0192 != null" >
+        TM0192,
+      </if>
+      <if test="tm0145 != null" >
+        TM0145,
+      </if>
+      <if test="tm0033 != null" >
+        TM0033,
+      </if>
+      <if test="am0080 != null" >
+        AM0080,
+      </if>
+      <if test="tm0161 != null" >
+        TM0161,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="addDate != null" >
+        ADD_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ac0018 != null" >
+        #{ac0018,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0108 != null" >
+        #{tc0108,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0016Eas != null" >
+        #{ac0016Eas,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0016Edb != null" >
+        #{ac0016Edb,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameAc0016 != null" >
+        #{objnameAc0016,jdbcType=VARCHAR},
+      </if>
+      <if test="td0423 != null" >
+        #{td0423,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0545 != null" >
+        #{ad0545,jdbcType=VARCHAR},
+      </if>
+      <if test="td0424 != null" >
+        #{td0424,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0358 != null" >
+        #{tc0358,jdbcType=VARCHAR},
+      </if>
+      <if test="ab0009 != null" >
+        #{ab0009,jdbcType=DECIMAL},
+      </if>
+      <if test="ac0573 != null" >
+        #{ac0573,jdbcType=VARCHAR},
+      </if>
+      <if test="aq2046 != null" >
+        #{aq2046,jdbcType=DATE},
+      </if>
+      <if test="td0421 != null" >
+        #{td0421,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0006 != null" >
+        #{ad0006,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameTc0324 != null" >
+        #{objnameTc0324,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0527Eas != null" >
+        #{ad0527Eas,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0527Edb != null" >
+        #{ad0527Edb,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameAd0527 != null" >
+        #{objnameAd0527,jdbcType=VARCHAR},
+      </if>
+      <if test="td0425 != null" >
+        #{td0425,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameAd0006 != null" >
+        #{objnameAd0006,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0324 != null" >
+        #{tc0324,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0020 != null" >
+        #{ac0020,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0543 != null" >
+        #{ac0543,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0550 != null" >
+        #{ac0550,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0551 != null" >
+        #{ac0551,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0580 != null" >
+        #{ac0580,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0142 != null" >
+        #{ec0142,jdbcType=VARCHAR},
+      </if>
+      <if test="em0945 != null" >
+        #{em0945,jdbcType=DECIMAL},
+      </if>
+      <if test="em09741 != null" >
+        #{em09741,jdbcType=DECIMAL},
+      </if>
+      <if test="em0974 != null" >
+        #{em0974,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0021 != null" >
+        #{tm0021,jdbcType=DECIMAL},
+      </if>
+      <if test="ec0141 != null" >
+        #{ec0141,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0514 != null" >
+        #{ec0514,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0521 != null" >
+        #{ec0521,jdbcType=VARCHAR},
+      </if>
+      <if test="eq0722 != null" >
+        #{eq0722,jdbcType=DATE},
+      </if>
+      <if test="tq0010 != null" >
+        #{tq0010,jdbcType=DATE},
+      </if>
+      <if test="eq0914 != null" >
+        #{eq0914,jdbcType=DATE},
+      </if>
+      <if test="aq0001 != null" >
+        #{aq0001,jdbcType=DATE},
+      </if>
+      <if test="aq2045 != null" >
+        #{aq2045,jdbcType=DATE},
+      </if>
+      <if test="aq2047 != null" >
+        #{aq2047,jdbcType=DATE},
+      </if>
+      <if test="tc0114 != null" >
+        #{tc0114,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0359 != null" >
+        #{tc0359,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0572 != null" >
+        #{ac0572,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0575 != null" >
+        #{ac0575,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0370 != null" >
+        #{tc0370,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0578 != null" >
+        #{ac0578,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0576 != null" >
+        #{ac0576,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0003 != null" >
+        #{ac0003,jdbcType=VARCHAR},
+      </if>
+      <if test="aq0007 != null" >
+        #{aq0007,jdbcType=DATE},
+      </if>
+      <if test="aq2518 != null" >
+        #{aq2518,jdbcType=DATE},
+      </if>
+      <if test="ec0139Msn != null" >
+        #{ec0139Msn,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0139 != null" >
+        #{ec0139,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameEc0139 != null" >
+        #{objnameEc0139,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0001Sum != null" >
+        #{ad0001Sum,jdbcType=DECIMAL},
+      </if>
+      <if test="am0023 != null" >
+        #{am0023,jdbcType=DECIMAL},
+      </if>
+      <if test="ab0005 != null" >
+        #{ab0005,jdbcType=DECIMAL},
+      </if>
+      <if test="td3038 != null" >
+        #{td3038,jdbcType=VARCHAR},
+      </if>
+      <if test="tm0034 != null" >
+        #{tm0034,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0068 != null" >
+        #{tm0068,jdbcType=DECIMAL},
+      </if>
+      <if test="ec0516 != null" >
+        #{ec0516,jdbcType=VARCHAR},
+      </if>
+      <if test="eq0917 != null" >
+        #{eq0917,jdbcType=DATE},
+      </if>
+      <if test="tm0154 != null" >
+        #{tm0154,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0155 != null" >
+        #{tm0155,jdbcType=DECIMAL},
+      </if>
+      <if test="am0001 != null" >
+        #{am0001,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0192 != null" >
+        #{tm0192,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0145 != null" >
+        #{tm0145,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0033 != null" >
+        #{tm0033,jdbcType=DECIMAL},
+      </if>
+      <if test="am0080 != null" >
+        #{am0080,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0161 != null" >
+        #{tm0161,jdbcType=DECIMAL},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="addDate != null" >
+        #{addDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.report.bean.model.edb.BcOrdersExample" resultType="java.lang.Integer" >
+    select count(*) from BC_ORDERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update BC_ORDERS
+    <set >
+      <if test="record.ac0018 != null" >
+        AC0018 = #{record.ac0018,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tc0108 != null" >
+        TC0108 = #{record.tc0108,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0016Eas != null" >
+        AC0016_EAS = #{record.ac0016Eas,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0016Edb != null" >
+        AC0016_EDB = #{record.ac0016Edb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objnameAc0016 != null" >
+        OBJNAME_AC0016 = #{record.objnameAc0016,jdbcType=VARCHAR},
+      </if>
+      <if test="record.td0423 != null" >
+        TD0423 = #{record.td0423,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ad0545 != null" >
+        AD0545 = #{record.ad0545,jdbcType=VARCHAR},
+      </if>
+      <if test="record.td0424 != null" >
+        TD0424 = #{record.td0424,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tc0358 != null" >
+        TC0358 = #{record.tc0358,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ab0009 != null" >
+        AB0009 = #{record.ab0009,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ac0573 != null" >
+        AC0573 = #{record.ac0573,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aq2046 != null" >
+        AQ2046 = #{record.aq2046,jdbcType=DATE},
+      </if>
+      <if test="record.td0421 != null" >
+        TD0421 = #{record.td0421,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ad0006 != null" >
+        AD0006 = #{record.ad0006,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objnameTc0324 != null" >
+        OBJNAME_TC0324 = #{record.objnameTc0324,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ad0527Eas != null" >
+        AD0527_EAS = #{record.ad0527Eas,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ad0527Edb != null" >
+        AD0527_EDB = #{record.ad0527Edb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objnameAd0527 != null" >
+        OBJNAME_AD0527 = #{record.objnameAd0527,jdbcType=VARCHAR},
+      </if>
+      <if test="record.td0425 != null" >
+        TD0425 = #{record.td0425,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objnameAd0006 != null" >
+        OBJNAME_AD0006 = #{record.objnameAd0006,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tc0324 != null" >
+        TC0324 = #{record.tc0324,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0020 != null" >
+        AC0020 = #{record.ac0020,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0543 != null" >
+        AC0543 = #{record.ac0543,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0550 != null" >
+        AC0550 = #{record.ac0550,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0551 != null" >
+        AC0551 = #{record.ac0551,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0580 != null" >
+        AC0580 = #{record.ac0580,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ec0142 != null" >
+        EC0142 = #{record.ec0142,jdbcType=VARCHAR},
+      </if>
+      <if test="record.em0945 != null" >
+        EM0945 = #{record.em0945,jdbcType=DECIMAL},
+      </if>
+      <if test="record.em09741 != null" >
+        EM0974_1 = #{record.em09741,jdbcType=DECIMAL},
+      </if>
+      <if test="record.em0974 != null" >
+        EM0974 = #{record.em0974,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0021 != null" >
+        TM0021 = #{record.tm0021,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ec0141 != null" >
+        EC0141 = #{record.ec0141,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ec0514 != null" >
+        EC0514 = #{record.ec0514,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ec0521 != null" >
+        EC0521 = #{record.ec0521,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eq0722 != null" >
+        EQ0722 = #{record.eq0722,jdbcType=DATE},
+      </if>
+      <if test="record.tq0010 != null" >
+        TQ0010 = #{record.tq0010,jdbcType=DATE},
+      </if>
+      <if test="record.eq0914 != null" >
+        EQ0914 = #{record.eq0914,jdbcType=DATE},
+      </if>
+      <if test="record.aq0001 != null" >
+        AQ0001 = #{record.aq0001,jdbcType=DATE},
+      </if>
+      <if test="record.aq2045 != null" >
+        AQ2045 = #{record.aq2045,jdbcType=DATE},
+      </if>
+      <if test="record.aq2047 != null" >
+        AQ2047 = #{record.aq2047,jdbcType=DATE},
+      </if>
+      <if test="record.tc0114 != null" >
+        TC0114 = #{record.tc0114,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tc0359 != null" >
+        TC0359 = #{record.tc0359,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0572 != null" >
+        AC0572 = #{record.ac0572,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0575 != null" >
+        AC0575 = #{record.ac0575,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tc0370 != null" >
+        TC0370 = #{record.tc0370,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0578 != null" >
+        AC0578 = #{record.ac0578,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0576 != null" >
+        AC0576 = #{record.ac0576,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0003 != null" >
+        AC0003 = #{record.ac0003,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aq0007 != null" >
+        AQ0007 = #{record.aq0007,jdbcType=DATE},
+      </if>
+      <if test="record.aq2518 != null" >
+        AQ2518 = #{record.aq2518,jdbcType=DATE},
+      </if>
+      <if test="record.ec0139Msn != null" >
+        EC0139_MSN = #{record.ec0139Msn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ec0139 != null" >
+        EC0139 = #{record.ec0139,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objnameEc0139 != null" >
+        OBJNAME_EC0139 = #{record.objnameEc0139,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ad0001Sum != null" >
+        AD0001_SUM = #{record.ad0001Sum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.am0023 != null" >
+        AM0023 = #{record.am0023,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ab0005 != null" >
+        AB0005 = #{record.ab0005,jdbcType=DECIMAL},
+      </if>
+      <if test="record.td3038 != null" >
+        TD3038 = #{record.td3038,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tm0034 != null" >
+        TM0034 = #{record.tm0034,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0068 != null" >
+        TM0068 = #{record.tm0068,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ec0516 != null" >
+        EC0516 = #{record.ec0516,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eq0917 != null" >
+        EQ0917 = #{record.eq0917,jdbcType=DATE},
+      </if>
+      <if test="record.tm0154 != null" >
+        TM0154 = #{record.tm0154,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0155 != null" >
+        TM0155 = #{record.tm0155,jdbcType=DECIMAL},
+      </if>
+      <if test="record.am0001 != null" >
+        AM0001 = #{record.am0001,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0192 != null" >
+        TM0192 = #{record.tm0192,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0145 != null" >
+        TM0145 = #{record.tm0145,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0033 != null" >
+        TM0033 = #{record.tm0033,jdbcType=DECIMAL},
+      </if>
+      <if test="record.am0080 != null" >
+        AM0080 = #{record.am0080,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0161 != null" >
+        TM0161 = #{record.tm0161,jdbcType=DECIMAL},
+      </if>
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addDate != null" >
+        ADD_DATE = #{record.addDate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update BC_ORDERS
+    set AC0018 = #{record.ac0018,jdbcType=VARCHAR},
+      TC0108 = #{record.tc0108,jdbcType=VARCHAR},
+      AC0016_EAS = #{record.ac0016Eas,jdbcType=VARCHAR},
+      AC0016_EDB = #{record.ac0016Edb,jdbcType=VARCHAR},
+      OBJNAME_AC0016 = #{record.objnameAc0016,jdbcType=VARCHAR},
+      TD0423 = #{record.td0423,jdbcType=VARCHAR},
+      AD0545 = #{record.ad0545,jdbcType=VARCHAR},
+      TD0424 = #{record.td0424,jdbcType=VARCHAR},
+      TC0358 = #{record.tc0358,jdbcType=VARCHAR},
+      AB0009 = #{record.ab0009,jdbcType=DECIMAL},
+      AC0573 = #{record.ac0573,jdbcType=VARCHAR},
+      AQ2046 = #{record.aq2046,jdbcType=DATE},
+      TD0421 = #{record.td0421,jdbcType=VARCHAR},
+      AD0006 = #{record.ad0006,jdbcType=VARCHAR},
+      OBJNAME_TC0324 = #{record.objnameTc0324,jdbcType=VARCHAR},
+      AD0527_EAS = #{record.ad0527Eas,jdbcType=VARCHAR},
+      AD0527_EDB = #{record.ad0527Edb,jdbcType=VARCHAR},
+      OBJNAME_AD0527 = #{record.objnameAd0527,jdbcType=VARCHAR},
+      TD0425 = #{record.td0425,jdbcType=VARCHAR},
+      OBJNAME_AD0006 = #{record.objnameAd0006,jdbcType=VARCHAR},
+      TC0324 = #{record.tc0324,jdbcType=VARCHAR},
+      AC0020 = #{record.ac0020,jdbcType=VARCHAR},
+      AC0543 = #{record.ac0543,jdbcType=VARCHAR},
+      AC0550 = #{record.ac0550,jdbcType=VARCHAR},
+      AC0551 = #{record.ac0551,jdbcType=VARCHAR},
+      AC0580 = #{record.ac0580,jdbcType=VARCHAR},
+      EC0142 = #{record.ec0142,jdbcType=VARCHAR},
+      EM0945 = #{record.em0945,jdbcType=DECIMAL},
+      EM0974_1 = #{record.em09741,jdbcType=DECIMAL},
+      EM0974 = #{record.em0974,jdbcType=DECIMAL},
+      TM0021 = #{record.tm0021,jdbcType=DECIMAL},
+      EC0141 = #{record.ec0141,jdbcType=VARCHAR},
+      EC0514 = #{record.ec0514,jdbcType=VARCHAR},
+      EC0521 = #{record.ec0521,jdbcType=VARCHAR},
+      EQ0722 = #{record.eq0722,jdbcType=DATE},
+      TQ0010 = #{record.tq0010,jdbcType=DATE},
+      EQ0914 = #{record.eq0914,jdbcType=DATE},
+      AQ0001 = #{record.aq0001,jdbcType=DATE},
+      AQ2045 = #{record.aq2045,jdbcType=DATE},
+      AQ2047 = #{record.aq2047,jdbcType=DATE},
+      TC0114 = #{record.tc0114,jdbcType=VARCHAR},
+      TC0359 = #{record.tc0359,jdbcType=VARCHAR},
+      AC0572 = #{record.ac0572,jdbcType=VARCHAR},
+      AC0575 = #{record.ac0575,jdbcType=VARCHAR},
+      TC0370 = #{record.tc0370,jdbcType=VARCHAR},
+      AC0578 = #{record.ac0578,jdbcType=VARCHAR},
+      AC0576 = #{record.ac0576,jdbcType=VARCHAR},
+      AC0003 = #{record.ac0003,jdbcType=VARCHAR},
+      AQ0007 = #{record.aq0007,jdbcType=DATE},
+      AQ2518 = #{record.aq2518,jdbcType=DATE},
+      EC0139_MSN = #{record.ec0139Msn,jdbcType=VARCHAR},
+      EC0139 = #{record.ec0139,jdbcType=VARCHAR},
+      OBJNAME_EC0139 = #{record.objnameEc0139,jdbcType=VARCHAR},
+      AD0001_SUM = #{record.ad0001Sum,jdbcType=DECIMAL},
+      AM0023 = #{record.am0023,jdbcType=DECIMAL},
+      AB0005 = #{record.ab0005,jdbcType=DECIMAL},
+      TD3038 = #{record.td3038,jdbcType=VARCHAR},
+      TM0034 = #{record.tm0034,jdbcType=DECIMAL},
+      TM0068 = #{record.tm0068,jdbcType=DECIMAL},
+      EC0516 = #{record.ec0516,jdbcType=VARCHAR},
+      EQ0917 = #{record.eq0917,jdbcType=DATE},
+      TM0154 = #{record.tm0154,jdbcType=DECIMAL},
+      TM0155 = #{record.tm0155,jdbcType=DECIMAL},
+      AM0001 = #{record.am0001,jdbcType=DECIMAL},
+      TM0192 = #{record.tm0192,jdbcType=DECIMAL},
+      TM0145 = #{record.tm0145,jdbcType=DECIMAL},
+      TM0033 = #{record.tm0033,jdbcType=DECIMAL},
+      AM0080 = #{record.am0080,jdbcType=DECIMAL},
+      TM0161 = #{record.tm0161,jdbcType=DECIMAL},
+      ID = #{record.id,jdbcType=DECIMAL},
+      ADD_DATE = #{record.addDate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.report.bean.model.edb.BcOrders" >
+    update BC_ORDERS
+    <set >
+      <if test="tc0108 != null" >
+        TC0108 = #{tc0108,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0016Eas != null" >
+        AC0016_EAS = #{ac0016Eas,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0016Edb != null" >
+        AC0016_EDB = #{ac0016Edb,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameAc0016 != null" >
+        OBJNAME_AC0016 = #{objnameAc0016,jdbcType=VARCHAR},
+      </if>
+      <if test="td0423 != null" >
+        TD0423 = #{td0423,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0545 != null" >
+        AD0545 = #{ad0545,jdbcType=VARCHAR},
+      </if>
+      <if test="td0424 != null" >
+        TD0424 = #{td0424,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0358 != null" >
+        TC0358 = #{tc0358,jdbcType=VARCHAR},
+      </if>
+      <if test="ab0009 != null" >
+        AB0009 = #{ab0009,jdbcType=DECIMAL},
+      </if>
+      <if test="ac0573 != null" >
+        AC0573 = #{ac0573,jdbcType=VARCHAR},
+      </if>
+      <if test="aq2046 != null" >
+        AQ2046 = #{aq2046,jdbcType=DATE},
+      </if>
+      <if test="td0421 != null" >
+        TD0421 = #{td0421,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0006 != null" >
+        AD0006 = #{ad0006,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameTc0324 != null" >
+        OBJNAME_TC0324 = #{objnameTc0324,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0527Eas != null" >
+        AD0527_EAS = #{ad0527Eas,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0527Edb != null" >
+        AD0527_EDB = #{ad0527Edb,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameAd0527 != null" >
+        OBJNAME_AD0527 = #{objnameAd0527,jdbcType=VARCHAR},
+      </if>
+      <if test="td0425 != null" >
+        TD0425 = #{td0425,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameAd0006 != null" >
+        OBJNAME_AD0006 = #{objnameAd0006,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0324 != null" >
+        TC0324 = #{tc0324,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0020 != null" >
+        AC0020 = #{ac0020,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0543 != null" >
+        AC0543 = #{ac0543,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0550 != null" >
+        AC0550 = #{ac0550,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0551 != null" >
+        AC0551 = #{ac0551,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0580 != null" >
+        AC0580 = #{ac0580,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0142 != null" >
+        EC0142 = #{ec0142,jdbcType=VARCHAR},
+      </if>
+      <if test="em0945 != null" >
+        EM0945 = #{em0945,jdbcType=DECIMAL},
+      </if>
+      <if test="em09741 != null" >
+        EM0974_1 = #{em09741,jdbcType=DECIMAL},
+      </if>
+      <if test="em0974 != null" >
+        EM0974 = #{em0974,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0021 != null" >
+        TM0021 = #{tm0021,jdbcType=DECIMAL},
+      </if>
+      <if test="ec0141 != null" >
+        EC0141 = #{ec0141,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0514 != null" >
+        EC0514 = #{ec0514,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0521 != null" >
+        EC0521 = #{ec0521,jdbcType=VARCHAR},
+      </if>
+      <if test="eq0722 != null" >
+        EQ0722 = #{eq0722,jdbcType=DATE},
+      </if>
+      <if test="tq0010 != null" >
+        TQ0010 = #{tq0010,jdbcType=DATE},
+      </if>
+      <if test="eq0914 != null" >
+        EQ0914 = #{eq0914,jdbcType=DATE},
+      </if>
+      <if test="aq0001 != null" >
+        AQ0001 = #{aq0001,jdbcType=DATE},
+      </if>
+      <if test="aq2045 != null" >
+        AQ2045 = #{aq2045,jdbcType=DATE},
+      </if>
+      <if test="aq2047 != null" >
+        AQ2047 = #{aq2047,jdbcType=DATE},
+      </if>
+      <if test="tc0114 != null" >
+        TC0114 = #{tc0114,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0359 != null" >
+        TC0359 = #{tc0359,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0572 != null" >
+        AC0572 = #{ac0572,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0575 != null" >
+        AC0575 = #{ac0575,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0370 != null" >
+        TC0370 = #{tc0370,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0578 != null" >
+        AC0578 = #{ac0578,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0576 != null" >
+        AC0576 = #{ac0576,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0003 != null" >
+        AC0003 = #{ac0003,jdbcType=VARCHAR},
+      </if>
+      <if test="aq0007 != null" >
+        AQ0007 = #{aq0007,jdbcType=DATE},
+      </if>
+      <if test="aq2518 != null" >
+        AQ2518 = #{aq2518,jdbcType=DATE},
+      </if>
+      <if test="ec0139Msn != null" >
+        EC0139_MSN = #{ec0139Msn,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0139 != null" >
+        EC0139 = #{ec0139,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameEc0139 != null" >
+        OBJNAME_EC0139 = #{objnameEc0139,jdbcType=VARCHAR},
+      </if>
+      <if test="ad0001Sum != null" >
+        AD0001_SUM = #{ad0001Sum,jdbcType=DECIMAL},
+      </if>
+      <if test="am0023 != null" >
+        AM0023 = #{am0023,jdbcType=DECIMAL},
+      </if>
+      <if test="ab0005 != null" >
+        AB0005 = #{ab0005,jdbcType=DECIMAL},
+      </if>
+      <if test="td3038 != null" >
+        TD3038 = #{td3038,jdbcType=VARCHAR},
+      </if>
+      <if test="tm0034 != null" >
+        TM0034 = #{tm0034,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0068 != null" >
+        TM0068 = #{tm0068,jdbcType=DECIMAL},
+      </if>
+      <if test="ec0516 != null" >
+        EC0516 = #{ec0516,jdbcType=VARCHAR},
+      </if>
+      <if test="eq0917 != null" >
+        EQ0917 = #{eq0917,jdbcType=DATE},
+      </if>
+      <if test="tm0154 != null" >
+        TM0154 = #{tm0154,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0155 != null" >
+        TM0155 = #{tm0155,jdbcType=DECIMAL},
+      </if>
+      <if test="am0001 != null" >
+        AM0001 = #{am0001,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0192 != null" >
+        TM0192 = #{tm0192,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0145 != null" >
+        TM0145 = #{tm0145,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0033 != null" >
+        TM0033 = #{tm0033,jdbcType=DECIMAL},
+      </if>
+      <if test="am0080 != null" >
+        AM0080 = #{am0080,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0161 != null" >
+        TM0161 = #{tm0161,jdbcType=DECIMAL},
+      </if>
+      <if test="id != null" >
+        ID = #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="addDate != null" >
+        ADD_DATE = #{addDate,jdbcType=DATE},
+      </if>
+    </set>
+    where AC0018 = #{ac0018,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.report.bean.model.edb.BcOrders" >
+    update BC_ORDERS
+    set TC0108 = #{tc0108,jdbcType=VARCHAR},
+      AC0016_EAS = #{ac0016Eas,jdbcType=VARCHAR},
+      AC0016_EDB = #{ac0016Edb,jdbcType=VARCHAR},
+      OBJNAME_AC0016 = #{objnameAc0016,jdbcType=VARCHAR},
+      TD0423 = #{td0423,jdbcType=VARCHAR},
+      AD0545 = #{ad0545,jdbcType=VARCHAR},
+      TD0424 = #{td0424,jdbcType=VARCHAR},
+      TC0358 = #{tc0358,jdbcType=VARCHAR},
+      AB0009 = #{ab0009,jdbcType=DECIMAL},
+      AC0573 = #{ac0573,jdbcType=VARCHAR},
+      AQ2046 = #{aq2046,jdbcType=DATE},
+      TD0421 = #{td0421,jdbcType=VARCHAR},
+      AD0006 = #{ad0006,jdbcType=VARCHAR},
+      OBJNAME_TC0324 = #{objnameTc0324,jdbcType=VARCHAR},
+      AD0527_EAS = #{ad0527Eas,jdbcType=VARCHAR},
+      AD0527_EDB = #{ad0527Edb,jdbcType=VARCHAR},
+      OBJNAME_AD0527 = #{objnameAd0527,jdbcType=VARCHAR},
+      TD0425 = #{td0425,jdbcType=VARCHAR},
+      OBJNAME_AD0006 = #{objnameAd0006,jdbcType=VARCHAR},
+      TC0324 = #{tc0324,jdbcType=VARCHAR},
+      AC0020 = #{ac0020,jdbcType=VARCHAR},
+      AC0543 = #{ac0543,jdbcType=VARCHAR},
+      AC0550 = #{ac0550,jdbcType=VARCHAR},
+      AC0551 = #{ac0551,jdbcType=VARCHAR},
+      AC0580 = #{ac0580,jdbcType=VARCHAR},
+      EC0142 = #{ec0142,jdbcType=VARCHAR},
+      EM0945 = #{em0945,jdbcType=DECIMAL},
+      EM0974_1 = #{em09741,jdbcType=DECIMAL},
+      EM0974 = #{em0974,jdbcType=DECIMAL},
+      TM0021 = #{tm0021,jdbcType=DECIMAL},
+      EC0141 = #{ec0141,jdbcType=VARCHAR},
+      EC0514 = #{ec0514,jdbcType=VARCHAR},
+      EC0521 = #{ec0521,jdbcType=VARCHAR},
+      EQ0722 = #{eq0722,jdbcType=DATE},
+      TQ0010 = #{tq0010,jdbcType=DATE},
+      EQ0914 = #{eq0914,jdbcType=DATE},
+      AQ0001 = #{aq0001,jdbcType=DATE},
+      AQ2045 = #{aq2045,jdbcType=DATE},
+      AQ2047 = #{aq2047,jdbcType=DATE},
+      TC0114 = #{tc0114,jdbcType=VARCHAR},
+      TC0359 = #{tc0359,jdbcType=VARCHAR},
+      AC0572 = #{ac0572,jdbcType=VARCHAR},
+      AC0575 = #{ac0575,jdbcType=VARCHAR},
+      TC0370 = #{tc0370,jdbcType=VARCHAR},
+      AC0578 = #{ac0578,jdbcType=VARCHAR},
+      AC0576 = #{ac0576,jdbcType=VARCHAR},
+      AC0003 = #{ac0003,jdbcType=VARCHAR},
+      AQ0007 = #{aq0007,jdbcType=DATE},
+      AQ2518 = #{aq2518,jdbcType=DATE},
+      EC0139_MSN = #{ec0139Msn,jdbcType=VARCHAR},
+      EC0139 = #{ec0139,jdbcType=VARCHAR},
+      OBJNAME_EC0139 = #{objnameEc0139,jdbcType=VARCHAR},
+      AD0001_SUM = #{ad0001Sum,jdbcType=DECIMAL},
+      AM0023 = #{am0023,jdbcType=DECIMAL},
+      AB0005 = #{ab0005,jdbcType=DECIMAL},
+      TD3038 = #{td3038,jdbcType=VARCHAR},
+      TM0034 = #{tm0034,jdbcType=DECIMAL},
+      TM0068 = #{tm0068,jdbcType=DECIMAL},
+      EC0516 = #{ec0516,jdbcType=VARCHAR},
+      EQ0917 = #{eq0917,jdbcType=DATE},
+      TM0154 = #{tm0154,jdbcType=DECIMAL},
+      TM0155 = #{tm0155,jdbcType=DECIMAL},
+      AM0001 = #{am0001,jdbcType=DECIMAL},
+      TM0192 = #{tm0192,jdbcType=DECIMAL},
+      TM0145 = #{tm0145,jdbcType=DECIMAL},
+      TM0033 = #{tm0033,jdbcType=DECIMAL},
+      AM0080 = #{am0080,jdbcType=DECIMAL},
+      TM0161 = #{tm0161,jdbcType=DECIMAL},
+      ID = #{id,jdbcType=DECIMAL},
+      ADD_DATE = #{addDate,jdbcType=DATE}
+    where AC0018 = #{ac0018,jdbcType=VARCHAR}
+  </update>
+</mapper>

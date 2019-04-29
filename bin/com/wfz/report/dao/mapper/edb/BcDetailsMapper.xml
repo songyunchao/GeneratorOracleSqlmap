@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfz.report.dao.mapper.edb.BcDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.wfz.report.bean.model.edb.BcDetails" >
+    <id column="ID_EDB" property="idEdb" jdbcType="VARCHAR" />
+    <result column="AC0018" property="ac0018" jdbcType="VARCHAR" />
+    <result column="TC0494" property="tc0494" jdbcType="VARCHAR" />
+    <result column="TM0138" property="tm0138" jdbcType="DECIMAL" />
+    <result column="TC0013" property="tc0013" jdbcType="VARCHAR" />
+    <result column="TI0156" property="ti0156" jdbcType="DECIMAL" />
+    <result column="AC2037" property="ac2037" jdbcType="VARCHAR" />
+    <result column="OBJNAME_PRODUCT" property="objnameProduct" jdbcType="VARCHAR" />
+    <result column="EC0123" property="ec0123" jdbcType="VARCHAR" />
+    <result column="EC0155" property="ec0155" jdbcType="VARCHAR" />
+    <result column="EI0734" property="ei0734" jdbcType="DECIMAL" />
+    <result column="TB0017" property="tb0017" jdbcType="DECIMAL" />
+    <result column="AM0040" property="am0040" jdbcType="DECIMAL" />
+    <result column="AM0040_SUM" property="am0040Sum" jdbcType="DECIMAL" />
+    <result column="AM0100" property="am0100" jdbcType="DECIMAL" />
+    <result column="TM0117" property="tm0117" jdbcType="DECIMAL" />
+    <result column="TM0118" property="tm0118" jdbcType="DECIMAL" />
+    <result column="AM0024" property="am0024" jdbcType="DECIMAL" />
+    <result column="AD0001" property="ad0001" jdbcType="DECIMAL" />
+    <result column="CUSTOM_ATT_9" property="customAtt9" jdbcType="VARCHAR" />
+    <result column="AM0001_DIVIDE" property="am0001Divide" jdbcType="DECIMAL" />
+    <result column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="ADD_DATE" property="addDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID_EDB, AC0018, TC0494, TM0138, TC0013, TI0156, AC2037, OBJNAME_PRODUCT, EC0123, 
+    EC0155, EI0734, TB0017, AM0040, AM0040_SUM, AM0100, TM0117, TM0118, AM0024, AD0001, 
+    CUSTOM_ATT_9, AM0001_DIVIDE, ID, ADD_DATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wfz.report.bean.model.edb.BcDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from BC_DETAILS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BC_DETAILS
+    where ID_EDB = #{idEdb,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BC_DETAILS
+    where ID_EDB = #{idEdb,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.report.bean.model.edb.BcDetailsExample" >
+    delete from BC_DETAILS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.report.bean.model.edb.BcDetails" >
+    insert into BC_DETAILS (ID_EDB, AC0018, TC0494, 
+      TM0138, TC0013, TI0156, 
+      AC2037, OBJNAME_PRODUCT, EC0123, 
+      EC0155, EI0734, TB0017, 
+      AM0040, AM0040_SUM, AM0100, 
+      TM0117, TM0118, AM0024, 
+      AD0001, CUSTOM_ATT_9, AM0001_DIVIDE, 
+      ID, ADD_DATE)
+    values (#{idEdb,jdbcType=VARCHAR}, #{ac0018,jdbcType=VARCHAR}, #{tc0494,jdbcType=VARCHAR}, 
+      #{tm0138,jdbcType=DECIMAL}, #{tc0013,jdbcType=VARCHAR}, #{ti0156,jdbcType=DECIMAL}, 
+      #{ac2037,jdbcType=VARCHAR}, #{objnameProduct,jdbcType=VARCHAR}, #{ec0123,jdbcType=VARCHAR}, 
+      #{ec0155,jdbcType=VARCHAR}, #{ei0734,jdbcType=DECIMAL}, #{tb0017,jdbcType=DECIMAL}, 
+      #{am0040,jdbcType=DECIMAL}, #{am0040Sum,jdbcType=DECIMAL}, #{am0100,jdbcType=DECIMAL}, 
+      #{tm0117,jdbcType=DECIMAL}, #{tm0118,jdbcType=DECIMAL}, #{am0024,jdbcType=DECIMAL}, 
+      #{ad0001,jdbcType=DECIMAL}, #{customAtt9,jdbcType=VARCHAR}, #{am0001Divide,jdbcType=DECIMAL}, 
+      #{id,jdbcType=DECIMAL}, #{addDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.report.bean.model.edb.BcDetails" >
+    insert into BC_DETAILS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idEdb != null" >
+        ID_EDB,
+      </if>
+      <if test="ac0018 != null" >
+        AC0018,
+      </if>
+      <if test="tc0494 != null" >
+        TC0494,
+      </if>
+      <if test="tm0138 != null" >
+        TM0138,
+      </if>
+      <if test="tc0013 != null" >
+        TC0013,
+      </if>
+      <if test="ti0156 != null" >
+        TI0156,
+      </if>
+      <if test="ac2037 != null" >
+        AC2037,
+      </if>
+      <if test="objnameProduct != null" >
+        OBJNAME_PRODUCT,
+      </if>
+      <if test="ec0123 != null" >
+        EC0123,
+      </if>
+      <if test="ec0155 != null" >
+        EC0155,
+      </if>
+      <if test="ei0734 != null" >
+        EI0734,
+      </if>
+      <if test="tb0017 != null" >
+        TB0017,
+      </if>
+      <if test="am0040 != null" >
+        AM0040,
+      </if>
+      <if test="am0040Sum != null" >
+        AM0040_SUM,
+      </if>
+      <if test="am0100 != null" >
+        AM0100,
+      </if>
+      <if test="tm0117 != null" >
+        TM0117,
+      </if>
+      <if test="tm0118 != null" >
+        TM0118,
+      </if>
+      <if test="am0024 != null" >
+        AM0024,
+      </if>
+      <if test="ad0001 != null" >
+        AD0001,
+      </if>
+      <if test="customAtt9 != null" >
+        CUSTOM_ATT_9,
+      </if>
+      <if test="am0001Divide != null" >
+        AM0001_DIVIDE,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="addDate != null" >
+        ADD_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idEdb != null" >
+        #{idEdb,jdbcType=VARCHAR},
+      </if>
+      <if test="ac0018 != null" >
+        #{ac0018,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0494 != null" >
+        #{tc0494,jdbcType=VARCHAR},
+      </if>
+      <if test="tm0138 != null" >
+        #{tm0138,jdbcType=DECIMAL},
+      </if>
+      <if test="tc0013 != null" >
+        #{tc0013,jdbcType=VARCHAR},
+      </if>
+      <if test="ti0156 != null" >
+        #{ti0156,jdbcType=DECIMAL},
+      </if>
+      <if test="ac2037 != null" >
+        #{ac2037,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameProduct != null" >
+        #{objnameProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0123 != null" >
+        #{ec0123,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0155 != null" >
+        #{ec0155,jdbcType=VARCHAR},
+      </if>
+      <if test="ei0734 != null" >
+        #{ei0734,jdbcType=DECIMAL},
+      </if>
+      <if test="tb0017 != null" >
+        #{tb0017,jdbcType=DECIMAL},
+      </if>
+      <if test="am0040 != null" >
+        #{am0040,jdbcType=DECIMAL},
+      </if>
+      <if test="am0040Sum != null" >
+        #{am0040Sum,jdbcType=DECIMAL},
+      </if>
+      <if test="am0100 != null" >
+        #{am0100,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0117 != null" >
+        #{tm0117,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0118 != null" >
+        #{tm0118,jdbcType=DECIMAL},
+      </if>
+      <if test="am0024 != null" >
+        #{am0024,jdbcType=DECIMAL},
+      </if>
+      <if test="ad0001 != null" >
+        #{ad0001,jdbcType=DECIMAL},
+      </if>
+      <if test="customAtt9 != null" >
+        #{customAtt9,jdbcType=VARCHAR},
+      </if>
+      <if test="am0001Divide != null" >
+        #{am0001Divide,jdbcType=DECIMAL},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="addDate != null" >
+        #{addDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.report.bean.model.edb.BcDetailsExample" resultType="java.lang.Integer" >
+    select count(*) from BC_DETAILS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update BC_DETAILS
+    <set >
+      <if test="record.idEdb != null" >
+        ID_EDB = #{record.idEdb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ac0018 != null" >
+        AC0018 = #{record.ac0018,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tc0494 != null" >
+        TC0494 = #{record.tc0494,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tm0138 != null" >
+        TM0138 = #{record.tm0138,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tc0013 != null" >
+        TC0013 = #{record.tc0013,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ti0156 != null" >
+        TI0156 = #{record.ti0156,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ac2037 != null" >
+        AC2037 = #{record.ac2037,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objnameProduct != null" >
+        OBJNAME_PRODUCT = #{record.objnameProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ec0123 != null" >
+        EC0123 = #{record.ec0123,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ec0155 != null" >
+        EC0155 = #{record.ec0155,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ei0734 != null" >
+        EI0734 = #{record.ei0734,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tb0017 != null" >
+        TB0017 = #{record.tb0017,jdbcType=DECIMAL},
+      </if>
+      <if test="record.am0040 != null" >
+        AM0040 = #{record.am0040,jdbcType=DECIMAL},
+      </if>
+      <if test="record.am0040Sum != null" >
+        AM0040_SUM = #{record.am0040Sum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.am0100 != null" >
+        AM0100 = #{record.am0100,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0117 != null" >
+        TM0117 = #{record.tm0117,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tm0118 != null" >
+        TM0118 = #{record.tm0118,jdbcType=DECIMAL},
+      </if>
+      <if test="record.am0024 != null" >
+        AM0024 = #{record.am0024,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ad0001 != null" >
+        AD0001 = #{record.ad0001,jdbcType=DECIMAL},
+      </if>
+      <if test="record.customAtt9 != null" >
+        CUSTOM_ATT_9 = #{record.customAtt9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.am0001Divide != null" >
+        AM0001_DIVIDE = #{record.am0001Divide,jdbcType=DECIMAL},
+      </if>
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addDate != null" >
+        ADD_DATE = #{record.addDate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update BC_DETAILS
+    set ID_EDB = #{record.idEdb,jdbcType=VARCHAR},
+      AC0018 = #{record.ac0018,jdbcType=VARCHAR},
+      TC0494 = #{record.tc0494,jdbcType=VARCHAR},
+      TM0138 = #{record.tm0138,jdbcType=DECIMAL},
+      TC0013 = #{record.tc0013,jdbcType=VARCHAR},
+      TI0156 = #{record.ti0156,jdbcType=DECIMAL},
+      AC2037 = #{record.ac2037,jdbcType=VARCHAR},
+      OBJNAME_PRODUCT = #{record.objnameProduct,jdbcType=VARCHAR},
+      EC0123 = #{record.ec0123,jdbcType=VARCHAR},
+      EC0155 = #{record.ec0155,jdbcType=VARCHAR},
+      EI0734 = #{record.ei0734,jdbcType=DECIMAL},
+      TB0017 = #{record.tb0017,jdbcType=DECIMAL},
+      AM0040 = #{record.am0040,jdbcType=DECIMAL},
+      AM0040_SUM = #{record.am0040Sum,jdbcType=DECIMAL},
+      AM0100 = #{record.am0100,jdbcType=DECIMAL},
+      TM0117 = #{record.tm0117,jdbcType=DECIMAL},
+      TM0118 = #{record.tm0118,jdbcType=DECIMAL},
+      AM0024 = #{record.am0024,jdbcType=DECIMAL},
+      AD0001 = #{record.ad0001,jdbcType=DECIMAL},
+      CUSTOM_ATT_9 = #{record.customAtt9,jdbcType=VARCHAR},
+      AM0001_DIVIDE = #{record.am0001Divide,jdbcType=DECIMAL},
+      ID = #{record.id,jdbcType=DECIMAL},
+      ADD_DATE = #{record.addDate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.report.bean.model.edb.BcDetails" >
+    update BC_DETAILS
+    <set >
+      <if test="ac0018 != null" >
+        AC0018 = #{ac0018,jdbcType=VARCHAR},
+      </if>
+      <if test="tc0494 != null" >
+        TC0494 = #{tc0494,jdbcType=VARCHAR},
+      </if>
+      <if test="tm0138 != null" >
+        TM0138 = #{tm0138,jdbcType=DECIMAL},
+      </if>
+      <if test="tc0013 != null" >
+        TC0013 = #{tc0013,jdbcType=VARCHAR},
+      </if>
+      <if test="ti0156 != null" >
+        TI0156 = #{ti0156,jdbcType=DECIMAL},
+      </if>
+      <if test="ac2037 != null" >
+        AC2037 = #{ac2037,jdbcType=VARCHAR},
+      </if>
+      <if test="objnameProduct != null" >
+        OBJNAME_PRODUCT = #{objnameProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0123 != null" >
+        EC0123 = #{ec0123,jdbcType=VARCHAR},
+      </if>
+      <if test="ec0155 != null" >
+        EC0155 = #{ec0155,jdbcType=VARCHAR},
+      </if>
+      <if test="ei0734 != null" >
+        EI0734 = #{ei0734,jdbcType=DECIMAL},
+      </if>
+      <if test="tb0017 != null" >
+        TB0017 = #{tb0017,jdbcType=DECIMAL},
+      </if>
+      <if test="am0040 != null" >
+        AM0040 = #{am0040,jdbcType=DECIMAL},
+      </if>
+      <if test="am0040Sum != null" >
+        AM0040_SUM = #{am0040Sum,jdbcType=DECIMAL},
+      </if>
+      <if test="am0100 != null" >
+        AM0100 = #{am0100,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0117 != null" >
+        TM0117 = #{tm0117,jdbcType=DECIMAL},
+      </if>
+      <if test="tm0118 != null" >
+        TM0118 = #{tm0118,jdbcType=DECIMAL},
+      </if>
+      <if test="am0024 != null" >
+        AM0024 = #{am0024,jdbcType=DECIMAL},
+      </if>
+      <if test="ad0001 != null" >
+        AD0001 = #{ad0001,jdbcType=DECIMAL},
+      </if>
+      <if test="customAtt9 != null" >
+        CUSTOM_ATT_9 = #{customAtt9,jdbcType=VARCHAR},
+      </if>
+      <if test="am0001Divide != null" >
+        AM0001_DIVIDE = #{am0001Divide,jdbcType=DECIMAL},
+      </if>
+      <if test="id != null" >
+        ID = #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="addDate != null" >
+        ADD_DATE = #{addDate,jdbcType=DATE},
+      </if>
+    </set>
+    where ID_EDB = #{idEdb,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.report.bean.model.edb.BcDetails" >
+    update BC_DETAILS
+    set AC0018 = #{ac0018,jdbcType=VARCHAR},
+      TC0494 = #{tc0494,jdbcType=VARCHAR},
+      TM0138 = #{tm0138,jdbcType=DECIMAL},
+      TC0013 = #{tc0013,jdbcType=VARCHAR},
+      TI0156 = #{ti0156,jdbcType=DECIMAL},
+      AC2037 = #{ac2037,jdbcType=VARCHAR},
+      OBJNAME_PRODUCT = #{objnameProduct,jdbcType=VARCHAR},
+      EC0123 = #{ec0123,jdbcType=VARCHAR},
+      EC0155 = #{ec0155,jdbcType=VARCHAR},
+      EI0734 = #{ei0734,jdbcType=DECIMAL},
+      TB0017 = #{tb0017,jdbcType=DECIMAL},
+      AM0040 = #{am0040,jdbcType=DECIMAL},
+      AM0040_SUM = #{am0040Sum,jdbcType=DECIMAL},
+      AM0100 = #{am0100,jdbcType=DECIMAL},
+      TM0117 = #{tm0117,jdbcType=DECIMAL},
+      TM0118 = #{tm0118,jdbcType=DECIMAL},
+      AM0024 = #{am0024,jdbcType=DECIMAL},
+      AD0001 = #{ad0001,jdbcType=DECIMAL},
+      CUSTOM_ATT_9 = #{customAtt9,jdbcType=VARCHAR},
+      AM0001_DIVIDE = #{am0001Divide,jdbcType=DECIMAL},
+      ID = #{id,jdbcType=DECIMAL},
+      ADD_DATE = #{addDate,jdbcType=DATE}
+    where ID_EDB = #{idEdb,jdbcType=VARCHAR}
+  </update>
+</mapper>

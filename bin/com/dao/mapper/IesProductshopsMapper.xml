@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.mapper.IesProductshopsMapper" >
+  <resultMap id="BaseResultMap" type="com.domain.model.IesProductshops" >
+    <id column="ProductShopID" property="productshopid" jdbcType="VARCHAR" />
+    <result column="CompanyCode" property="companycode" jdbcType="VARCHAR" />
+    <result column="StockCode" property="stockcode" jdbcType="VARCHAR" />
+    <result column="StockName" property="stockname" jdbcType="VARCHAR" />
+    <result column="CategoryID" property="categoryid" jdbcType="VARCHAR" />
+    <result column="CategoryName" property="categoryname" jdbcType="VARCHAR" />
+    <result column="ProductID" property="productid" jdbcType="VARCHAR" />
+    <result column="BrandID" property="brandid" jdbcType="VARCHAR" />
+    <result column="ShopID" property="shopid" jdbcType="VARCHAR" />
+    <result column="ShopName" property="shopname" jdbcType="VARCHAR" />
+    <result column="MaterialCode" property="materialcode" jdbcType="VARCHAR" />
+    <result column="NumID" property="numid" jdbcType="VARCHAR" />
+    <result column="Title" property="title" jdbcType="VARCHAR" />
+    <result column="PublishStatus" property="publishstatus" jdbcType="SMALLINT" />
+    <result column="PubCName" property="pubcname" jdbcType="VARCHAR" />
+    <result column="PubDateTime" property="pubdatetime" jdbcType="TIMESTAMP" />
+    <result column="IsShelf" property="isshelf" jdbcType="SMALLINT" />
+    <result column="ShelfCName" property="shelfcname" jdbcType="VARCHAR" />
+    <result column="ShelfDateTime" property="shelfdatetime" jdbcType="TIMESTAMP" />
+    <result column="IsEnabled" property="isenabled" jdbcType="SMALLINT" />
+    <result column="IsRecommend" property="isrecommend" jdbcType="SMALLINT" />
+    <result column="ApproveStatus" property="approvestatus" jdbcType="SMALLINT" />
+    <result column="DownShelfDateTime" property="downshelfdatetime" jdbcType="TIMESTAMP" />
+    <result column="PropertyNames" property="propertynames" jdbcType="VARCHAR" />
+    <result column="PropertyValues" property="propertyvalues" jdbcType="VARCHAR" />
+    <result column="InputPids" property="inputpids" jdbcType="VARCHAR" />
+    <result column="InputPidValues" property="inputpidvalues" jdbcType="VARCHAR" />
+    <result column="SubStock" property="substock" jdbcType="SMALLINT" />
+    <result column="IsNew" property="isnew" jdbcType="SMALLINT" />
+    <result column="GoodsUrl" property="goodsurl" jdbcType="VARCHAR" />
+    <result column="EnabledCName" property="enabledcname" jdbcType="VARCHAR" />
+    <result column="EnabledDateTime" property="enableddatetime" jdbcType="TIMESTAMP" />
+    <result column="AddCName" property="addcname" jdbcType="VARCHAR" />
+    <result column="AddDateTime" property="adddatetime" jdbcType="TIMESTAMP" />
+    <result column="ModifyCName" property="modifycname" jdbcType="VARCHAR" />
+    <result column="ModifyDateTime" property="modifydatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ProductShopID, CompanyCode, StockCode, StockName, CategoryID, CategoryName, ProductID, 
+    BrandID, ShopID, ShopName, MaterialCode, NumID, Title, PublishStatus, PubCName, PubDateTime, 
+    IsShelf, ShelfCName, ShelfDateTime, IsEnabled, IsRecommend, ApproveStatus, DownShelfDateTime, 
+    PropertyNames, PropertyValues, InputPids, InputPidValues, SubStock, IsNew, GoodsUrl, 
+    EnabledCName, EnabledDateTime, AddCName, AddDateTime, ModifyCName, ModifyDateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IES_ProductShops
+    where ProductShopID = #{productshopid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IES_ProductShops
+    where ProductShopID = #{productshopid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.domain.model.IesProductshops" >
+    insert into IES_ProductShops (ProductShopID, CompanyCode, StockCode, 
+      StockName, CategoryID, CategoryName, 
+      ProductID, BrandID, ShopID, 
+      ShopName, MaterialCode, NumID, 
+      Title, PublishStatus, PubCName, 
+      PubDateTime, IsShelf, ShelfCName, 
+      ShelfDateTime, IsEnabled, IsRecommend, 
+      ApproveStatus, DownShelfDateTime, PropertyNames, 
+      PropertyValues, InputPids, InputPidValues, 
+      SubStock, IsNew, GoodsUrl, 
+      EnabledCName, EnabledDateTime, AddCName, 
+      AddDateTime, ModifyCName, ModifyDateTime
+      )
+    values (#{productshopid,jdbcType=VARCHAR}, #{companycode,jdbcType=VARCHAR}, #{stockcode,jdbcType=VARCHAR}, 
+      #{stockname,jdbcType=VARCHAR}, #{categoryid,jdbcType=VARCHAR}, #{categoryname,jdbcType=VARCHAR}, 
+      #{productid,jdbcType=VARCHAR}, #{brandid,jdbcType=VARCHAR}, #{shopid,jdbcType=VARCHAR}, 
+      #{shopname,jdbcType=VARCHAR}, #{materialcode,jdbcType=VARCHAR}, #{numid,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{publishstatus,jdbcType=SMALLINT}, #{pubcname,jdbcType=VARCHAR}, 
+      #{pubdatetime,jdbcType=TIMESTAMP}, #{isshelf,jdbcType=SMALLINT}, #{shelfcname,jdbcType=VARCHAR}, 
+      #{shelfdatetime,jdbcType=TIMESTAMP}, #{isenabled,jdbcType=SMALLINT}, #{isrecommend,jdbcType=SMALLINT}, 
+      #{approvestatus,jdbcType=SMALLINT}, #{downshelfdatetime,jdbcType=TIMESTAMP}, #{propertynames,jdbcType=VARCHAR}, 
+      #{propertyvalues,jdbcType=VARCHAR}, #{inputpids,jdbcType=VARCHAR}, #{inputpidvalues,jdbcType=VARCHAR}, 
+      #{substock,jdbcType=SMALLINT}, #{isnew,jdbcType=SMALLINT}, #{goodsurl,jdbcType=VARCHAR}, 
+      #{enabledcname,jdbcType=VARCHAR}, #{enableddatetime,jdbcType=TIMESTAMP}, #{addcname,jdbcType=VARCHAR}, 
+      #{adddatetime,jdbcType=TIMESTAMP}, #{modifycname,jdbcType=VARCHAR}, #{modifydatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.model.IesProductshops" >
+    insert into IES_ProductShops
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productshopid != null" >
+        ProductShopID,
+      </if>
+      <if test="companycode != null" >
+        CompanyCode,
+      </if>
+      <if test="stockcode != null" >
+        StockCode,
+      </if>
+      <if test="stockname != null" >
+        StockName,
+      </if>
+      <if test="categoryid != null" >
+        CategoryID,
+      </if>
+      <if test="categoryname != null" >
+        CategoryName,
+      </if>
+      <if test="productid != null" >
+        ProductID,
+      </if>
+      <if test="brandid != null" >
+        BrandID,
+      </if>
+      <if test="shopid != null" >
+        ShopID,
+      </if>
+      <if test="shopname != null" >
+        ShopName,
+      </if>
+      <if test="materialcode != null" >
+        MaterialCode,
+      </if>
+      <if test="numid != null" >
+        NumID,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="publishstatus != null" >
+        PublishStatus,
+      </if>
+      <if test="pubcname != null" >
+        PubCName,
+      </if>
+      <if test="pubdatetime != null" >
+        PubDateTime,
+      </if>
+      <if test="isshelf != null" >
+        IsShelf,
+      </if>
+      <if test="shelfcname != null" >
+        ShelfCName,
+      </if>
+      <if test="shelfdatetime != null" >
+        ShelfDateTime,
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled,
+      </if>
+      <if test="isrecommend != null" >
+        IsRecommend,
+      </if>
+      <if test="approvestatus != null" >
+        ApproveStatus,
+      </if>
+      <if test="downshelfdatetime != null" >
+        DownShelfDateTime,
+      </if>
+      <if test="propertynames != null" >
+        PropertyNames,
+      </if>
+      <if test="propertyvalues != null" >
+        PropertyValues,
+      </if>
+      <if test="inputpids != null" >
+        InputPids,
+      </if>
+      <if test="inputpidvalues != null" >
+        InputPidValues,
+      </if>
+      <if test="substock != null" >
+        SubStock,
+      </if>
+      <if test="isnew != null" >
+        IsNew,
+      </if>
+      <if test="goodsurl != null" >
+        GoodsUrl,
+      </if>
+      <if test="enabledcname != null" >
+        EnabledCName,
+      </if>
+      <if test="enableddatetime != null" >
+        EnabledDateTime,
+      </if>
+      <if test="addcname != null" >
+        AddCName,
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime,
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName,
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productshopid != null" >
+        #{productshopid,jdbcType=VARCHAR},
+      </if>
+      <if test="companycode != null" >
+        #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null" >
+        #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandid != null" >
+        #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopname != null" >
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="materialcode != null" >
+        #{materialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="numid != null" >
+        #{numid,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="publishstatus != null" >
+        #{publishstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="pubcname != null" >
+        #{pubcname,jdbcType=VARCHAR},
+      </if>
+      <if test="pubdatetime != null" >
+        #{pubdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isshelf != null" >
+        #{isshelf,jdbcType=SMALLINT},
+      </if>
+      <if test="shelfcname != null" >
+        #{shelfcname,jdbcType=VARCHAR},
+      </if>
+      <if test="shelfdatetime != null" >
+        #{shelfdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isenabled != null" >
+        #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="isrecommend != null" >
+        #{isrecommend,jdbcType=SMALLINT},
+      </if>
+      <if test="approvestatus != null" >
+        #{approvestatus,jdbcType=SMALLINT},
+      </if>
+      <if test="downshelfdatetime != null" >
+        #{downshelfdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertynames != null" >
+        #{propertynames,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyvalues != null" >
+        #{propertyvalues,jdbcType=VARCHAR},
+      </if>
+      <if test="inputpids != null" >
+        #{inputpids,jdbcType=VARCHAR},
+      </if>
+      <if test="inputpidvalues != null" >
+        #{inputpidvalues,jdbcType=VARCHAR},
+      </if>
+      <if test="substock != null" >
+        #{substock,jdbcType=SMALLINT},
+      </if>
+      <if test="isnew != null" >
+        #{isnew,jdbcType=SMALLINT},
+      </if>
+      <if test="goodsurl != null" >
+        #{goodsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="enabledcname != null" >
+        #{enabledcname,jdbcType=VARCHAR},
+      </if>
+      <if test="enableddatetime != null" >
+        #{enableddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addcname != null" >
+        #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.model.IesProductshops" >
+    update IES_ProductShops
+    <set >
+      <if test="companycode != null" >
+        CompanyCode = #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        StockCode = #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        StockName = #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        CategoryID = #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null" >
+        CategoryName = #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        ProductID = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandid != null" >
+        BrandID = #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopid != null" >
+        ShopID = #{shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopname != null" >
+        ShopName = #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="materialcode != null" >
+        MaterialCode = #{materialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="numid != null" >
+        NumID = #{numid,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="publishstatus != null" >
+        PublishStatus = #{publishstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="pubcname != null" >
+        PubCName = #{pubcname,jdbcType=VARCHAR},
+      </if>
+      <if test="pubdatetime != null" >
+        PubDateTime = #{pubdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isshelf != null" >
+        IsShelf = #{isshelf,jdbcType=SMALLINT},
+      </if>
+      <if test="shelfcname != null" >
+        ShelfCName = #{shelfcname,jdbcType=VARCHAR},
+      </if>
+      <if test="shelfdatetime != null" >
+        ShelfDateTime = #{shelfdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="isrecommend != null" >
+        IsRecommend = #{isrecommend,jdbcType=SMALLINT},
+      </if>
+      <if test="approvestatus != null" >
+        ApproveStatus = #{approvestatus,jdbcType=SMALLINT},
+      </if>
+      <if test="downshelfdatetime != null" >
+        DownShelfDateTime = #{downshelfdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertynames != null" >
+        PropertyNames = #{propertynames,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyvalues != null" >
+        PropertyValues = #{propertyvalues,jdbcType=VARCHAR},
+      </if>
+      <if test="inputpids != null" >
+        InputPids = #{inputpids,jdbcType=VARCHAR},
+      </if>
+      <if test="inputpidvalues != null" >
+        InputPidValues = #{inputpidvalues,jdbcType=VARCHAR},
+      </if>
+      <if test="substock != null" >
+        SubStock = #{substock,jdbcType=SMALLINT},
+      </if>
+      <if test="isnew != null" >
+        IsNew = #{isnew,jdbcType=SMALLINT},
+      </if>
+      <if test="goodsurl != null" >
+        GoodsUrl = #{goodsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="enabledcname != null" >
+        EnabledCName = #{enabledcname,jdbcType=VARCHAR},
+      </if>
+      <if test="enableddatetime != null" >
+        EnabledDateTime = #{enableddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addcname != null" >
+        AddCName = #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ProductShopID = #{productshopid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.model.IesProductshops" >
+    update IES_ProductShops
+    set CompanyCode = #{companycode,jdbcType=VARCHAR},
+      StockCode = #{stockcode,jdbcType=VARCHAR},
+      StockName = #{stockname,jdbcType=VARCHAR},
+      CategoryID = #{categoryid,jdbcType=VARCHAR},
+      CategoryName = #{categoryname,jdbcType=VARCHAR},
+      ProductID = #{productid,jdbcType=VARCHAR},
+      BrandID = #{brandid,jdbcType=VARCHAR},
+      ShopID = #{shopid,jdbcType=VARCHAR},
+      ShopName = #{shopname,jdbcType=VARCHAR},
+      MaterialCode = #{materialcode,jdbcType=VARCHAR},
+      NumID = #{numid,jdbcType=VARCHAR},
+      Title = #{title,jdbcType=VARCHAR},
+      PublishStatus = #{publishstatus,jdbcType=SMALLINT},
+      PubCName = #{pubcname,jdbcType=VARCHAR},
+      PubDateTime = #{pubdatetime,jdbcType=TIMESTAMP},
+      IsShelf = #{isshelf,jdbcType=SMALLINT},
+      ShelfCName = #{shelfcname,jdbcType=VARCHAR},
+      ShelfDateTime = #{shelfdatetime,jdbcType=TIMESTAMP},
+      IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      IsRecommend = #{isrecommend,jdbcType=SMALLINT},
+      ApproveStatus = #{approvestatus,jdbcType=SMALLINT},
+      DownShelfDateTime = #{downshelfdatetime,jdbcType=TIMESTAMP},
+      PropertyNames = #{propertynames,jdbcType=VARCHAR},
+      PropertyValues = #{propertyvalues,jdbcType=VARCHAR},
+      InputPids = #{inputpids,jdbcType=VARCHAR},
+      InputPidValues = #{inputpidvalues,jdbcType=VARCHAR},
+      SubStock = #{substock,jdbcType=SMALLINT},
+      IsNew = #{isnew,jdbcType=SMALLINT},
+      GoodsUrl = #{goodsurl,jdbcType=VARCHAR},
+      EnabledCName = #{enabledcname,jdbcType=VARCHAR},
+      EnabledDateTime = #{enableddatetime,jdbcType=TIMESTAMP},
+      AddCName = #{addcname,jdbcType=VARCHAR},
+      AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP}
+    where ProductShopID = #{productshopid,jdbcType=VARCHAR}
+  </update>
+</mapper>

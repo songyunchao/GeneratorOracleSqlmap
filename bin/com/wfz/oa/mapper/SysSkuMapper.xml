@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfz.oa.mapper.SysSkuMapper" >
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.SysSku" >
+    <id column="sku_id" property="skuId" jdbcType="VARCHAR" />
+    <result column="plat_sku_id" property="platSkuId" jdbcType="VARCHAR" />
+    <result column="plat_sku_category_id" property="platSkuCategoryId" jdbcType="VARCHAR" />
+    <result column="plat_sku_category_name" property="platSkuCategoryName" jdbcType="VARCHAR" />
+    <result column="plat_sku_name" property="platSkuName" jdbcType="VARCHAR" />
+    <result column="pos_sku_id" property="posSkuId" jdbcType="VARCHAR" />
+    <result column="pos_sku_name" property="posSkuName" jdbcType="VARCHAR" />
+    <result column="pos_sku_category_id" property="posSkuCategoryId" jdbcType="VARCHAR" />
+    <result column="plat_code" property="platCode" jdbcType="VARCHAR" />
+    <result column="created_name" property="createdName" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_name" property="updatedName" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sku_id, plat_sku_id, plat_sku_category_id, plat_sku_category_name, plat_sku_name, 
+    pos_sku_id, pos_sku_name, pos_sku_category_id, plat_code, created_name, created_time, 
+    updated_name, updated_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wfz.oa.pojo.SysSkuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_sku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_sku
+    where sku_id = #{skuId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_sku
+    where sku_id = #{skuId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.SysSkuExample" >
+    delete from sys_sku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.SysSku" >
+    insert into sys_sku (sku_id, plat_sku_id, plat_sku_category_id, 
+      plat_sku_category_name, plat_sku_name, pos_sku_id, 
+      pos_sku_name, pos_sku_category_id, plat_code, 
+      created_name, created_time, updated_name, 
+      updated_time)
+    values (#{skuId,jdbcType=VARCHAR}, #{platSkuId,jdbcType=VARCHAR}, #{platSkuCategoryId,jdbcType=VARCHAR}, 
+      #{platSkuCategoryName,jdbcType=VARCHAR}, #{platSkuName,jdbcType=VARCHAR}, #{posSkuId,jdbcType=VARCHAR}, 
+      #{posSkuName,jdbcType=VARCHAR}, #{posSkuCategoryId,jdbcType=VARCHAR}, #{platCode,jdbcType=VARCHAR}, 
+      #{createdName,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedName,jdbcType=VARCHAR}, 
+      #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.SysSku" >
+    insert into sys_sku
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="platSkuId != null" >
+        plat_sku_id,
+      </if>
+      <if test="platSkuCategoryId != null" >
+        plat_sku_category_id,
+      </if>
+      <if test="platSkuCategoryName != null" >
+        plat_sku_category_name,
+      </if>
+      <if test="platSkuName != null" >
+        plat_sku_name,
+      </if>
+      <if test="posSkuId != null" >
+        pos_sku_id,
+      </if>
+      <if test="posSkuName != null" >
+        pos_sku_name,
+      </if>
+      <if test="posSkuCategoryId != null" >
+        pos_sku_category_id,
+      </if>
+      <if test="platCode != null" >
+        plat_code,
+      </if>
+      <if test="createdName != null" >
+        created_name,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updatedName != null" >
+        updated_name,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skuId != null" >
+        #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="platSkuId != null" >
+        #{platSkuId,jdbcType=VARCHAR},
+      </if>
+      <if test="platSkuCategoryId != null" >
+        #{platSkuCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="platSkuCategoryName != null" >
+        #{platSkuCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="platSkuName != null" >
+        #{platSkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="posSkuId != null" >
+        #{posSkuId,jdbcType=VARCHAR},
+      </if>
+      <if test="posSkuName != null" >
+        #{posSkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="posSkuCategoryId != null" >
+        #{posSkuCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="platCode != null" >
+        #{platCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdName != null" >
+        #{createdName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedName != null" >
+        #{updatedName,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.SysSkuExample" resultType="java.lang.Integer" >
+    select count(*) from sys_sku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_sku
+    <set >
+      <if test="record.skuId != null" >
+        sku_id = #{record.skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platSkuId != null" >
+        plat_sku_id = #{record.platSkuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platSkuCategoryId != null" >
+        plat_sku_category_id = #{record.platSkuCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platSkuCategoryName != null" >
+        plat_sku_category_name = #{record.platSkuCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platSkuName != null" >
+        plat_sku_name = #{record.platSkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.posSkuId != null" >
+        pos_sku_id = #{record.posSkuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.posSkuName != null" >
+        pos_sku_name = #{record.posSkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.posSkuCategoryId != null" >
+        pos_sku_category_id = #{record.posSkuCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platCode != null" >
+        plat_code = #{record.platCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdName != null" >
+        created_name = #{record.createdName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null" >
+        created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedName != null" >
+        updated_name = #{record.updatedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedTime != null" >
+        updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_sku
+    set sku_id = #{record.skuId,jdbcType=VARCHAR},
+      plat_sku_id = #{record.platSkuId,jdbcType=VARCHAR},
+      plat_sku_category_id = #{record.platSkuCategoryId,jdbcType=VARCHAR},
+      plat_sku_category_name = #{record.platSkuCategoryName,jdbcType=VARCHAR},
+      plat_sku_name = #{record.platSkuName,jdbcType=VARCHAR},
+      pos_sku_id = #{record.posSkuId,jdbcType=VARCHAR},
+      pos_sku_name = #{record.posSkuName,jdbcType=VARCHAR},
+      pos_sku_category_id = #{record.posSkuCategoryId,jdbcType=VARCHAR},
+      plat_code = #{record.platCode,jdbcType=VARCHAR},
+      created_name = #{record.createdName,jdbcType=VARCHAR},
+      created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      updated_name = #{record.updatedName,jdbcType=VARCHAR},
+      updated_time = #{record.updatedTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.SysSku" >
+    update sys_sku
+    <set >
+      <if test="platSkuId != null" >
+        plat_sku_id = #{platSkuId,jdbcType=VARCHAR},
+      </if>
+      <if test="platSkuCategoryId != null" >
+        plat_sku_category_id = #{platSkuCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="platSkuCategoryName != null" >
+        plat_sku_category_name = #{platSkuCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="platSkuName != null" >
+        plat_sku_name = #{platSkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="posSkuId != null" >
+        pos_sku_id = #{posSkuId,jdbcType=VARCHAR},
+      </if>
+      <if test="posSkuName != null" >
+        pos_sku_name = #{posSkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="posSkuCategoryId != null" >
+        pos_sku_category_id = #{posSkuCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="platCode != null" >
+        plat_code = #{platCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdName != null" >
+        created_name = #{createdName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedName != null" >
+        updated_name = #{updatedName,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sku_id = #{skuId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.SysSku" >
+    update sys_sku
+    set plat_sku_id = #{platSkuId,jdbcType=VARCHAR},
+      plat_sku_category_id = #{platSkuCategoryId,jdbcType=VARCHAR},
+      plat_sku_category_name = #{platSkuCategoryName,jdbcType=VARCHAR},
+      plat_sku_name = #{platSkuName,jdbcType=VARCHAR},
+      pos_sku_id = #{posSkuId,jdbcType=VARCHAR},
+      pos_sku_name = #{posSkuName,jdbcType=VARCHAR},
+      pos_sku_category_id = #{posSkuCategoryId,jdbcType=VARCHAR},
+      plat_code = #{platCode,jdbcType=VARCHAR},
+      created_name = #{createdName,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_name = #{updatedName,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where sku_id = #{skuId,jdbcType=VARCHAR}
+  </update>
+</mapper>

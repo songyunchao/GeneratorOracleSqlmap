@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funtl.leesite.dao.payment.PaymentRecordMapper">
+  <resultMap id="BaseResultMap" type="com.funtl.leesite.dao.payment.PaymentRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="third_batch_no" jdbcType="VARCHAR" property="thirdBatchNo" />
+    <result column="pay_type" jdbcType="INTEGER" property="payType" />
+    <result column="payable_money" jdbcType="DECIMAL" property="payableMoney" />
+    <result column="pay_money" jdbcType="DECIMAL" property="payMoney" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="create_by" jdbcType="INTEGER" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, third_batch_no, pay_type, payable_money, pay_money, pay_time, create_by, 
+    create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from payment_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from payment_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.funtl.leesite.dao.payment.PaymentRecord">
+    insert into payment_record (id, order_no, third_batch_no, 
+      pay_type, payable_money, pay_money, 
+      pay_time, create_by, create_date, 
+      update_date)
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{thirdBatchNo,jdbcType=VARCHAR}, 
+      #{payType,jdbcType=INTEGER}, #{payableMoney,jdbcType=DECIMAL}, #{payMoney,jdbcType=DECIMAL}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.funtl.leesite.dao.payment.PaymentRecord">
+    insert into payment_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="thirdBatchNo != null">
+        third_batch_no,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="payableMoney != null">
+        payable_money,
+      </if>
+      <if test="payMoney != null">
+        pay_money,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdBatchNo != null">
+        #{thirdBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payableMoney != null">
+        #{payableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMoney != null">
+        #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.funtl.leesite.dao.payment.PaymentRecord">
+    update payment_record
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdBatchNo != null">
+        third_batch_no = #{thirdBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payableMoney != null">
+        payable_money = #{payableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMoney != null">
+        pay_money = #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.funtl.leesite.dao.payment.PaymentRecord">
+    update payment_record
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      third_batch_no = #{thirdBatchNo,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=INTEGER},
+      payable_money = #{payableMoney,jdbcType=DECIMAL},
+      pay_money = #{payMoney,jdbcType=DECIMAL},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.funtl.leesite.dao.payment.PaymentRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="third_batch_no" jdbcType="VARCHAR" property="thirdBatchNo" />
+    <result column="pay_type" jdbcType="INTEGER" property="payType" />
+    <result column="payable_money" jdbcType="DECIMAL" property="payableMoney" />
+    <result column="pay_money" jdbcType="DECIMAL" property="payMoney" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="create_by" jdbcType="INTEGER" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, third_batch_no, pay_type, payable_money, pay_money, pay_time, create_by, 
+    create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from payment_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from payment_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.funtl.leesite.dao.payment.PaymentRecord">
+    insert into payment_record (id, order_no, third_batch_no, 
+      pay_type, payable_money, pay_money, 
+      pay_time, create_by, create_date, 
+      update_date)
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{thirdBatchNo,jdbcType=VARCHAR}, 
+      #{payType,jdbcType=INTEGER}, #{payableMoney,jdbcType=DECIMAL}, #{payMoney,jdbcType=DECIMAL}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.funtl.leesite.dao.payment.PaymentRecord">
+    insert into payment_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="thirdBatchNo != null">
+        third_batch_no,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="payableMoney != null">
+        payable_money,
+      </if>
+      <if test="payMoney != null">
+        pay_money,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdBatchNo != null">
+        #{thirdBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payableMoney != null">
+        #{payableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMoney != null">
+        #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.funtl.leesite.dao.payment.PaymentRecord">
+    update payment_record
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdBatchNo != null">
+        third_batch_no = #{thirdBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payableMoney != null">
+        payable_money = #{payableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMoney != null">
+        pay_money = #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.funtl.leesite.dao.payment.PaymentRecord">
+    update payment_record
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      third_batch_no = #{thirdBatchNo,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=INTEGER},
+      payable_money = #{payableMoney,jdbcType=DECIMAL},
+      pay_money = #{payMoney,jdbcType=DECIMAL},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

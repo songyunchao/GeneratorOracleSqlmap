@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fsun.dao.mapper.BusTakeMapper" >
+  <resultMap id="BaseResultMap" type="com.fsun.domain.model.BusTake" >
+    <id column="take_id" property="takeId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="buyer_id" property="buyerId" jdbcType="VARCHAR" />
+    <result column="buyer_name" property="buyerName" jdbcType="VARCHAR" />
+    <result column="take_name" property="takeName" jdbcType="VARCHAR" />
+    <result column="seller_id" property="sellerId" jdbcType="VARCHAR" />
+    <result column="seller_name" property="sellerName" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="VARCHAR" />
+    <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+    <result column="print_count" property="printCount" jdbcType="INTEGER" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="take_status" property="takeStatus" jdbcType="CHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="created_name" property="createdName" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="updated_name" property="updatedName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    take_id, order_id, buyer_id, buyer_name, take_name, seller_id, seller_name, shop_id, 
+    shop_name, print_count, memo, take_status, created_time, created_name, updated_time, 
+    updated_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bus_take
+    where take_id = #{takeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bus_take
+    where take_id = #{takeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fsun.domain.model.BusTake" >
+    insert into bus_take (take_id, order_id, buyer_id, 
+      buyer_name, take_name, seller_id, 
+      seller_name, shop_id, shop_name, 
+      print_count, memo, take_status, 
+      created_time, created_name, updated_time, 
+      updated_name)
+    values (#{takeId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{buyerId,jdbcType=VARCHAR}, 
+      #{buyerName,jdbcType=VARCHAR}, #{takeName,jdbcType=VARCHAR}, #{sellerId,jdbcType=VARCHAR}, 
+      #{sellerName,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, 
+      #{printCount,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, #{takeStatus,jdbcType=CHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{createdName,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}, 
+      #{updatedName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fsun.domain.model.BusTake" >
+    insert into bus_take
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="takeId != null" >
+        take_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="buyerName != null" >
+        buyer_name,
+      </if>
+      <if test="takeName != null" >
+        take_name,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="sellerName != null" >
+        seller_name,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="shopName != null" >
+        shop_name,
+      </if>
+      <if test="printCount != null" >
+        print_count,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="takeStatus != null" >
+        take_status,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="createdName != null" >
+        created_name,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="updatedName != null" >
+        updated_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="takeId != null" >
+        #{takeId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerName != null" >
+        #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="takeName != null" >
+        #{takeName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerName != null" >
+        #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="printCount != null" >
+        #{printCount,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="takeStatus != null" >
+        #{takeStatus,jdbcType=CHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdName != null" >
+        #{createdName,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedName != null" >
+        #{updatedName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fsun.domain.model.BusTake" >
+    update bus_take
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerName != null" >
+        buyer_name = #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="takeName != null" >
+        take_name = #{takeName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerName != null" >
+        seller_name = #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="printCount != null" >
+        print_count = #{printCount,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="takeStatus != null" >
+        take_status = #{takeStatus,jdbcType=CHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdName != null" >
+        created_name = #{createdName,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedName != null" >
+        updated_name = #{updatedName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where take_id = #{takeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fsun.domain.model.BusTake" >
+    update bus_take
+    set order_id = #{orderId,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=VARCHAR},
+      buyer_name = #{buyerName,jdbcType=VARCHAR},
+      take_name = #{takeName,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=VARCHAR},
+      seller_name = #{sellerName,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      print_count = #{printCount,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=VARCHAR},
+      take_status = #{takeStatus,jdbcType=CHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      created_name = #{createdName,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      updated_name = #{updatedName,jdbcType=VARCHAR}
+    where take_id = #{takeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

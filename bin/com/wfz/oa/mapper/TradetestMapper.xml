@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wfz.oa.mapper.TradetestMapper">
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.Tradetest">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="plat_discount" jdbcType="DECIMAL" property="platDiscount" />
+    <result column="seller_discount" jdbcType="DECIMAL" property="sellerDiscount" />
+    <result column="recept_price" jdbcType="DECIMAL" property="receptPrice" />
+    <result column="pay_price" jdbcType="DECIMAL" property="payPrice" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="shop_code" jdbcType="VARCHAR" property="shopCode" />
+    <result column="arch" jdbcType="DECIMAL" property="arch" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_type, trade_no, plat_discount, seller_discount, recept_price, pay_price, 
+    shop_id, shop_code, arch
+  </sql>
+  <select id="selectByExample" parameterType="com.wfz.oa.pojo.TradetestExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tradetest
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tradetest
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.TradetestExample">
+    delete from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.Tradetest">
+    insert into tradetest (id, order_type, trade_no, 
+      plat_discount, seller_discount, recept_price, 
+      pay_price, shop_id, shop_code, 
+      arch)
+    values (#{id,jdbcType=INTEGER}, #{orderType,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, 
+      #{platDiscount,jdbcType=DECIMAL}, #{sellerDiscount,jdbcType=DECIMAL}, #{receptPrice,jdbcType=DECIMAL}, 
+      #{payPrice,jdbcType=DECIMAL}, #{shopId,jdbcType=VARCHAR}, #{shopCode,jdbcType=VARCHAR}, 
+      #{arch,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.Tradetest">
+    insert into tradetest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="tradeNo != null">
+        trade_no,
+      </if>
+      <if test="platDiscount != null">
+        plat_discount,
+      </if>
+      <if test="sellerDiscount != null">
+        seller_discount,
+      </if>
+      <if test="receptPrice != null">
+        recept_price,
+      </if>
+      <if test="payPrice != null">
+        pay_price,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="shopCode != null">
+        shop_code,
+      </if>
+      <if test="arch != null">
+        arch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platDiscount != null">
+        #{platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDiscount != null">
+        #{sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null">
+        #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payPrice != null">
+        #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null">
+        #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="arch != null">
+        #{arch,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.TradetestExample" resultType="java.lang.Integer">
+    select count(*) from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tradetest
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderType != null">
+        order_type = #{record.orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeNo != null">
+        trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platDiscount != null">
+        plat_discount = #{record.platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellerDiscount != null">
+        seller_discount = #{record.sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receptPrice != null">
+        recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payPrice != null">
+        pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shopId != null">
+        shop_id = #{record.shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopCode != null">
+        shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.arch != null">
+        arch = #{record.arch,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tradetest
+    set id = #{record.id,jdbcType=INTEGER},
+      order_type = #{record.orderType,jdbcType=VARCHAR},
+      trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      plat_discount = #{record.platDiscount,jdbcType=DECIMAL},
+      seller_discount = #{record.sellerDiscount,jdbcType=DECIMAL},
+      recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      shop_id = #{record.shopId,jdbcType=VARCHAR},
+      shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      arch = #{record.arch,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.Tradetest">
+    update tradetest
+    <set>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platDiscount != null">
+        plat_discount = #{platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDiscount != null">
+        seller_discount = #{sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null">
+        recept_price = #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payPrice != null">
+        pay_price = #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null">
+        shop_code = #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="arch != null">
+        arch = #{arch,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.Tradetest">
+    update tradetest
+    set order_type = #{orderType,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      plat_discount = #{platDiscount,jdbcType=DECIMAL},
+      seller_discount = #{sellerDiscount,jdbcType=DECIMAL},
+      recept_price = #{receptPrice,jdbcType=DECIMAL},
+      pay_price = #{payPrice,jdbcType=DECIMAL},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      shop_code = #{shopCode,jdbcType=VARCHAR},
+      arch = #{arch,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.Tradetest">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="plat_discount" jdbcType="DECIMAL" property="platDiscount" />
+    <result column="seller_discount" jdbcType="DECIMAL" property="sellerDiscount" />
+    <result column="recept_price" jdbcType="DECIMAL" property="receptPrice" />
+    <result column="pay_price" jdbcType="DECIMAL" property="payPrice" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="shop_code" jdbcType="VARCHAR" property="shopCode" />
+    <result column="arch" jdbcType="DECIMAL" property="arch" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_type, trade_no, plat_discount, seller_discount, recept_price, pay_price, 
+    shop_id, shop_code, arch
+  </sql>
+  <select id="selectByExample" parameterType="com.wfz.oa.pojo.TradetestExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tradetest
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tradetest
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.TradetestExample">
+    delete from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.Tradetest">
+    insert into tradetest (id, order_type, trade_no, 
+      plat_discount, seller_discount, recept_price, 
+      pay_price, shop_id, shop_code, 
+      arch)
+    values (#{id,jdbcType=INTEGER}, #{orderType,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, 
+      #{platDiscount,jdbcType=DECIMAL}, #{sellerDiscount,jdbcType=DECIMAL}, #{receptPrice,jdbcType=DECIMAL}, 
+      #{payPrice,jdbcType=DECIMAL}, #{shopId,jdbcType=VARCHAR}, #{shopCode,jdbcType=VARCHAR}, 
+      #{arch,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.Tradetest">
+    insert into tradetest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="tradeNo != null">
+        trade_no,
+      </if>
+      <if test="platDiscount != null">
+        plat_discount,
+      </if>
+      <if test="sellerDiscount != null">
+        seller_discount,
+      </if>
+      <if test="receptPrice != null">
+        recept_price,
+      </if>
+      <if test="payPrice != null">
+        pay_price,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="shopCode != null">
+        shop_code,
+      </if>
+      <if test="arch != null">
+        arch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platDiscount != null">
+        #{platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDiscount != null">
+        #{sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null">
+        #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payPrice != null">
+        #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null">
+        #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="arch != null">
+        #{arch,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.TradetestExample" resultType="java.lang.Integer">
+    select count(*) from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tradetest
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderType != null">
+        order_type = #{record.orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeNo != null">
+        trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platDiscount != null">
+        plat_discount = #{record.platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellerDiscount != null">
+        seller_discount = #{record.sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receptPrice != null">
+        recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payPrice != null">
+        pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shopId != null">
+        shop_id = #{record.shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopCode != null">
+        shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.arch != null">
+        arch = #{record.arch,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tradetest
+    set id = #{record.id,jdbcType=INTEGER},
+      order_type = #{record.orderType,jdbcType=VARCHAR},
+      trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      plat_discount = #{record.platDiscount,jdbcType=DECIMAL},
+      seller_discount = #{record.sellerDiscount,jdbcType=DECIMAL},
+      recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      shop_id = #{record.shopId,jdbcType=VARCHAR},
+      shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      arch = #{record.arch,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.Tradetest">
+    update tradetest
+    <set>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platDiscount != null">
+        plat_discount = #{platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDiscount != null">
+        seller_discount = #{sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null">
+        recept_price = #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payPrice != null">
+        pay_price = #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null">
+        shop_code = #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="arch != null">
+        arch = #{arch,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.Tradetest">
+    update tradetest
+    set order_type = #{orderType,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      plat_discount = #{platDiscount,jdbcType=DECIMAL},
+      seller_discount = #{sellerDiscount,jdbcType=DECIMAL},
+      recept_price = #{receptPrice,jdbcType=DECIMAL},
+      pay_price = #{payPrice,jdbcType=DECIMAL},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      shop_code = #{shopCode,jdbcType=VARCHAR},
+      arch = #{arch,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.Tradetest">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="plat_discount" jdbcType="DECIMAL" property="platDiscount" />
+    <result column="seller_discount" jdbcType="DECIMAL" property="sellerDiscount" />
+    <result column="recept_price" jdbcType="DECIMAL" property="receptPrice" />
+    <result column="pay_price" jdbcType="DECIMAL" property="payPrice" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="shop_code" jdbcType="VARCHAR" property="shopCode" />
+    <result column="arch" jdbcType="DECIMAL" property="arch" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_type, trade_no, plat_discount, seller_discount, recept_price, pay_price, 
+    shop_id, shop_code, arch
+  </sql>
+  <select id="selectByExample" parameterType="com.wfz.oa.pojo.TradetestExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tradetest
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tradetest
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.TradetestExample">
+    delete from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.Tradetest">
+    insert into tradetest (id, order_type, trade_no, 
+      plat_discount, seller_discount, recept_price, 
+      pay_price, shop_id, shop_code, 
+      arch)
+    values (#{id,jdbcType=INTEGER}, #{orderType,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, 
+      #{platDiscount,jdbcType=DECIMAL}, #{sellerDiscount,jdbcType=DECIMAL}, #{receptPrice,jdbcType=DECIMAL}, 
+      #{payPrice,jdbcType=DECIMAL}, #{shopId,jdbcType=VARCHAR}, #{shopCode,jdbcType=VARCHAR}, 
+      #{arch,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.Tradetest">
+    insert into tradetest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="tradeNo != null">
+        trade_no,
+      </if>
+      <if test="platDiscount != null">
+        plat_discount,
+      </if>
+      <if test="sellerDiscount != null">
+        seller_discount,
+      </if>
+      <if test="receptPrice != null">
+        recept_price,
+      </if>
+      <if test="payPrice != null">
+        pay_price,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="shopCode != null">
+        shop_code,
+      </if>
+      <if test="arch != null">
+        arch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platDiscount != null">
+        #{platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDiscount != null">
+        #{sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null">
+        #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payPrice != null">
+        #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null">
+        #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="arch != null">
+        #{arch,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.TradetestExample" resultType="java.lang.Integer">
+    select count(*) from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tradetest
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderType != null">
+        order_type = #{record.orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeNo != null">
+        trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platDiscount != null">
+        plat_discount = #{record.platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellerDiscount != null">
+        seller_discount = #{record.sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receptPrice != null">
+        recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payPrice != null">
+        pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shopId != null">
+        shop_id = #{record.shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopCode != null">
+        shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.arch != null">
+        arch = #{record.arch,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tradetest
+    set id = #{record.id,jdbcType=INTEGER},
+      order_type = #{record.orderType,jdbcType=VARCHAR},
+      trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      plat_discount = #{record.platDiscount,jdbcType=DECIMAL},
+      seller_discount = #{record.sellerDiscount,jdbcType=DECIMAL},
+      recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      shop_id = #{record.shopId,jdbcType=VARCHAR},
+      shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      arch = #{record.arch,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.Tradetest">
+    update tradetest
+    <set>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platDiscount != null">
+        plat_discount = #{platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDiscount != null">
+        seller_discount = #{sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null">
+        recept_price = #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payPrice != null">
+        pay_price = #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null">
+        shop_code = #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="arch != null">
+        arch = #{arch,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.Tradetest">
+    update tradetest
+    set order_type = #{orderType,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      plat_discount = #{platDiscount,jdbcType=DECIMAL},
+      seller_discount = #{sellerDiscount,jdbcType=DECIMAL},
+      recept_price = #{receptPrice,jdbcType=DECIMAL},
+      pay_price = #{payPrice,jdbcType=DECIMAL},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      shop_code = #{shopCode,jdbcType=VARCHAR},
+      arch = #{arch,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.Tradetest">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="plat_discount" jdbcType="DECIMAL" property="platDiscount" />
+    <result column="seller_discount" jdbcType="DECIMAL" property="sellerDiscount" />
+    <result column="recept_price" jdbcType="DECIMAL" property="receptPrice" />
+    <result column="pay_price" jdbcType="DECIMAL" property="payPrice" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="shop_code" jdbcType="VARCHAR" property="shopCode" />
+    <result column="arch" jdbcType="DECIMAL" property="arch" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_type, trade_no, plat_discount, seller_discount, recept_price, pay_price, 
+    shop_id, shop_code, arch
+  </sql>
+  <select id="selectByExample" parameterType="com.wfz.oa.pojo.TradetestExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tradetest
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tradetest
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.TradetestExample">
+    delete from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.Tradetest">
+    insert into tradetest (id, order_type, trade_no, 
+      plat_discount, seller_discount, recept_price, 
+      pay_price, shop_id, shop_code, 
+      arch)
+    values (#{id,jdbcType=INTEGER}, #{orderType,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, 
+      #{platDiscount,jdbcType=DECIMAL}, #{sellerDiscount,jdbcType=DECIMAL}, #{receptPrice,jdbcType=DECIMAL}, 
+      #{payPrice,jdbcType=DECIMAL}, #{shopId,jdbcType=VARCHAR}, #{shopCode,jdbcType=VARCHAR}, 
+      #{arch,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.Tradetest">
+    insert into tradetest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="tradeNo != null">
+        trade_no,
+      </if>
+      <if test="platDiscount != null">
+        plat_discount,
+      </if>
+      <if test="sellerDiscount != null">
+        seller_discount,
+      </if>
+      <if test="receptPrice != null">
+        recept_price,
+      </if>
+      <if test="payPrice != null">
+        pay_price,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="shopCode != null">
+        shop_code,
+      </if>
+      <if test="arch != null">
+        arch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platDiscount != null">
+        #{platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDiscount != null">
+        #{sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null">
+        #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payPrice != null">
+        #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null">
+        #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="arch != null">
+        #{arch,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.TradetestExample" resultType="java.lang.Integer">
+    select count(*) from tradetest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tradetest
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderType != null">
+        order_type = #{record.orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeNo != null">
+        trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platDiscount != null">
+        plat_discount = #{record.platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellerDiscount != null">
+        seller_discount = #{record.sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receptPrice != null">
+        recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payPrice != null">
+        pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shopId != null">
+        shop_id = #{record.shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopCode != null">
+        shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.arch != null">
+        arch = #{record.arch,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tradetest
+    set id = #{record.id,jdbcType=INTEGER},
+      order_type = #{record.orderType,jdbcType=VARCHAR},
+      trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      plat_discount = #{record.platDiscount,jdbcType=DECIMAL},
+      seller_discount = #{record.sellerDiscount,jdbcType=DECIMAL},
+      recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      shop_id = #{record.shopId,jdbcType=VARCHAR},
+      shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      arch = #{record.arch,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.Tradetest">
+    update tradetest
+    <set>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platDiscount != null">
+        plat_discount = #{platDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDiscount != null">
+        seller_discount = #{sellerDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null">
+        recept_price = #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payPrice != null">
+        pay_price = #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null">
+        shop_code = #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="arch != null">
+        arch = #{arch,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.Tradetest">
+    update tradetest
+    set order_type = #{orderType,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      plat_discount = #{platDiscount,jdbcType=DECIMAL},
+      seller_discount = #{sellerDiscount,jdbcType=DECIMAL},
+      recept_price = #{receptPrice,jdbcType=DECIMAL},
+      pay_price = #{payPrice,jdbcType=DECIMAL},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      shop_code = #{shopCode,jdbcType=VARCHAR},
+      arch = #{arch,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

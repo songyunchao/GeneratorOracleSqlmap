@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfz.oa.mapper.SysPaidFlowMapper" >
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.SysPaidFlow" >
+    <result column="pay_id" property="payId" jdbcType="VARCHAR" />
+    <result column="hasRefund" property="hasrefund" jdbcType="BIT" />
+    <result column="line_no" property="lineNo" jdbcType="INTEGER" />
+    <result column="vip_id" property="vipId" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="VARCHAR" />
+    <result column="shop_code" property="shopCode" jdbcType="VARCHAR" />
+    <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+    <result column="pos_no" property="posNo" jdbcType="VARCHAR" />
+    <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+    <result column="pay_mode" property="payMode" jdbcType="SMALLINT" />
+    <result column="pay_type" property="payType" jdbcType="SMALLINT" />
+    <result column="point_fee" property="pointFee" jdbcType="DECIMAL" />
+    <result column="bank_account_name" property="bankAccountName" jdbcType="VARCHAR" />
+    <result column="bank_account_no" property="bankAccountNo" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="buyer_name" property="buyerName" jdbcType="VARCHAR" />
+    <result column="buyer_account" property="buyerAccount" jdbcType="VARCHAR" />
+    <result column="pay_price" property="payPrice" jdbcType="DECIMAL" />
+    <result column="recept_price" property="receptPrice" jdbcType="DECIMAL" />
+    <result column="dib_price" property="dibPrice" jdbcType="DECIMAL" />
+    <result column="over_amount" property="overAmount" jdbcType="DECIMAL" />
+    <result column="discount_amount" property="discountAmount" jdbcType="DECIMAL" />
+    <result column="real_discount_amount" property="realDiscountAmount" jdbcType="DECIMAL" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="deposit_bank_no" property="depositBankNo" jdbcType="VARCHAR" />
+    <result column="account_log_id" property="accountLogId" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="other_account_email" property="otherAccountEmail" jdbcType="VARCHAR" />
+    <result column="other_account_fullname" property="otherAccountFullname" jdbcType="VARCHAR" />
+    <result column="other_user_id" property="otherUserId" jdbcType="VARCHAR" />
+    <result column="partner_id" property="partnerId" jdbcType="VARCHAR" />
+    <result column="seller_account" property="sellerAccount" jdbcType="VARCHAR" />
+    <result column="seller_name" property="sellerName" jdbcType="VARCHAR" />
+    <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="trade_refund_amount" property="tradeRefundAmount" jdbcType="DECIMAL" />
+    <result column="trans_account" property="transAccount" jdbcType="VARCHAR" />
+    <result column="cash_name" property="cashName" jdbcType="VARCHAR" />
+    <result column="trans_code_msg" property="transCodeMsg" jdbcType="VARCHAR" />
+    <result column="trade_time" property="tradeTime" jdbcType="TIMESTAMP" />
+    <result column="src_order_id" property="srcOrderId" jdbcType="VARCHAR" />
+    <result column="src_trade_no" property="srcTradeNo" jdbcType="VARCHAR" />
+    <result column="src_pay_id" property="srcPayId" jdbcType="VARCHAR" />
+    <result column="activity_id" property="activityId" jdbcType="VARCHAR" />
+    <result column="flow_status" property="flowStatus" jdbcType="CHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="shift" property="shift" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pay_id, hasRefund, line_no, vip_id, shop_id, shop_code, shop_name, pos_no, card_no, 
+    pay_mode, pay_type, point_fee, bank_account_name, bank_account_no, bank_name, buyer_name, 
+    buyer_account, pay_price, recept_price, dib_price, over_amount, discount_amount, 
+    real_discount_amount, currency, deposit_bank_no, account_log_id, memo, order_id, 
+    other_account_email, other_account_fullname, other_user_id, partner_id, seller_account, 
+    seller_name, trade_no, trade_refund_amount, trans_account, cash_name, trans_code_msg, 
+    trade_time, src_order_id, src_trade_no, src_pay_id, activity_id, flow_status, created_time, 
+    updated_time, shift
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wfz.oa.pojo.SysPaidFlowExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_paid_flow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.SysPaidFlowExample" >
+    delete from sys_paid_flow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.SysPaidFlow" >
+    insert into sys_paid_flow (pay_id, hasRefund, line_no, 
+      vip_id, shop_id, shop_code, 
+      shop_name, pos_no, card_no, 
+      pay_mode, pay_type, point_fee, 
+      bank_account_name, bank_account_no, bank_name, 
+      buyer_name, buyer_account, pay_price, 
+      recept_price, dib_price, over_amount, 
+      discount_amount, real_discount_amount, currency, 
+      deposit_bank_no, account_log_id, memo, 
+      order_id, other_account_email, other_account_fullname, 
+      other_user_id, partner_id, seller_account, 
+      seller_name, trade_no, trade_refund_amount, 
+      trans_account, cash_name, trans_code_msg, 
+      trade_time, src_order_id, src_trade_no, 
+      src_pay_id, activity_id, flow_status, 
+      created_time, updated_time, shift
+      )
+    values (#{payId,jdbcType=VARCHAR}, #{hasrefund,jdbcType=BIT}, #{lineNo,jdbcType=INTEGER}, 
+      #{vipId,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{shopCode,jdbcType=VARCHAR}, 
+      #{shopName,jdbcType=VARCHAR}, #{posNo,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR}, 
+      #{payMode,jdbcType=SMALLINT}, #{payType,jdbcType=SMALLINT}, #{pointFee,jdbcType=DECIMAL}, 
+      #{bankAccountName,jdbcType=VARCHAR}, #{bankAccountNo,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
+      #{buyerName,jdbcType=VARCHAR}, #{buyerAccount,jdbcType=VARCHAR}, #{payPrice,jdbcType=DECIMAL}, 
+      #{receptPrice,jdbcType=DECIMAL}, #{dibPrice,jdbcType=DECIMAL}, #{overAmount,jdbcType=DECIMAL}, 
+      #{discountAmount,jdbcType=DECIMAL}, #{realDiscountAmount,jdbcType=DECIMAL}, #{currency,jdbcType=VARCHAR}, 
+      #{depositBankNo,jdbcType=VARCHAR}, #{accountLogId,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=VARCHAR}, #{otherAccountEmail,jdbcType=VARCHAR}, #{otherAccountFullname,jdbcType=VARCHAR}, 
+      #{otherUserId,jdbcType=VARCHAR}, #{partnerId,jdbcType=VARCHAR}, #{sellerAccount,jdbcType=VARCHAR}, 
+      #{sellerName,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, #{tradeRefundAmount,jdbcType=DECIMAL}, 
+      #{transAccount,jdbcType=VARCHAR}, #{cashName,jdbcType=VARCHAR}, #{transCodeMsg,jdbcType=VARCHAR}, 
+      #{tradeTime,jdbcType=TIMESTAMP}, #{srcOrderId,jdbcType=VARCHAR}, #{srcTradeNo,jdbcType=VARCHAR}, 
+      #{srcPayId,jdbcType=VARCHAR}, #{activityId,jdbcType=VARCHAR}, #{flowStatus,jdbcType=CHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}, #{shift,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.SysPaidFlow" >
+    insert into sys_paid_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="payId != null" >
+        pay_id,
+      </if>
+      <if test="hasrefund != null" >
+        hasRefund,
+      </if>
+      <if test="lineNo != null" >
+        line_no,
+      </if>
+      <if test="vipId != null" >
+        vip_id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="shopCode != null" >
+        shop_code,
+      </if>
+      <if test="shopName != null" >
+        shop_name,
+      </if>
+      <if test="posNo != null" >
+        pos_no,
+      </if>
+      <if test="cardNo != null" >
+        card_no,
+      </if>
+      <if test="payMode != null" >
+        pay_mode,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="pointFee != null" >
+        point_fee,
+      </if>
+      <if test="bankAccountName != null" >
+        bank_account_name,
+      </if>
+      <if test="bankAccountNo != null" >
+        bank_account_no,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="buyerName != null" >
+        buyer_name,
+      </if>
+      <if test="buyerAccount != null" >
+        buyer_account,
+      </if>
+      <if test="payPrice != null" >
+        pay_price,
+      </if>
+      <if test="receptPrice != null" >
+        recept_price,
+      </if>
+      <if test="dibPrice != null" >
+        dib_price,
+      </if>
+      <if test="overAmount != null" >
+        over_amount,
+      </if>
+      <if test="discountAmount != null" >
+        discount_amount,
+      </if>
+      <if test="realDiscountAmount != null" >
+        real_discount_amount,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="depositBankNo != null" >
+        deposit_bank_no,
+      </if>
+      <if test="accountLogId != null" >
+        account_log_id,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="otherAccountEmail != null" >
+        other_account_email,
+      </if>
+      <if test="otherAccountFullname != null" >
+        other_account_fullname,
+      </if>
+      <if test="otherUserId != null" >
+        other_user_id,
+      </if>
+      <if test="partnerId != null" >
+        partner_id,
+      </if>
+      <if test="sellerAccount != null" >
+        seller_account,
+      </if>
+      <if test="sellerName != null" >
+        seller_name,
+      </if>
+      <if test="tradeNo != null" >
+        trade_no,
+      </if>
+      <if test="tradeRefundAmount != null" >
+        trade_refund_amount,
+      </if>
+      <if test="transAccount != null" >
+        trans_account,
+      </if>
+      <if test="cashName != null" >
+        cash_name,
+      </if>
+      <if test="transCodeMsg != null" >
+        trans_code_msg,
+      </if>
+      <if test="tradeTime != null" >
+        trade_time,
+      </if>
+      <if test="srcOrderId != null" >
+        src_order_id,
+      </if>
+      <if test="srcTradeNo != null" >
+        src_trade_no,
+      </if>
+      <if test="srcPayId != null" >
+        src_pay_id,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="flowStatus != null" >
+        flow_status,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="shift != null" >
+        shift,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="payId != null" >
+        #{payId,jdbcType=VARCHAR},
+      </if>
+      <if test="hasrefund != null" >
+        #{hasrefund,jdbcType=BIT},
+      </if>
+      <if test="lineNo != null" >
+        #{lineNo,jdbcType=INTEGER},
+      </if>
+      <if test="vipId != null" >
+        #{vipId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCode != null" >
+        #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="posNo != null" >
+        #{posNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payMode != null" >
+        #{payMode,jdbcType=SMALLINT},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=SMALLINT},
+      </if>
+      <if test="pointFee != null" >
+        #{pointFee,jdbcType=DECIMAL},
+      </if>
+      <if test="bankAccountName != null" >
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNo != null" >
+        #{bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerName != null" >
+        #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerAccount != null" >
+        #{buyerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="payPrice != null" >
+        #{payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="receptPrice != null" >
+        #{receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dibPrice != null" >
+        #{dibPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="overAmount != null" >
+        #{overAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null" >
+        #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="realDiscountAmount != null" >
+        #{realDiscountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="depositBankNo != null" >
+        #{depositBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLogId != null" >
+        #{accountLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="otherAccountEmail != null" >
+        #{otherAccountEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="otherAccountFullname != null" >
+        #{otherAccountFullname,jdbcType=VARCHAR},
+      </if>
+      <if test="otherUserId != null" >
+        #{otherUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null" >
+        #{partnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerAccount != null" >
+        #{sellerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerName != null" >
+        #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null" >
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeRefundAmount != null" >
+        #{tradeRefundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transAccount != null" >
+        #{transAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="cashName != null" >
+        #{cashName,jdbcType=VARCHAR},
+      </if>
+      <if test="transCodeMsg != null" >
+        #{transCodeMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTime != null" >
+        #{tradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="srcOrderId != null" >
+        #{srcOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="srcTradeNo != null" >
+        #{srcTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="srcPayId != null" >
+        #{srcPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=VARCHAR},
+      </if>
+      <if test="flowStatus != null" >
+        #{flowStatus,jdbcType=CHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shift != null" >
+        #{shift,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.SysPaidFlowExample" resultType="java.lang.Integer" >
+    select count(*) from sys_paid_flow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_paid_flow
+    <set >
+      <if test="record.payId != null" >
+        pay_id = #{record.payId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hasrefund != null" >
+        hasRefund = #{record.hasrefund,jdbcType=BIT},
+      </if>
+      <if test="record.lineNo != null" >
+        line_no = #{record.lineNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.vipId != null" >
+        vip_id = #{record.vipId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopCode != null" >
+        shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopName != null" >
+        shop_name = #{record.shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.posNo != null" >
+        pos_no = #{record.posNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardNo != null" >
+        card_no = #{record.cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payMode != null" >
+        pay_mode = #{record.payMode,jdbcType=SMALLINT},
+      </if>
+      <if test="record.payType != null" >
+        pay_type = #{record.payType,jdbcType=SMALLINT},
+      </if>
+      <if test="record.pointFee != null" >
+        point_fee = #{record.pointFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bankAccountName != null" >
+        bank_account_name = #{record.bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankAccountNo != null" >
+        bank_account_no = #{record.bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankName != null" >
+        bank_name = #{record.bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerName != null" >
+        buyer_name = #{record.buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerAccount != null" >
+        buyer_account = #{record.buyerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payPrice != null" >
+        pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receptPrice != null" >
+        recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dibPrice != null" >
+        dib_price = #{record.dibPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.overAmount != null" >
+        over_amount = #{record.overAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discountAmount != null" >
+        discount_amount = #{record.discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.realDiscountAmount != null" >
+        real_discount_amount = #{record.realDiscountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.currency != null" >
+        currency = #{record.currency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.depositBankNo != null" >
+        deposit_bank_no = #{record.depositBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountLogId != null" >
+        account_log_id = #{record.accountLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+        memo = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherAccountEmail != null" >
+        other_account_email = #{record.otherAccountEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherAccountFullname != null" >
+        other_account_fullname = #{record.otherAccountFullname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherUserId != null" >
+        other_user_id = #{record.otherUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.partnerId != null" >
+        partner_id = #{record.partnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerAccount != null" >
+        seller_account = #{record.sellerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerName != null" >
+        seller_name = #{record.sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeNo != null" >
+        trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeRefundAmount != null" >
+        trade_refund_amount = #{record.tradeRefundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.transAccount != null" >
+        trans_account = #{record.transAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cashName != null" >
+        cash_name = #{record.cashName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transCodeMsg != null" >
+        trans_code_msg = #{record.transCodeMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeTime != null" >
+        trade_time = #{record.tradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.srcOrderId != null" >
+        src_order_id = #{record.srcOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srcTradeNo != null" >
+        src_trade_no = #{record.srcTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srcPayId != null" >
+        src_pay_id = #{record.srcPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activityId != null" >
+        activity_id = #{record.activityId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowStatus != null" >
+        flow_status = #{record.flowStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.createdTime != null" >
+        created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedTime != null" >
+        updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.shift != null" >
+        shift = #{record.shift,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_paid_flow
+    set pay_id = #{record.payId,jdbcType=VARCHAR},
+      hasRefund = #{record.hasrefund,jdbcType=BIT},
+      line_no = #{record.lineNo,jdbcType=INTEGER},
+      vip_id = #{record.vipId,jdbcType=VARCHAR},
+      shop_id = #{record.shopId,jdbcType=VARCHAR},
+      shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      shop_name = #{record.shopName,jdbcType=VARCHAR},
+      pos_no = #{record.posNo,jdbcType=VARCHAR},
+      card_no = #{record.cardNo,jdbcType=VARCHAR},
+      pay_mode = #{record.payMode,jdbcType=SMALLINT},
+      pay_type = #{record.payType,jdbcType=SMALLINT},
+      point_fee = #{record.pointFee,jdbcType=DECIMAL},
+      bank_account_name = #{record.bankAccountName,jdbcType=VARCHAR},
+      bank_account_no = #{record.bankAccountNo,jdbcType=VARCHAR},
+      bank_name = #{record.bankName,jdbcType=VARCHAR},
+      buyer_name = #{record.buyerName,jdbcType=VARCHAR},
+      buyer_account = #{record.buyerAccount,jdbcType=VARCHAR},
+      pay_price = #{record.payPrice,jdbcType=DECIMAL},
+      recept_price = #{record.receptPrice,jdbcType=DECIMAL},
+      dib_price = #{record.dibPrice,jdbcType=DECIMAL},
+      over_amount = #{record.overAmount,jdbcType=DECIMAL},
+      discount_amount = #{record.discountAmount,jdbcType=DECIMAL},
+      real_discount_amount = #{record.realDiscountAmount,jdbcType=DECIMAL},
+      currency = #{record.currency,jdbcType=VARCHAR},
+      deposit_bank_no = #{record.depositBankNo,jdbcType=VARCHAR},
+      account_log_id = #{record.accountLogId,jdbcType=VARCHAR},
+      memo = #{record.memo,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=VARCHAR},
+      other_account_email = #{record.otherAccountEmail,jdbcType=VARCHAR},
+      other_account_fullname = #{record.otherAccountFullname,jdbcType=VARCHAR},
+      other_user_id = #{record.otherUserId,jdbcType=VARCHAR},
+      partner_id = #{record.partnerId,jdbcType=VARCHAR},
+      seller_account = #{record.sellerAccount,jdbcType=VARCHAR},
+      seller_name = #{record.sellerName,jdbcType=VARCHAR},
+      trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      trade_refund_amount = #{record.tradeRefundAmount,jdbcType=DECIMAL},
+      trans_account = #{record.transAccount,jdbcType=VARCHAR},
+      cash_name = #{record.cashName,jdbcType=VARCHAR},
+      trans_code_msg = #{record.transCodeMsg,jdbcType=VARCHAR},
+      trade_time = #{record.tradeTime,jdbcType=TIMESTAMP},
+      src_order_id = #{record.srcOrderId,jdbcType=VARCHAR},
+      src_trade_no = #{record.srcTradeNo,jdbcType=VARCHAR},
+      src_pay_id = #{record.srcPayId,jdbcType=VARCHAR},
+      activity_id = #{record.activityId,jdbcType=VARCHAR},
+      flow_status = #{record.flowStatus,jdbcType=CHAR},
+      created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
+      shift = #{record.shift,jdbcType=SMALLINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

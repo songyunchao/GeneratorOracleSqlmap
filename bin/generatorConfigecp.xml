@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://101.71.2.58:3306/ecerpdb_current" userId="root"
+			password="wfz123">
+		</jdbcConnection> -->
+		
+		<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			connectionURL="jdbc:sqlserver://101.132.35.231:51433;database=OMSDB;" userId="sa"
+			password="P@ssw0rd">
+		</jdbcConnection>
+		<!-- 
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@101.71.2.58:1521/ORCL" userId="oa"
+			password="wfz123!">
+		</jdbcConnection> -->
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:生成PO类的位置 -->
+		<javaModelGenerator targetPackage="com.domain.model"
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.dao.mapper" 
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- targetPackage：mapper接口生成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.dao.mapper" 
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!-- 指定数据库表 
+		<table schema="" tableName="sys_org_person"></table>
+		<table schema="" tableName="fs_base_account"></table>
+		<table schema="" tableName="sys_login_log"></table>
+		<table schema="" tableName="sys_sku"></table>
+		<table schema="" tableName="sys_paid_flow"></table>
+		<table schema="" tableName="third_party_sku"></table>
+		<table schema="" tableName="tradetest"></table>
+		<table schema="" tableName="third_party_sub_sku"></table>
+		<table schema="" tableName="bas_shop_month_cost"></table>-->
+		<table schema="" tableName="EC_BlackUsers"></table>
+		<table schema="" tableName="EC_CashOrders"></table>
+		<table schema="" tableName="EC_DiffDetail"></table>
+		<table schema="" tableName="EC_DiffOrders"></table>
+		<!-- <table schema="" tableName="EC_OrderDetail"></table>
+		<table schema="" tableName="EC_OrderLog"></table>
+		<table schema="" tableName="EC_Orders"></table> -->
+		<table schema="" tableName="EC_Package"></table>
+		<table schema="" tableName="EC_PackageDetail"></table>
+		<table schema="" tableName="EC_PromotionGifts"></table>
+		<table schema="" tableName="EC_PromotionOrders"></table>
+		<table schema="" tableName="EC_Promotions"></table>
+		<table schema="" tableName="EC_PromotionsGoods"></table>
+		<table schema="" tableName="EC_RefundDetail"></table>
+		<table schema="" tableName="EC_RefundOrders"></table>
+		<table schema="" tableName="EC_OrderConfig"></table>
+		<table schema="" tableName="BAS_Category"></table>
+		<table schema="" tableName="BAS_SKU"></table>
+		<table schema="" tableName="BAS_Product"></table>
+	</context>
+</generatorConfiguration>

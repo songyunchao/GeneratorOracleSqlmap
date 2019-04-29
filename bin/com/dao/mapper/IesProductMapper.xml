@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.mapper.IesProductMapper" >
+  <resultMap id="BaseResultMap" type="com.domain.model.IesProduct" >
+    <id column="ProductID" property="productid" jdbcType="VARCHAR" />
+    <result column="CompanyCode" property="companycode" jdbcType="VARCHAR" />
+    <result column="CompanyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="StockCode" property="stockcode" jdbcType="VARCHAR" />
+    <result column="StockName" property="stockname" jdbcType="VARCHAR" />
+    <result column="SourceMaterialCode" property="sourcematerialcode" jdbcType="NCHAR" />
+    <result column="MaterialCode" property="materialcode" jdbcType="VARCHAR" />
+    <result column="ExtMaterialCode" property="extmaterialcode" jdbcType="VARCHAR" />
+    <result column="ProductName" property="productname" jdbcType="VARCHAR" />
+    <result column="IsMerge" property="ismerge" jdbcType="SMALLINT" />
+    <result column="MarketPrice" property="marketprice" jdbcType="DECIMAL" />
+    <result column="CategoryID" property="categoryid" jdbcType="VARCHAR" />
+    <result column="CategoryName" property="categoryname" jdbcType="VARCHAR" />
+    <result column="BrandID" property="brandid" jdbcType="VARCHAR" />
+    <result column="BuyPrice" property="buyprice" jdbcType="DECIMAL" />
+    <result column="SeasonID" property="seasonid" jdbcType="VARCHAR" />
+    <result column="SeasonName" property="seasonname" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="IsNew" property="isnew" jdbcType="SMALLINT" />
+    <result column="ProductType" property="producttype" jdbcType="SMALLINT" />
+    <result column="ImageURL" property="imageurl" jdbcType="VARCHAR" />
+    <result column="MinImageURL" property="minimageurl" jdbcType="VARCHAR" />
+    <result column="CodeColorGroup" property="codecolorgroup" jdbcType="VARCHAR" />
+    <result column="CodeSizeGroup" property="codesizegroup" jdbcType="VARCHAR" />
+    <result column="CodeUOM" property="codeuom" jdbcType="VARCHAR" />
+    <result column="SeriesID" property="seriesid" jdbcType="VARCHAR" />
+    <result column="ProductNO" property="productno" jdbcType="VARCHAR" />
+    <result column="DisplayName" property="displayname" jdbcType="VARCHAR" />
+    <result column="EnglishName" property="englishname" jdbcType="VARCHAR" />
+    <result column="MinSalePrice" property="minsaleprice" jdbcType="DECIMAL" />
+    <result column="KeyWord" property="keyword" jdbcType="VARCHAR" />
+    <result column="SexPropertyID" property="sexpropertyid" jdbcType="VARCHAR" />
+    <result column="AgePropertyID" property="agepropertyid" jdbcType="VARCHAR" />
+    <result column="SalePropertyID" property="salepropertyid" jdbcType="VARCHAR" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="ProductDescription" property="productdescription" jdbcType="VARCHAR" />
+    <result column="ShipFee" property="shipfee" jdbcType="DECIMAL" />
+    <result column="Weight" property="weight" jdbcType="DECIMAL" />
+    <result column="Length" property="length" jdbcType="DECIMAL" />
+    <result column="Width" property="width" jdbcType="DECIMAL" />
+    <result column="Height" property="height" jdbcType="DECIMAL" />
+    <result column="Volume" property="volume" jdbcType="DECIMAL" />
+    <result column="PubFlag" property="pubflag" jdbcType="SMALLINT" />
+    <result column="PubDateTime" property="pubdatetime" jdbcType="TIMESTAMP" />
+    <result column="PubUserID" property="pubuserid" jdbcType="VARCHAR" />
+    <result column="PubCName" property="pubcname" jdbcType="VARCHAR" />
+    <result column="IsEnabled" property="isenabled" jdbcType="SMALLINT" />
+    <result column="EnabledUserID" property="enableduserid" jdbcType="VARCHAR" />
+    <result column="EnabledCName" property="enabledcname" jdbcType="VARCHAR" />
+    <result column="EnabledDateTime" property="enableddatetime" jdbcType="TIMESTAMP" />
+    <result column="ModifyCName" property="modifycname" jdbcType="VARCHAR" />
+    <result column="ExpiredDateTime" property="expireddatetime" jdbcType="TIMESTAMP" />
+    <result column="FinancialType" property="financialtype" jdbcType="SMALLINT" />
+    <result column="DSR" property="dsr" jdbcType="VARCHAR" />
+    <result column="DownDSR" property="downdsr" jdbcType="VARCHAR" />
+    <result column="TmallURL" property="tmallurl" jdbcType="VARCHAR" />
+    <result column="AddCName" property="addcname" jdbcType="VARCHAR" />
+    <result column="AddDateTime" property="adddatetime" jdbcType="TIMESTAMP" />
+    <result column="ModyfyCName" property="modyfycname" jdbcType="VARCHAR" />
+    <result column="ModifyDateTime" property="modifydatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ProductID, CompanyCode, CompanyName, StockCode, StockName, SourceMaterialCode, MaterialCode, 
+    ExtMaterialCode, ProductName, IsMerge, MarketPrice, CategoryID, CategoryName, BrandID, 
+    BuyPrice, SeasonID, SeasonName, Year, IsNew, ProductType, ImageURL, MinImageURL, 
+    CodeColorGroup, CodeSizeGroup, CodeUOM, SeriesID, ProductNO, DisplayName, EnglishName, 
+    MinSalePrice, KeyWord, SexPropertyID, AgePropertyID, SalePropertyID, Remark, ProductDescription, 
+    ShipFee, Weight, Length, Width, Height, Volume, PubFlag, PubDateTime, PubUserID, 
+    PubCName, IsEnabled, EnabledUserID, EnabledCName, EnabledDateTime, ModifyCName, ExpiredDateTime, 
+    FinancialType, DSR, DownDSR, TmallURL, AddCName, AddDateTime, ModyfyCName, ModifyDateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IES_Product
+    where ProductID = #{productid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IES_Product
+    where ProductID = #{productid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.domain.model.IesProduct" >
+    insert into IES_Product (ProductID, CompanyCode, CompanyName, 
+      StockCode, StockName, SourceMaterialCode, 
+      MaterialCode, ExtMaterialCode, ProductName, 
+      IsMerge, MarketPrice, CategoryID, 
+      CategoryName, BrandID, BuyPrice, 
+      SeasonID, SeasonName, Year, 
+      IsNew, ProductType, ImageURL, 
+      MinImageURL, CodeColorGroup, CodeSizeGroup, 
+      CodeUOM, SeriesID, ProductNO, 
+      DisplayName, EnglishName, MinSalePrice, 
+      KeyWord, SexPropertyID, AgePropertyID, 
+      SalePropertyID, Remark, ProductDescription, 
+      ShipFee, Weight, Length, 
+      Width, Height, Volume, 
+      PubFlag, PubDateTime, PubUserID, 
+      PubCName, IsEnabled, EnabledUserID, 
+      EnabledCName, EnabledDateTime, ModifyCName, 
+      ExpiredDateTime, FinancialType, DSR, 
+      DownDSR, TmallURL, AddCName, 
+      AddDateTime, ModyfyCName, ModifyDateTime
+      )
+    values (#{productid,jdbcType=VARCHAR}, #{companycode,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{stockcode,jdbcType=VARCHAR}, #{stockname,jdbcType=VARCHAR}, #{sourcematerialcode,jdbcType=NCHAR}, 
+      #{materialcode,jdbcType=VARCHAR}, #{extmaterialcode,jdbcType=VARCHAR}, #{productname,jdbcType=VARCHAR}, 
+      #{ismerge,jdbcType=SMALLINT}, #{marketprice,jdbcType=DECIMAL}, #{categoryid,jdbcType=VARCHAR}, 
+      #{categoryname,jdbcType=VARCHAR}, #{brandid,jdbcType=VARCHAR}, #{buyprice,jdbcType=DECIMAL}, 
+      #{seasonid,jdbcType=VARCHAR}, #{seasonname,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{isnew,jdbcType=SMALLINT}, #{producttype,jdbcType=SMALLINT}, #{imageurl,jdbcType=VARCHAR}, 
+      #{minimageurl,jdbcType=VARCHAR}, #{codecolorgroup,jdbcType=VARCHAR}, #{codesizegroup,jdbcType=VARCHAR}, 
+      #{codeuom,jdbcType=VARCHAR}, #{seriesid,jdbcType=VARCHAR}, #{productno,jdbcType=VARCHAR}, 
+      #{displayname,jdbcType=VARCHAR}, #{englishname,jdbcType=VARCHAR}, #{minsaleprice,jdbcType=DECIMAL}, 
+      #{keyword,jdbcType=VARCHAR}, #{sexpropertyid,jdbcType=VARCHAR}, #{agepropertyid,jdbcType=VARCHAR}, 
+      #{salepropertyid,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{productdescription,jdbcType=VARCHAR}, 
+      #{shipfee,jdbcType=DECIMAL}, #{weight,jdbcType=DECIMAL}, #{length,jdbcType=DECIMAL}, 
+      #{width,jdbcType=DECIMAL}, #{height,jdbcType=DECIMAL}, #{volume,jdbcType=DECIMAL}, 
+      #{pubflag,jdbcType=SMALLINT}, #{pubdatetime,jdbcType=TIMESTAMP}, #{pubuserid,jdbcType=VARCHAR}, 
+      #{pubcname,jdbcType=VARCHAR}, #{isenabled,jdbcType=SMALLINT}, #{enableduserid,jdbcType=VARCHAR}, 
+      #{enabledcname,jdbcType=VARCHAR}, #{enableddatetime,jdbcType=TIMESTAMP}, #{modifycname,jdbcType=VARCHAR}, 
+      #{expireddatetime,jdbcType=TIMESTAMP}, #{financialtype,jdbcType=SMALLINT}, #{dsr,jdbcType=VARCHAR}, 
+      #{downdsr,jdbcType=VARCHAR}, #{tmallurl,jdbcType=VARCHAR}, #{addcname,jdbcType=VARCHAR}, 
+      #{adddatetime,jdbcType=TIMESTAMP}, #{modyfycname,jdbcType=VARCHAR}, #{modifydatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.model.IesProduct" >
+    insert into IES_Product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productid != null" >
+        ProductID,
+      </if>
+      <if test="companycode != null" >
+        CompanyCode,
+      </if>
+      <if test="companyname != null" >
+        CompanyName,
+      </if>
+      <if test="stockcode != null" >
+        StockCode,
+      </if>
+      <if test="stockname != null" >
+        StockName,
+      </if>
+      <if test="sourcematerialcode != null" >
+        SourceMaterialCode,
+      </if>
+      <if test="materialcode != null" >
+        MaterialCode,
+      </if>
+      <if test="extmaterialcode != null" >
+        ExtMaterialCode,
+      </if>
+      <if test="productname != null" >
+        ProductName,
+      </if>
+      <if test="ismerge != null" >
+        IsMerge,
+      </if>
+      <if test="marketprice != null" >
+        MarketPrice,
+      </if>
+      <if test="categoryid != null" >
+        CategoryID,
+      </if>
+      <if test="categoryname != null" >
+        CategoryName,
+      </if>
+      <if test="brandid != null" >
+        BrandID,
+      </if>
+      <if test="buyprice != null" >
+        BuyPrice,
+      </if>
+      <if test="seasonid != null" >
+        SeasonID,
+      </if>
+      <if test="seasonname != null" >
+        SeasonName,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="isnew != null" >
+        IsNew,
+      </if>
+      <if test="producttype != null" >
+        ProductType,
+      </if>
+      <if test="imageurl != null" >
+        ImageURL,
+      </if>
+      <if test="minimageurl != null" >
+        MinImageURL,
+      </if>
+      <if test="codecolorgroup != null" >
+        CodeColorGroup,
+      </if>
+      <if test="codesizegroup != null" >
+        CodeSizeGroup,
+      </if>
+      <if test="codeuom != null" >
+        CodeUOM,
+      </if>
+      <if test="seriesid != null" >
+        SeriesID,
+      </if>
+      <if test="productno != null" >
+        ProductNO,
+      </if>
+      <if test="displayname != null" >
+        DisplayName,
+      </if>
+      <if test="englishname != null" >
+        EnglishName,
+      </if>
+      <if test="minsaleprice != null" >
+        MinSalePrice,
+      </if>
+      <if test="keyword != null" >
+        KeyWord,
+      </if>
+      <if test="sexpropertyid != null" >
+        SexPropertyID,
+      </if>
+      <if test="agepropertyid != null" >
+        AgePropertyID,
+      </if>
+      <if test="salepropertyid != null" >
+        SalePropertyID,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="productdescription != null" >
+        ProductDescription,
+      </if>
+      <if test="shipfee != null" >
+        ShipFee,
+      </if>
+      <if test="weight != null" >
+        Weight,
+      </if>
+      <if test="length != null" >
+        Length,
+      </if>
+      <if test="width != null" >
+        Width,
+      </if>
+      <if test="height != null" >
+        Height,
+      </if>
+      <if test="volume != null" >
+        Volume,
+      </if>
+      <if test="pubflag != null" >
+        PubFlag,
+      </if>
+      <if test="pubdatetime != null" >
+        PubDateTime,
+      </if>
+      <if test="pubuserid != null" >
+        PubUserID,
+      </if>
+      <if test="pubcname != null" >
+        PubCName,
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled,
+      </if>
+      <if test="enableduserid != null" >
+        EnabledUserID,
+      </if>
+      <if test="enabledcname != null" >
+        EnabledCName,
+      </if>
+      <if test="enableddatetime != null" >
+        EnabledDateTime,
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName,
+      </if>
+      <if test="expireddatetime != null" >
+        ExpiredDateTime,
+      </if>
+      <if test="financialtype != null" >
+        FinancialType,
+      </if>
+      <if test="dsr != null" >
+        DSR,
+      </if>
+      <if test="downdsr != null" >
+        DownDSR,
+      </if>
+      <if test="tmallurl != null" >
+        TmallURL,
+      </if>
+      <if test="addcname != null" >
+        AddCName,
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime,
+      </if>
+      <if test="modyfycname != null" >
+        ModyfyCName,
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="companycode != null" >
+        #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcematerialcode != null" >
+        #{sourcematerialcode,jdbcType=NCHAR},
+      </if>
+      <if test="materialcode != null" >
+        #{materialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="extmaterialcode != null" >
+        #{extmaterialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="ismerge != null" >
+        #{ismerge,jdbcType=SMALLINT},
+      </if>
+      <if test="marketprice != null" >
+        #{marketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null" >
+        #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="brandid != null" >
+        #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="buyprice != null" >
+        #{buyprice,jdbcType=DECIMAL},
+      </if>
+      <if test="seasonid != null" >
+        #{seasonid,jdbcType=VARCHAR},
+      </if>
+      <if test="seasonname != null" >
+        #{seasonname,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="isnew != null" >
+        #{isnew,jdbcType=SMALLINT},
+      </if>
+      <if test="producttype != null" >
+        #{producttype,jdbcType=SMALLINT},
+      </if>
+      <if test="imageurl != null" >
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="minimageurl != null" >
+        #{minimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="codecolorgroup != null" >
+        #{codecolorgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="codesizegroup != null" >
+        #{codesizegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="codeuom != null" >
+        #{codeuom,jdbcType=VARCHAR},
+      </if>
+      <if test="seriesid != null" >
+        #{seriesid,jdbcType=VARCHAR},
+      </if>
+      <if test="productno != null" >
+        #{productno,jdbcType=VARCHAR},
+      </if>
+      <if test="displayname != null" >
+        #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="englishname != null" >
+        #{englishname,jdbcType=VARCHAR},
+      </if>
+      <if test="minsaleprice != null" >
+        #{minsaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="sexpropertyid != null" >
+        #{sexpropertyid,jdbcType=VARCHAR},
+      </if>
+      <if test="agepropertyid != null" >
+        #{agepropertyid,jdbcType=VARCHAR},
+      </if>
+      <if test="salepropertyid != null" >
+        #{salepropertyid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="productdescription != null" >
+        #{productdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="shipfee != null" >
+        #{shipfee,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="length != null" >
+        #{length,jdbcType=DECIMAL},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=DECIMAL},
+      </if>
+      <if test="pubflag != null" >
+        #{pubflag,jdbcType=SMALLINT},
+      </if>
+      <if test="pubdatetime != null" >
+        #{pubdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubuserid != null" >
+        #{pubuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="pubcname != null" >
+        #{pubcname,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="enableduserid != null" >
+        #{enableduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="enabledcname != null" >
+        #{enabledcname,jdbcType=VARCHAR},
+      </if>
+      <if test="enableddatetime != null" >
+        #{enableddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="expireddatetime != null" >
+        #{expireddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="financialtype != null" >
+        #{financialtype,jdbcType=SMALLINT},
+      </if>
+      <if test="dsr != null" >
+        #{dsr,jdbcType=VARCHAR},
+      </if>
+      <if test="downdsr != null" >
+        #{downdsr,jdbcType=VARCHAR},
+      </if>
+      <if test="tmallurl != null" >
+        #{tmallurl,jdbcType=VARCHAR},
+      </if>
+      <if test="addcname != null" >
+        #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modyfycname != null" >
+        #{modyfycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.model.IesProduct" >
+    update IES_Product
+    <set >
+      <if test="companycode != null" >
+        CompanyCode = #{companycode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        CompanyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="stockcode != null" >
+        StockCode = #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null" >
+        StockName = #{stockname,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcematerialcode != null" >
+        SourceMaterialCode = #{sourcematerialcode,jdbcType=NCHAR},
+      </if>
+      <if test="materialcode != null" >
+        MaterialCode = #{materialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="extmaterialcode != null" >
+        ExtMaterialCode = #{extmaterialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="ismerge != null" >
+        IsMerge = #{ismerge,jdbcType=SMALLINT},
+      </if>
+      <if test="marketprice != null" >
+        MarketPrice = #{marketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryid != null" >
+        CategoryID = #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null" >
+        CategoryName = #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="brandid != null" >
+        BrandID = #{brandid,jdbcType=VARCHAR},
+      </if>
+      <if test="buyprice != null" >
+        BuyPrice = #{buyprice,jdbcType=DECIMAL},
+      </if>
+      <if test="seasonid != null" >
+        SeasonID = #{seasonid,jdbcType=VARCHAR},
+      </if>
+      <if test="seasonname != null" >
+        SeasonName = #{seasonname,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="isnew != null" >
+        IsNew = #{isnew,jdbcType=SMALLINT},
+      </if>
+      <if test="producttype != null" >
+        ProductType = #{producttype,jdbcType=SMALLINT},
+      </if>
+      <if test="imageurl != null" >
+        ImageURL = #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="minimageurl != null" >
+        MinImageURL = #{minimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="codecolorgroup != null" >
+        CodeColorGroup = #{codecolorgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="codesizegroup != null" >
+        CodeSizeGroup = #{codesizegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="codeuom != null" >
+        CodeUOM = #{codeuom,jdbcType=VARCHAR},
+      </if>
+      <if test="seriesid != null" >
+        SeriesID = #{seriesid,jdbcType=VARCHAR},
+      </if>
+      <if test="productno != null" >
+        ProductNO = #{productno,jdbcType=VARCHAR},
+      </if>
+      <if test="displayname != null" >
+        DisplayName = #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="englishname != null" >
+        EnglishName = #{englishname,jdbcType=VARCHAR},
+      </if>
+      <if test="minsaleprice != null" >
+        MinSalePrice = #{minsaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="keyword != null" >
+        KeyWord = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="sexpropertyid != null" >
+        SexPropertyID = #{sexpropertyid,jdbcType=VARCHAR},
+      </if>
+      <if test="agepropertyid != null" >
+        AgePropertyID = #{agepropertyid,jdbcType=VARCHAR},
+      </if>
+      <if test="salepropertyid != null" >
+        SalePropertyID = #{salepropertyid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="productdescription != null" >
+        ProductDescription = #{productdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="shipfee != null" >
+        ShipFee = #{shipfee,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        Weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="length != null" >
+        Length = #{length,jdbcType=DECIMAL},
+      </if>
+      <if test="width != null" >
+        Width = #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null" >
+        Height = #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null" >
+        Volume = #{volume,jdbcType=DECIMAL},
+      </if>
+      <if test="pubflag != null" >
+        PubFlag = #{pubflag,jdbcType=SMALLINT},
+      </if>
+      <if test="pubdatetime != null" >
+        PubDateTime = #{pubdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubuserid != null" >
+        PubUserID = #{pubuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="pubcname != null" >
+        PubCName = #{pubcname,jdbcType=VARCHAR},
+      </if>
+      <if test="isenabled != null" >
+        IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      </if>
+      <if test="enableduserid != null" >
+        EnabledUserID = #{enableduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="enabledcname != null" >
+        EnabledCName = #{enabledcname,jdbcType=VARCHAR},
+      </if>
+      <if test="enableddatetime != null" >
+        EnabledDateTime = #{enableddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifycname != null" >
+        ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      </if>
+      <if test="expireddatetime != null" >
+        ExpiredDateTime = #{expireddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="financialtype != null" >
+        FinancialType = #{financialtype,jdbcType=SMALLINT},
+      </if>
+      <if test="dsr != null" >
+        DSR = #{dsr,jdbcType=VARCHAR},
+      </if>
+      <if test="downdsr != null" >
+        DownDSR = #{downdsr,jdbcType=VARCHAR},
+      </if>
+      <if test="tmallurl != null" >
+        TmallURL = #{tmallurl,jdbcType=VARCHAR},
+      </if>
+      <if test="addcname != null" >
+        AddCName = #{addcname,jdbcType=VARCHAR},
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modyfycname != null" >
+        ModyfyCName = #{modyfycname,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydatetime != null" >
+        ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ProductID = #{productid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.model.IesProduct" >
+    update IES_Product
+    set CompanyCode = #{companycode,jdbcType=VARCHAR},
+      CompanyName = #{companyname,jdbcType=VARCHAR},
+      StockCode = #{stockcode,jdbcType=VARCHAR},
+      StockName = #{stockname,jdbcType=VARCHAR},
+      SourceMaterialCode = #{sourcematerialcode,jdbcType=NCHAR},
+      MaterialCode = #{materialcode,jdbcType=VARCHAR},
+      ExtMaterialCode = #{extmaterialcode,jdbcType=VARCHAR},
+      ProductName = #{productname,jdbcType=VARCHAR},
+      IsMerge = #{ismerge,jdbcType=SMALLINT},
+      MarketPrice = #{marketprice,jdbcType=DECIMAL},
+      CategoryID = #{categoryid,jdbcType=VARCHAR},
+      CategoryName = #{categoryname,jdbcType=VARCHAR},
+      BrandID = #{brandid,jdbcType=VARCHAR},
+      BuyPrice = #{buyprice,jdbcType=DECIMAL},
+      SeasonID = #{seasonid,jdbcType=VARCHAR},
+      SeasonName = #{seasonname,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      IsNew = #{isnew,jdbcType=SMALLINT},
+      ProductType = #{producttype,jdbcType=SMALLINT},
+      ImageURL = #{imageurl,jdbcType=VARCHAR},
+      MinImageURL = #{minimageurl,jdbcType=VARCHAR},
+      CodeColorGroup = #{codecolorgroup,jdbcType=VARCHAR},
+      CodeSizeGroup = #{codesizegroup,jdbcType=VARCHAR},
+      CodeUOM = #{codeuom,jdbcType=VARCHAR},
+      SeriesID = #{seriesid,jdbcType=VARCHAR},
+      ProductNO = #{productno,jdbcType=VARCHAR},
+      DisplayName = #{displayname,jdbcType=VARCHAR},
+      EnglishName = #{englishname,jdbcType=VARCHAR},
+      MinSalePrice = #{minsaleprice,jdbcType=DECIMAL},
+      KeyWord = #{keyword,jdbcType=VARCHAR},
+      SexPropertyID = #{sexpropertyid,jdbcType=VARCHAR},
+      AgePropertyID = #{agepropertyid,jdbcType=VARCHAR},
+      SalePropertyID = #{salepropertyid,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      ProductDescription = #{productdescription,jdbcType=VARCHAR},
+      ShipFee = #{shipfee,jdbcType=DECIMAL},
+      Weight = #{weight,jdbcType=DECIMAL},
+      Length = #{length,jdbcType=DECIMAL},
+      Width = #{width,jdbcType=DECIMAL},
+      Height = #{height,jdbcType=DECIMAL},
+      Volume = #{volume,jdbcType=DECIMAL},
+      PubFlag = #{pubflag,jdbcType=SMALLINT},
+      PubDateTime = #{pubdatetime,jdbcType=TIMESTAMP},
+      PubUserID = #{pubuserid,jdbcType=VARCHAR},
+      PubCName = #{pubcname,jdbcType=VARCHAR},
+      IsEnabled = #{isenabled,jdbcType=SMALLINT},
+      EnabledUserID = #{enableduserid,jdbcType=VARCHAR},
+      EnabledCName = #{enabledcname,jdbcType=VARCHAR},
+      EnabledDateTime = #{enableddatetime,jdbcType=TIMESTAMP},
+      ModifyCName = #{modifycname,jdbcType=VARCHAR},
+      ExpiredDateTime = #{expireddatetime,jdbcType=TIMESTAMP},
+      FinancialType = #{financialtype,jdbcType=SMALLINT},
+      DSR = #{dsr,jdbcType=VARCHAR},
+      DownDSR = #{downdsr,jdbcType=VARCHAR},
+      TmallURL = #{tmallurl,jdbcType=VARCHAR},
+      AddCName = #{addcname,jdbcType=VARCHAR},
+      AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      ModyfyCName = #{modyfycname,jdbcType=VARCHAR},
+      ModifyDateTime = #{modifydatetime,jdbcType=TIMESTAMP}
+    where ProductID = #{productid,jdbcType=VARCHAR}
+  </update>
+</mapper>

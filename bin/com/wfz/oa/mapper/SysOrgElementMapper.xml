@@ -1,0 +1,1148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wfz.oa.mapper.SysOrgElementMapper">
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.SysOrgElement">
+    <id column="FD_ID" jdbcType="VARCHAR" property="fdId" />
+    <result column="FD_ORG_TYPE" jdbcType="DECIMAL" property="fdOrgType" />
+    <result column="FD_NAME" jdbcType="VARCHAR" property="fdName" />
+    <result column="FD_NAME_PINYIN" jdbcType="VARCHAR" property="fdNamePinyin" />
+    <result column="FD_ORDER" jdbcType="DECIMAL" property="fdOrder" />
+    <result column="FD_NO" jdbcType="VARCHAR" property="fdNo" />
+    <result column="FD_KEYWORD" jdbcType="VARCHAR" property="fdKeyword" />
+    <result column="FD_IS_AVAILABLE" jdbcType="DECIMAL" property="fdIsAvailable" />
+    <result column="FD_IS_ABANDON" jdbcType="DECIMAL" property="fdIsAbandon" />
+    <result column="FD_IS_BUSINESS" jdbcType="DECIMAL" property="fdIsBusiness" />
+    <result column="FD_IMPORT_INFO" jdbcType="VARCHAR" property="fdImportInfo" />
+    <result column="FD_FLAG_DELETED" jdbcType="DECIMAL" property="fdFlagDeleted" />
+    <result column="FD_LDAP_DN" jdbcType="VARCHAR" property="fdLdapDn" />
+    <result column="FD_MEMO" jdbcType="VARCHAR" property="fdMemo" />
+    <result column="FD_HIERARCHY_ID" jdbcType="VARCHAR" property="fdHierarchyId" />
+    <result column="FD_CREATE_TIME" jdbcType="TIMESTAMP" property="fdCreateTime" />
+    <result column="FD_ALTER_TIME" jdbcType="TIMESTAMP" property="fdAlterTime" />
+    <result column="FD_ORG_EMAIL" jdbcType="VARCHAR" property="fdOrgEmail" />
+    <result column="FD_IS_SYN" jdbcType="VARCHAR" property="fdIsSyn" />
+    <result column="FD_HR_DEPT_CODE" jdbcType="VARCHAR" property="fdHrDeptCode" />
+    <result column="FD_HR_LOGIN_NAME" jdbcType="VARCHAR" property="fdHrLoginName" />
+    <result column="FD_HR_GW_CODE" jdbcType="VARCHAR" property="fdHrGwCode" />
+    <result column="FD_THIS_LEADERID" jdbcType="VARCHAR" property="fdThisLeaderid" />
+    <result column="FD_SUPER_LEADERID" jdbcType="VARCHAR" property="fdSuperLeaderid" />
+    <result column="FD_PARENTORGID" jdbcType="VARCHAR" property="fdParentorgid" />
+    <result column="FD_PARENTID" jdbcType="VARCHAR" property="fdParentid" />
+    <result column="FD_CATEID" jdbcType="VARCHAR" property="fdCateid" />
+    <result column="AUTH_READER_FLAG" jdbcType="DECIMAL" property="authReaderFlag" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FD_ID, FD_ORG_TYPE, FD_NAME, FD_NAME_PINYIN, FD_ORDER, FD_NO, FD_KEYWORD, FD_IS_AVAILABLE, 
+    FD_IS_ABANDON, FD_IS_BUSINESS, FD_IMPORT_INFO, FD_FLAG_DELETED, FD_LDAP_DN, FD_MEMO, 
+    FD_HIERARCHY_ID, FD_CREATE_TIME, FD_ALTER_TIME, FD_ORG_EMAIL, FD_IS_SYN, FD_HR_DEPT_CODE, 
+    FD_HR_LOGIN_NAME, FD_HR_GW_CODE, FD_THIS_LEADERID, FD_SUPER_LEADERID, FD_PARENTORGID, 
+    FD_PARENTID, FD_CATEID, AUTH_READER_FLAG
+  </sql>
+  <select id="selectByExample" parameterType="com.wfz.oa.pojo.SysOrgElementExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_ORG_ELEMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_ORG_ELEMENT
+    where FD_ID = #{fdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SYS_ORG_ELEMENT
+    where FD_ID = #{fdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.SysOrgElementExample">
+    delete from SYS_ORG_ELEMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.SysOrgElement">
+    insert into SYS_ORG_ELEMENT (FD_ID, FD_ORG_TYPE, FD_NAME, 
+      FD_NAME_PINYIN, FD_ORDER, FD_NO, 
+      FD_KEYWORD, FD_IS_AVAILABLE, FD_IS_ABANDON, 
+      FD_IS_BUSINESS, FD_IMPORT_INFO, FD_FLAG_DELETED, 
+      FD_LDAP_DN, FD_MEMO, FD_HIERARCHY_ID, 
+      FD_CREATE_TIME, FD_ALTER_TIME, FD_ORG_EMAIL, 
+      FD_IS_SYN, FD_HR_DEPT_CODE, FD_HR_LOGIN_NAME, 
+      FD_HR_GW_CODE, FD_THIS_LEADERID, FD_SUPER_LEADERID, 
+      FD_PARENTORGID, FD_PARENTID, FD_CATEID, 
+      AUTH_READER_FLAG)
+    values (#{fdId,jdbcType=VARCHAR}, #{fdOrgType,jdbcType=DECIMAL}, #{fdName,jdbcType=VARCHAR}, 
+      #{fdNamePinyin,jdbcType=VARCHAR}, #{fdOrder,jdbcType=DECIMAL}, #{fdNo,jdbcType=VARCHAR}, 
+      #{fdKeyword,jdbcType=VARCHAR}, #{fdIsAvailable,jdbcType=DECIMAL}, #{fdIsAbandon,jdbcType=DECIMAL}, 
+      #{fdIsBusiness,jdbcType=DECIMAL}, #{fdImportInfo,jdbcType=VARCHAR}, #{fdFlagDeleted,jdbcType=DECIMAL}, 
+      #{fdLdapDn,jdbcType=VARCHAR}, #{fdMemo,jdbcType=VARCHAR}, #{fdHierarchyId,jdbcType=VARCHAR}, 
+      #{fdCreateTime,jdbcType=TIMESTAMP}, #{fdAlterTime,jdbcType=TIMESTAMP}, #{fdOrgEmail,jdbcType=VARCHAR}, 
+      #{fdIsSyn,jdbcType=VARCHAR}, #{fdHrDeptCode,jdbcType=VARCHAR}, #{fdHrLoginName,jdbcType=VARCHAR}, 
+      #{fdHrGwCode,jdbcType=VARCHAR}, #{fdThisLeaderid,jdbcType=VARCHAR}, #{fdSuperLeaderid,jdbcType=VARCHAR}, 
+      #{fdParentorgid,jdbcType=VARCHAR}, #{fdParentid,jdbcType=VARCHAR}, #{fdCateid,jdbcType=VARCHAR}, 
+      #{authReaderFlag,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.SysOrgElement">
+    insert into SYS_ORG_ELEMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fdId != null">
+        FD_ID,
+      </if>
+      <if test="fdOrgType != null">
+        FD_ORG_TYPE,
+      </if>
+      <if test="fdName != null">
+        FD_NAME,
+      </if>
+      <if test="fdNamePinyin != null">
+        FD_NAME_PINYIN,
+      </if>
+      <if test="fdOrder != null">
+        FD_ORDER,
+      </if>
+      <if test="fdNo != null">
+        FD_NO,
+      </if>
+      <if test="fdKeyword != null">
+        FD_KEYWORD,
+      </if>
+      <if test="fdIsAvailable != null">
+        FD_IS_AVAILABLE,
+      </if>
+      <if test="fdIsAbandon != null">
+        FD_IS_ABANDON,
+      </if>
+      <if test="fdIsBusiness != null">
+        FD_IS_BUSINESS,
+      </if>
+      <if test="fdImportInfo != null">
+        FD_IMPORT_INFO,
+      </if>
+      <if test="fdFlagDeleted != null">
+        FD_FLAG_DELETED,
+      </if>
+      <if test="fdLdapDn != null">
+        FD_LDAP_DN,
+      </if>
+      <if test="fdMemo != null">
+        FD_MEMO,
+      </if>
+      <if test="fdHierarchyId != null">
+        FD_HIERARCHY_ID,
+      </if>
+      <if test="fdCreateTime != null">
+        FD_CREATE_TIME,
+      </if>
+      <if test="fdAlterTime != null">
+        FD_ALTER_TIME,
+      </if>
+      <if test="fdOrgEmail != null">
+        FD_ORG_EMAIL,
+      </if>
+      <if test="fdIsSyn != null">
+        FD_IS_SYN,
+      </if>
+      <if test="fdHrDeptCode != null">
+        FD_HR_DEPT_CODE,
+      </if>
+      <if test="fdHrLoginName != null">
+        FD_HR_LOGIN_NAME,
+      </if>
+      <if test="fdHrGwCode != null">
+        FD_HR_GW_CODE,
+      </if>
+      <if test="fdThisLeaderid != null">
+        FD_THIS_LEADERID,
+      </if>
+      <if test="fdSuperLeaderid != null">
+        FD_SUPER_LEADERID,
+      </if>
+      <if test="fdParentorgid != null">
+        FD_PARENTORGID,
+      </if>
+      <if test="fdParentid != null">
+        FD_PARENTID,
+      </if>
+      <if test="fdCateid != null">
+        FD_CATEID,
+      </if>
+      <if test="authReaderFlag != null">
+        AUTH_READER_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fdId != null">
+        #{fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgType != null">
+        #{fdOrgType,jdbcType=DECIMAL},
+      </if>
+      <if test="fdName != null">
+        #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNamePinyin != null">
+        #{fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrder != null">
+        #{fdOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="fdNo != null">
+        #{fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdKeyword != null">
+        #{fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsAvailable != null">
+        #{fdIsAvailable,jdbcType=DECIMAL},
+      </if>
+      <if test="fdIsAbandon != null">
+        #{fdIsAbandon,jdbcType=DECIMAL},
+      </if>
+      <if test="fdIsBusiness != null">
+        #{fdIsBusiness,jdbcType=DECIMAL},
+      </if>
+      <if test="fdImportInfo != null">
+        #{fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFlagDeleted != null">
+        #{fdFlagDeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="fdLdapDn != null">
+        #{fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMemo != null">
+        #{fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHierarchyId != null">
+        #{fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null">
+        #{fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdAlterTime != null">
+        #{fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdOrgEmail != null">
+        #{fdOrgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsSyn != null">
+        #{fdIsSyn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrDeptCode != null">
+        #{fdHrDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrLoginName != null">
+        #{fdHrLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrGwCode != null">
+        #{fdHrGwCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdThisLeaderid != null">
+        #{fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSuperLeaderid != null">
+        #{fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentorgid != null">
+        #{fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentid != null">
+        #{fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCateid != null">
+        #{fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="authReaderFlag != null">
+        #{authReaderFlag,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.SysOrgElementExample" resultType="java.lang.Integer">
+    select count(*) from SYS_ORG_ELEMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SYS_ORG_ELEMENT
+    <set>
+      <if test="record.fdId != null">
+        FD_ID = #{record.fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdOrgType != null">
+        FD_ORG_TYPE = #{record.fdOrgType,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdName != null">
+        FD_NAME = #{record.fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdNamePinyin != null">
+        FD_NAME_PINYIN = #{record.fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdOrder != null">
+        FD_ORDER = #{record.fdOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdNo != null">
+        FD_NO = #{record.fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdKeyword != null">
+        FD_KEYWORD = #{record.fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdIsAvailable != null">
+        FD_IS_AVAILABLE = #{record.fdIsAvailable,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdIsAbandon != null">
+        FD_IS_ABANDON = #{record.fdIsAbandon,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdIsBusiness != null">
+        FD_IS_BUSINESS = #{record.fdIsBusiness,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdImportInfo != null">
+        FD_IMPORT_INFO = #{record.fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdFlagDeleted != null">
+        FD_FLAG_DELETED = #{record.fdFlagDeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdLdapDn != null">
+        FD_LDAP_DN = #{record.fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdMemo != null">
+        FD_MEMO = #{record.fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHierarchyId != null">
+        FD_HIERARCHY_ID = #{record.fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdCreateTime != null">
+        FD_CREATE_TIME = #{record.fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdAlterTime != null">
+        FD_ALTER_TIME = #{record.fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdOrgEmail != null">
+        FD_ORG_EMAIL = #{record.fdOrgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdIsSyn != null">
+        FD_IS_SYN = #{record.fdIsSyn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHrDeptCode != null">
+        FD_HR_DEPT_CODE = #{record.fdHrDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHrLoginName != null">
+        FD_HR_LOGIN_NAME = #{record.fdHrLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHrGwCode != null">
+        FD_HR_GW_CODE = #{record.fdHrGwCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdThisLeaderid != null">
+        FD_THIS_LEADERID = #{record.fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdSuperLeaderid != null">
+        FD_SUPER_LEADERID = #{record.fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdParentorgid != null">
+        FD_PARENTORGID = #{record.fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdParentid != null">
+        FD_PARENTID = #{record.fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdCateid != null">
+        FD_CATEID = #{record.fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authReaderFlag != null">
+        AUTH_READER_FLAG = #{record.authReaderFlag,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SYS_ORG_ELEMENT
+    set FD_ID = #{record.fdId,jdbcType=VARCHAR},
+      FD_ORG_TYPE = #{record.fdOrgType,jdbcType=DECIMAL},
+      FD_NAME = #{record.fdName,jdbcType=VARCHAR},
+      FD_NAME_PINYIN = #{record.fdNamePinyin,jdbcType=VARCHAR},
+      FD_ORDER = #{record.fdOrder,jdbcType=DECIMAL},
+      FD_NO = #{record.fdNo,jdbcType=VARCHAR},
+      FD_KEYWORD = #{record.fdKeyword,jdbcType=VARCHAR},
+      FD_IS_AVAILABLE = #{record.fdIsAvailable,jdbcType=DECIMAL},
+      FD_IS_ABANDON = #{record.fdIsAbandon,jdbcType=DECIMAL},
+      FD_IS_BUSINESS = #{record.fdIsBusiness,jdbcType=DECIMAL},
+      FD_IMPORT_INFO = #{record.fdImportInfo,jdbcType=VARCHAR},
+      FD_FLAG_DELETED = #{record.fdFlagDeleted,jdbcType=DECIMAL},
+      FD_LDAP_DN = #{record.fdLdapDn,jdbcType=VARCHAR},
+      FD_MEMO = #{record.fdMemo,jdbcType=VARCHAR},
+      FD_HIERARCHY_ID = #{record.fdHierarchyId,jdbcType=VARCHAR},
+      FD_CREATE_TIME = #{record.fdCreateTime,jdbcType=TIMESTAMP},
+      FD_ALTER_TIME = #{record.fdAlterTime,jdbcType=TIMESTAMP},
+      FD_ORG_EMAIL = #{record.fdOrgEmail,jdbcType=VARCHAR},
+      FD_IS_SYN = #{record.fdIsSyn,jdbcType=VARCHAR},
+      FD_HR_DEPT_CODE = #{record.fdHrDeptCode,jdbcType=VARCHAR},
+      FD_HR_LOGIN_NAME = #{record.fdHrLoginName,jdbcType=VARCHAR},
+      FD_HR_GW_CODE = #{record.fdHrGwCode,jdbcType=VARCHAR},
+      FD_THIS_LEADERID = #{record.fdThisLeaderid,jdbcType=VARCHAR},
+      FD_SUPER_LEADERID = #{record.fdSuperLeaderid,jdbcType=VARCHAR},
+      FD_PARENTORGID = #{record.fdParentorgid,jdbcType=VARCHAR},
+      FD_PARENTID = #{record.fdParentid,jdbcType=VARCHAR},
+      FD_CATEID = #{record.fdCateid,jdbcType=VARCHAR},
+      AUTH_READER_FLAG = #{record.authReaderFlag,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.SysOrgElement">
+    update SYS_ORG_ELEMENT
+    <set>
+      <if test="fdOrgType != null">
+        FD_ORG_TYPE = #{fdOrgType,jdbcType=DECIMAL},
+      </if>
+      <if test="fdName != null">
+        FD_NAME = #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNamePinyin != null">
+        FD_NAME_PINYIN = #{fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrder != null">
+        FD_ORDER = #{fdOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="fdNo != null">
+        FD_NO = #{fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdKeyword != null">
+        FD_KEYWORD = #{fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsAvailable != null">
+        FD_IS_AVAILABLE = #{fdIsAvailable,jdbcType=DECIMAL},
+      </if>
+      <if test="fdIsAbandon != null">
+        FD_IS_ABANDON = #{fdIsAbandon,jdbcType=DECIMAL},
+      </if>
+      <if test="fdIsBusiness != null">
+        FD_IS_BUSINESS = #{fdIsBusiness,jdbcType=DECIMAL},
+      </if>
+      <if test="fdImportInfo != null">
+        FD_IMPORT_INFO = #{fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFlagDeleted != null">
+        FD_FLAG_DELETED = #{fdFlagDeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="fdLdapDn != null">
+        FD_LDAP_DN = #{fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMemo != null">
+        FD_MEMO = #{fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHierarchyId != null">
+        FD_HIERARCHY_ID = #{fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null">
+        FD_CREATE_TIME = #{fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdAlterTime != null">
+        FD_ALTER_TIME = #{fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdOrgEmail != null">
+        FD_ORG_EMAIL = #{fdOrgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsSyn != null">
+        FD_IS_SYN = #{fdIsSyn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrDeptCode != null">
+        FD_HR_DEPT_CODE = #{fdHrDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrLoginName != null">
+        FD_HR_LOGIN_NAME = #{fdHrLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrGwCode != null">
+        FD_HR_GW_CODE = #{fdHrGwCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdThisLeaderid != null">
+        FD_THIS_LEADERID = #{fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSuperLeaderid != null">
+        FD_SUPER_LEADERID = #{fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentorgid != null">
+        FD_PARENTORGID = #{fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentid != null">
+        FD_PARENTID = #{fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCateid != null">
+        FD_CATEID = #{fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="authReaderFlag != null">
+        AUTH_READER_FLAG = #{authReaderFlag,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where FD_ID = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.SysOrgElement">
+    update SYS_ORG_ELEMENT
+    set FD_ORG_TYPE = #{fdOrgType,jdbcType=DECIMAL},
+      FD_NAME = #{fdName,jdbcType=VARCHAR},
+      FD_NAME_PINYIN = #{fdNamePinyin,jdbcType=VARCHAR},
+      FD_ORDER = #{fdOrder,jdbcType=DECIMAL},
+      FD_NO = #{fdNo,jdbcType=VARCHAR},
+      FD_KEYWORD = #{fdKeyword,jdbcType=VARCHAR},
+      FD_IS_AVAILABLE = #{fdIsAvailable,jdbcType=DECIMAL},
+      FD_IS_ABANDON = #{fdIsAbandon,jdbcType=DECIMAL},
+      FD_IS_BUSINESS = #{fdIsBusiness,jdbcType=DECIMAL},
+      FD_IMPORT_INFO = #{fdImportInfo,jdbcType=VARCHAR},
+      FD_FLAG_DELETED = #{fdFlagDeleted,jdbcType=DECIMAL},
+      FD_LDAP_DN = #{fdLdapDn,jdbcType=VARCHAR},
+      FD_MEMO = #{fdMemo,jdbcType=VARCHAR},
+      FD_HIERARCHY_ID = #{fdHierarchyId,jdbcType=VARCHAR},
+      FD_CREATE_TIME = #{fdCreateTime,jdbcType=TIMESTAMP},
+      FD_ALTER_TIME = #{fdAlterTime,jdbcType=TIMESTAMP},
+      FD_ORG_EMAIL = #{fdOrgEmail,jdbcType=VARCHAR},
+      FD_IS_SYN = #{fdIsSyn,jdbcType=VARCHAR},
+      FD_HR_DEPT_CODE = #{fdHrDeptCode,jdbcType=VARCHAR},
+      FD_HR_LOGIN_NAME = #{fdHrLoginName,jdbcType=VARCHAR},
+      FD_HR_GW_CODE = #{fdHrGwCode,jdbcType=VARCHAR},
+      FD_THIS_LEADERID = #{fdThisLeaderid,jdbcType=VARCHAR},
+      FD_SUPER_LEADERID = #{fdSuperLeaderid,jdbcType=VARCHAR},
+      FD_PARENTORGID = #{fdParentorgid,jdbcType=VARCHAR},
+      FD_PARENTID = #{fdParentid,jdbcType=VARCHAR},
+      FD_CATEID = #{fdCateid,jdbcType=VARCHAR},
+      AUTH_READER_FLAG = #{authReaderFlag,jdbcType=DECIMAL}
+    where FD_ID = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wfz.oa.pojo.SysOrgElement">
+    <id column="FD_ID" jdbcType="VARCHAR" property="fdId" />
+    <result column="FD_ORG_TYPE" jdbcType="DECIMAL" property="fdOrgType" />
+    <result column="FD_NAME" jdbcType="VARCHAR" property="fdName" />
+    <result column="FD_NAME_PINYIN" jdbcType="VARCHAR" property="fdNamePinyin" />
+    <result column="FD_ORDER" jdbcType="DECIMAL" property="fdOrder" />
+    <result column="FD_NO" jdbcType="VARCHAR" property="fdNo" />
+    <result column="FD_KEYWORD" jdbcType="VARCHAR" property="fdKeyword" />
+    <result column="FD_IS_AVAILABLE" jdbcType="DECIMAL" property="fdIsAvailable" />
+    <result column="FD_IS_ABANDON" jdbcType="DECIMAL" property="fdIsAbandon" />
+    <result column="FD_IS_BUSINESS" jdbcType="DECIMAL" property="fdIsBusiness" />
+    <result column="FD_IMPORT_INFO" jdbcType="VARCHAR" property="fdImportInfo" />
+    <result column="FD_FLAG_DELETED" jdbcType="DECIMAL" property="fdFlagDeleted" />
+    <result column="FD_LDAP_DN" jdbcType="VARCHAR" property="fdLdapDn" />
+    <result column="FD_MEMO" jdbcType="VARCHAR" property="fdMemo" />
+    <result column="FD_HIERARCHY_ID" jdbcType="VARCHAR" property="fdHierarchyId" />
+    <result column="FD_CREATE_TIME" jdbcType="TIMESTAMP" property="fdCreateTime" />
+    <result column="FD_ALTER_TIME" jdbcType="TIMESTAMP" property="fdAlterTime" />
+    <result column="FD_ORG_EMAIL" jdbcType="VARCHAR" property="fdOrgEmail" />
+    <result column="FD_IS_SYN" jdbcType="VARCHAR" property="fdIsSyn" />
+    <result column="FD_HR_DEPT_CODE" jdbcType="VARCHAR" property="fdHrDeptCode" />
+    <result column="FD_HR_LOGIN_NAME" jdbcType="VARCHAR" property="fdHrLoginName" />
+    <result column="FD_HR_GW_CODE" jdbcType="VARCHAR" property="fdHrGwCode" />
+    <result column="FD_THIS_LEADERID" jdbcType="VARCHAR" property="fdThisLeaderid" />
+    <result column="FD_SUPER_LEADERID" jdbcType="VARCHAR" property="fdSuperLeaderid" />
+    <result column="FD_PARENTORGID" jdbcType="VARCHAR" property="fdParentorgid" />
+    <result column="FD_PARENTID" jdbcType="VARCHAR" property="fdParentid" />
+    <result column="FD_CATEID" jdbcType="VARCHAR" property="fdCateid" />
+    <result column="AUTH_READER_FLAG" jdbcType="DECIMAL" property="authReaderFlag" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FD_ID, FD_ORG_TYPE, FD_NAME, FD_NAME_PINYIN, FD_ORDER, FD_NO, FD_KEYWORD, FD_IS_AVAILABLE, 
+    FD_IS_ABANDON, FD_IS_BUSINESS, FD_IMPORT_INFO, FD_FLAG_DELETED, FD_LDAP_DN, FD_MEMO, 
+    FD_HIERARCHY_ID, FD_CREATE_TIME, FD_ALTER_TIME, FD_ORG_EMAIL, FD_IS_SYN, FD_HR_DEPT_CODE, 
+    FD_HR_LOGIN_NAME, FD_HR_GW_CODE, FD_THIS_LEADERID, FD_SUPER_LEADERID, FD_PARENTORGID, 
+    FD_PARENTID, FD_CATEID, AUTH_READER_FLAG
+  </sql>
+  <select id="selectByExample" parameterType="com.wfz.oa.pojo.SysOrgElementExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_ORG_ELEMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_ORG_ELEMENT
+    where FD_ID = #{fdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SYS_ORG_ELEMENT
+    where FD_ID = #{fdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wfz.oa.pojo.SysOrgElementExample">
+    delete from SYS_ORG_ELEMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wfz.oa.pojo.SysOrgElement">
+    insert into SYS_ORG_ELEMENT (FD_ID, FD_ORG_TYPE, FD_NAME, 
+      FD_NAME_PINYIN, FD_ORDER, FD_NO, 
+      FD_KEYWORD, FD_IS_AVAILABLE, FD_IS_ABANDON, 
+      FD_IS_BUSINESS, FD_IMPORT_INFO, FD_FLAG_DELETED, 
+      FD_LDAP_DN, FD_MEMO, FD_HIERARCHY_ID, 
+      FD_CREATE_TIME, FD_ALTER_TIME, FD_ORG_EMAIL, 
+      FD_IS_SYN, FD_HR_DEPT_CODE, FD_HR_LOGIN_NAME, 
+      FD_HR_GW_CODE, FD_THIS_LEADERID, FD_SUPER_LEADERID, 
+      FD_PARENTORGID, FD_PARENTID, FD_CATEID, 
+      AUTH_READER_FLAG)
+    values (#{fdId,jdbcType=VARCHAR}, #{fdOrgType,jdbcType=DECIMAL}, #{fdName,jdbcType=VARCHAR}, 
+      #{fdNamePinyin,jdbcType=VARCHAR}, #{fdOrder,jdbcType=DECIMAL}, #{fdNo,jdbcType=VARCHAR}, 
+      #{fdKeyword,jdbcType=VARCHAR}, #{fdIsAvailable,jdbcType=DECIMAL}, #{fdIsAbandon,jdbcType=DECIMAL}, 
+      #{fdIsBusiness,jdbcType=DECIMAL}, #{fdImportInfo,jdbcType=VARCHAR}, #{fdFlagDeleted,jdbcType=DECIMAL}, 
+      #{fdLdapDn,jdbcType=VARCHAR}, #{fdMemo,jdbcType=VARCHAR}, #{fdHierarchyId,jdbcType=VARCHAR}, 
+      #{fdCreateTime,jdbcType=TIMESTAMP}, #{fdAlterTime,jdbcType=TIMESTAMP}, #{fdOrgEmail,jdbcType=VARCHAR}, 
+      #{fdIsSyn,jdbcType=VARCHAR}, #{fdHrDeptCode,jdbcType=VARCHAR}, #{fdHrLoginName,jdbcType=VARCHAR}, 
+      #{fdHrGwCode,jdbcType=VARCHAR}, #{fdThisLeaderid,jdbcType=VARCHAR}, #{fdSuperLeaderid,jdbcType=VARCHAR}, 
+      #{fdParentorgid,jdbcType=VARCHAR}, #{fdParentid,jdbcType=VARCHAR}, #{fdCateid,jdbcType=VARCHAR}, 
+      #{authReaderFlag,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wfz.oa.pojo.SysOrgElement">
+    insert into SYS_ORG_ELEMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fdId != null">
+        FD_ID,
+      </if>
+      <if test="fdOrgType != null">
+        FD_ORG_TYPE,
+      </if>
+      <if test="fdName != null">
+        FD_NAME,
+      </if>
+      <if test="fdNamePinyin != null">
+        FD_NAME_PINYIN,
+      </if>
+      <if test="fdOrder != null">
+        FD_ORDER,
+      </if>
+      <if test="fdNo != null">
+        FD_NO,
+      </if>
+      <if test="fdKeyword != null">
+        FD_KEYWORD,
+      </if>
+      <if test="fdIsAvailable != null">
+        FD_IS_AVAILABLE,
+      </if>
+      <if test="fdIsAbandon != null">
+        FD_IS_ABANDON,
+      </if>
+      <if test="fdIsBusiness != null">
+        FD_IS_BUSINESS,
+      </if>
+      <if test="fdImportInfo != null">
+        FD_IMPORT_INFO,
+      </if>
+      <if test="fdFlagDeleted != null">
+        FD_FLAG_DELETED,
+      </if>
+      <if test="fdLdapDn != null">
+        FD_LDAP_DN,
+      </if>
+      <if test="fdMemo != null">
+        FD_MEMO,
+      </if>
+      <if test="fdHierarchyId != null">
+        FD_HIERARCHY_ID,
+      </if>
+      <if test="fdCreateTime != null">
+        FD_CREATE_TIME,
+      </if>
+      <if test="fdAlterTime != null">
+        FD_ALTER_TIME,
+      </if>
+      <if test="fdOrgEmail != null">
+        FD_ORG_EMAIL,
+      </if>
+      <if test="fdIsSyn != null">
+        FD_IS_SYN,
+      </if>
+      <if test="fdHrDeptCode != null">
+        FD_HR_DEPT_CODE,
+      </if>
+      <if test="fdHrLoginName != null">
+        FD_HR_LOGIN_NAME,
+      </if>
+      <if test="fdHrGwCode != null">
+        FD_HR_GW_CODE,
+      </if>
+      <if test="fdThisLeaderid != null">
+        FD_THIS_LEADERID,
+      </if>
+      <if test="fdSuperLeaderid != null">
+        FD_SUPER_LEADERID,
+      </if>
+      <if test="fdParentorgid != null">
+        FD_PARENTORGID,
+      </if>
+      <if test="fdParentid != null">
+        FD_PARENTID,
+      </if>
+      <if test="fdCateid != null">
+        FD_CATEID,
+      </if>
+      <if test="authReaderFlag != null">
+        AUTH_READER_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fdId != null">
+        #{fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgType != null">
+        #{fdOrgType,jdbcType=DECIMAL},
+      </if>
+      <if test="fdName != null">
+        #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNamePinyin != null">
+        #{fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrder != null">
+        #{fdOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="fdNo != null">
+        #{fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdKeyword != null">
+        #{fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsAvailable != null">
+        #{fdIsAvailable,jdbcType=DECIMAL},
+      </if>
+      <if test="fdIsAbandon != null">
+        #{fdIsAbandon,jdbcType=DECIMAL},
+      </if>
+      <if test="fdIsBusiness != null">
+        #{fdIsBusiness,jdbcType=DECIMAL},
+      </if>
+      <if test="fdImportInfo != null">
+        #{fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFlagDeleted != null">
+        #{fdFlagDeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="fdLdapDn != null">
+        #{fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMemo != null">
+        #{fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHierarchyId != null">
+        #{fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null">
+        #{fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdAlterTime != null">
+        #{fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdOrgEmail != null">
+        #{fdOrgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsSyn != null">
+        #{fdIsSyn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrDeptCode != null">
+        #{fdHrDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrLoginName != null">
+        #{fdHrLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrGwCode != null">
+        #{fdHrGwCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdThisLeaderid != null">
+        #{fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSuperLeaderid != null">
+        #{fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentorgid != null">
+        #{fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentid != null">
+        #{fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCateid != null">
+        #{fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="authReaderFlag != null">
+        #{authReaderFlag,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wfz.oa.pojo.SysOrgElementExample" resultType="java.lang.Integer">
+    select count(*) from SYS_ORG_ELEMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SYS_ORG_ELEMENT
+    <set>
+      <if test="record.fdId != null">
+        FD_ID = #{record.fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdOrgType != null">
+        FD_ORG_TYPE = #{record.fdOrgType,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdName != null">
+        FD_NAME = #{record.fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdNamePinyin != null">
+        FD_NAME_PINYIN = #{record.fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdOrder != null">
+        FD_ORDER = #{record.fdOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdNo != null">
+        FD_NO = #{record.fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdKeyword != null">
+        FD_KEYWORD = #{record.fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdIsAvailable != null">
+        FD_IS_AVAILABLE = #{record.fdIsAvailable,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdIsAbandon != null">
+        FD_IS_ABANDON = #{record.fdIsAbandon,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdIsBusiness != null">
+        FD_IS_BUSINESS = #{record.fdIsBusiness,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdImportInfo != null">
+        FD_IMPORT_INFO = #{record.fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdFlagDeleted != null">
+        FD_FLAG_DELETED = #{record.fdFlagDeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fdLdapDn != null">
+        FD_LDAP_DN = #{record.fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdMemo != null">
+        FD_MEMO = #{record.fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHierarchyId != null">
+        FD_HIERARCHY_ID = #{record.fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdCreateTime != null">
+        FD_CREATE_TIME = #{record.fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdAlterTime != null">
+        FD_ALTER_TIME = #{record.fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdOrgEmail != null">
+        FD_ORG_EMAIL = #{record.fdOrgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdIsSyn != null">
+        FD_IS_SYN = #{record.fdIsSyn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHrDeptCode != null">
+        FD_HR_DEPT_CODE = #{record.fdHrDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHrLoginName != null">
+        FD_HR_LOGIN_NAME = #{record.fdHrLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHrGwCode != null">
+        FD_HR_GW_CODE = #{record.fdHrGwCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdThisLeaderid != null">
+        FD_THIS_LEADERID = #{record.fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdSuperLeaderid != null">
+        FD_SUPER_LEADERID = #{record.fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdParentorgid != null">
+        FD_PARENTORGID = #{record.fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdParentid != null">
+        FD_PARENTID = #{record.fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdCateid != null">
+        FD_CATEID = #{record.fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authReaderFlag != null">
+        AUTH_READER_FLAG = #{record.authReaderFlag,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SYS_ORG_ELEMENT
+    set FD_ID = #{record.fdId,jdbcType=VARCHAR},
+      FD_ORG_TYPE = #{record.fdOrgType,jdbcType=DECIMAL},
+      FD_NAME = #{record.fdName,jdbcType=VARCHAR},
+      FD_NAME_PINYIN = #{record.fdNamePinyin,jdbcType=VARCHAR},
+      FD_ORDER = #{record.fdOrder,jdbcType=DECIMAL},
+      FD_NO = #{record.fdNo,jdbcType=VARCHAR},
+      FD_KEYWORD = #{record.fdKeyword,jdbcType=VARCHAR},
+      FD_IS_AVAILABLE = #{record.fdIsAvailable,jdbcType=DECIMAL},
+      FD_IS_ABANDON = #{record.fdIsAbandon,jdbcType=DECIMAL},
+      FD_IS_BUSINESS = #{record.fdIsBusiness,jdbcType=DECIMAL},
+      FD_IMPORT_INFO = #{record.fdImportInfo,jdbcType=VARCHAR},
+      FD_FLAG_DELETED = #{record.fdFlagDeleted,jdbcType=DECIMAL},
+      FD_LDAP_DN = #{record.fdLdapDn,jdbcType=VARCHAR},
+      FD_MEMO = #{record.fdMemo,jdbcType=VARCHAR},
+      FD_HIERARCHY_ID = #{record.fdHierarchyId,jdbcType=VARCHAR},
+      FD_CREATE_TIME = #{record.fdCreateTime,jdbcType=TIMESTAMP},
+      FD_ALTER_TIME = #{record.fdAlterTime,jdbcType=TIMESTAMP},
+      FD_ORG_EMAIL = #{record.fdOrgEmail,jdbcType=VARCHAR},
+      FD_IS_SYN = #{record.fdIsSyn,jdbcType=VARCHAR},
+      FD_HR_DEPT_CODE = #{record.fdHrDeptCode,jdbcType=VARCHAR},
+      FD_HR_LOGIN_NAME = #{record.fdHrLoginName,jdbcType=VARCHAR},
+      FD_HR_GW_CODE = #{record.fdHrGwCode,jdbcType=VARCHAR},
+      FD_THIS_LEADERID = #{record.fdThisLeaderid,jdbcType=VARCHAR},
+      FD_SUPER_LEADERID = #{record.fdSuperLeaderid,jdbcType=VARCHAR},
+      FD_PARENTORGID = #{record.fdParentorgid,jdbcType=VARCHAR},
+      FD_PARENTID = #{record.fdParentid,jdbcType=VARCHAR},
+      FD_CATEID = #{record.fdCateid,jdbcType=VARCHAR},
+      AUTH_READER_FLAG = #{record.authReaderFlag,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wfz.oa.pojo.SysOrgElement">
+    update SYS_ORG_ELEMENT
+    <set>
+      <if test="fdOrgType != null">
+        FD_ORG_TYPE = #{fdOrgType,jdbcType=DECIMAL},
+      </if>
+      <if test="fdName != null">
+        FD_NAME = #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNamePinyin != null">
+        FD_NAME_PINYIN = #{fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrder != null">
+        FD_ORDER = #{fdOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="fdNo != null">
+        FD_NO = #{fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdKeyword != null">
+        FD_KEYWORD = #{fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsAvailable != null">
+        FD_IS_AVAILABLE = #{fdIsAvailable,jdbcType=DECIMAL},
+      </if>
+      <if test="fdIsAbandon != null">
+        FD_IS_ABANDON = #{fdIsAbandon,jdbcType=DECIMAL},
+      </if>
+      <if test="fdIsBusiness != null">
+        FD_IS_BUSINESS = #{fdIsBusiness,jdbcType=DECIMAL},
+      </if>
+      <if test="fdImportInfo != null">
+        FD_IMPORT_INFO = #{fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFlagDeleted != null">
+        FD_FLAG_DELETED = #{fdFlagDeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="fdLdapDn != null">
+        FD_LDAP_DN = #{fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMemo != null">
+        FD_MEMO = #{fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHierarchyId != null">
+        FD_HIERARCHY_ID = #{fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null">
+        FD_CREATE_TIME = #{fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdAlterTime != null">
+        FD_ALTER_TIME = #{fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdOrgEmail != null">
+        FD_ORG_EMAIL = #{fdOrgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsSyn != null">
+        FD_IS_SYN = #{fdIsSyn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrDeptCode != null">
+        FD_HR_DEPT_CODE = #{fdHrDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrLoginName != null">
+        FD_HR_LOGIN_NAME = #{fdHrLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHrGwCode != null">
+        FD_HR_GW_CODE = #{fdHrGwCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdThisLeaderid != null">
+        FD_THIS_LEADERID = #{fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSuperLeaderid != null">
+        FD_SUPER_LEADERID = #{fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentorgid != null">
+        FD_PARENTORGID = #{fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentid != null">
+        FD_PARENTID = #{fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCateid != null">
+        FD_CATEID = #{fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="authReaderFlag != null">
+        AUTH_READER_FLAG = #{authReaderFlag,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where FD_ID = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wfz.oa.pojo.SysOrgElement">
+    update SYS_ORG_ELEMENT
+    set FD_ORG_TYPE = #{fdOrgType,jdbcType=DECIMAL},
+      FD_NAME = #{fdName,jdbcType=VARCHAR},
+      FD_NAME_PINYIN = #{fdNamePinyin,jdbcType=VARCHAR},
+      FD_ORDER = #{fdOrder,jdbcType=DECIMAL},
+      FD_NO = #{fdNo,jdbcType=VARCHAR},
+      FD_KEYWORD = #{fdKeyword,jdbcType=VARCHAR},
+      FD_IS_AVAILABLE = #{fdIsAvailable,jdbcType=DECIMAL},
+      FD_IS_ABANDON = #{fdIsAbandon,jdbcType=DECIMAL},
+      FD_IS_BUSINESS = #{fdIsBusiness,jdbcType=DECIMAL},
+      FD_IMPORT_INFO = #{fdImportInfo,jdbcType=VARCHAR},
+      FD_FLAG_DELETED = #{fdFlagDeleted,jdbcType=DECIMAL},
+      FD_LDAP_DN = #{fdLdapDn,jdbcType=VARCHAR},
+      FD_MEMO = #{fdMemo,jdbcType=VARCHAR},
+      FD_HIERARCHY_ID = #{fdHierarchyId,jdbcType=VARCHAR},
+      FD_CREATE_TIME = #{fdCreateTime,jdbcType=TIMESTAMP},
+      FD_ALTER_TIME = #{fdAlterTime,jdbcType=TIMESTAMP},
+      FD_ORG_EMAIL = #{fdOrgEmail,jdbcType=VARCHAR},
+      FD_IS_SYN = #{fdIsSyn,jdbcType=VARCHAR},
+      FD_HR_DEPT_CODE = #{fdHrDeptCode,jdbcType=VARCHAR},
+      FD_HR_LOGIN_NAME = #{fdHrLoginName,jdbcType=VARCHAR},
+      FD_HR_GW_CODE = #{fdHrGwCode,jdbcType=VARCHAR},
+      FD_THIS_LEADERID = #{fdThisLeaderid,jdbcType=VARCHAR},
+      FD_SUPER_LEADERID = #{fdSuperLeaderid,jdbcType=VARCHAR},
+      FD_PARENTORGID = #{fdParentorgid,jdbcType=VARCHAR},
+      FD_PARENTID = #{fdParentid,jdbcType=VARCHAR},
+      FD_CATEID = #{fdCateid,jdbcType=VARCHAR},
+      AUTH_READER_FLAG = #{authReaderFlag,jdbcType=DECIMAL}
+    where FD_ID = #{fdId,jdbcType=VARCHAR}
+  </update>
+</mapper>
